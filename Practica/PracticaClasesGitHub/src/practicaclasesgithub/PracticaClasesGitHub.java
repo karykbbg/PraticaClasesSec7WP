@@ -41,8 +41,12 @@ public class PracticaClasesGitHub {
                 case 1: {  //Inicia menu de operaciones realizadas por el cliente      
                     do {
                         opcionMenuMaestros = MenuMestros(); //Genera el menu de maestros
+                        TipoCuenta tipo = new TipoCuenta();
+                        
                         switch (opcionMenuMaestros) {
                             case 1:
+                                tipo.addTipoCuenta();
+                                tipo.ListarDatosTipoCuenta();
                                 break;
                             case 2:
                                 break;

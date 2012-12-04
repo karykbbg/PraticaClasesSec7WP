@@ -4,19 +4,15 @@
  */
 package practicaclasesgithub;
 
-import java.io.BufferedReader;
+
 import java.io.IOException;
-import java.io.InputStreamReader;
 
 import java.text.SimpleDateFormat;
 import java.text.ParseException;
 
-
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import java.util.Date;
-import java.util.Calendar;
 
 /**
  *
@@ -48,36 +44,26 @@ public class CuentaBancaria {
         return new CuentaBancaria();
     }
 
-    public void createCuentaBancaria() {
+    public void createCuentaBancaria() throws IOException {
+         
+        EntradaTeclado recibirDatosTeclado =  new EntradaTeclado();
 
-         TipoCuenta tipoCuentaBancaria = new TipoCuenta();
-
-        InputStreamReader lector = new InputStreamReader(System.in);
-        BufferedReader entrada = new BufferedReader(lector);
-
-        try {
-
+         TipoCuenta tipoCuentaBancaria = new TipoCuenta();       
+      
             //tipo de cuenta
-            //tipoCuentaBancaria=tiposCuenta
+            tipoCuentaBancaria=tiposCuenta.ListarDatosTipoCuenta();
             System.out.println(" Ingrese Id de la cuenta :  ");
-            this.idCuentaBancaria = Long.parseLong(entrada.readLine());
+            this.idCuentaBancaria = recibirDatosTeclado.leerValorLong();
 
             System.out.println(" Ingrese numero de cuenta :  ");
-            this.numeroCuenta = entrada.readLine();
+            this.numeroCuenta = recibirDatosTeclado.leerCadenaCaracteres(50); 
 
             System.out.println("Fecha de creacion cuenta (dd/mm/aaaa):  ");
-            this.fechaApertura = entrada.readLine();
+            this.fechaApertura = recibirDatosTeclado.leerCadenaCaracteres(10); 
 
             if (this.validarFecha(fechaApertura) == true) {
                 CuentaBancarias.add(this);
             }
-
-
-
-        } catch (IOException e) {
-            System.out.println("No válido\n" + e);
-        }
-
 
     }
 

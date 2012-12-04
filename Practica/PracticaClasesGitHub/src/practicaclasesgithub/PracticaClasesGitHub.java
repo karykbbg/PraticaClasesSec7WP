@@ -60,10 +60,13 @@ public class PracticaClasesGitHub {
                 case 2: {
                     do {
                         opcionMenuCliente = MenuCliente(); //Genera el menu cliente
+                        CuentaBancaria cuenta = new CuentaBancaria();
                         switch (opcionMenuCliente) {
                             case 1:
+                                cuenta.createCuentaBancaria();
                                 break;
                             case 2:
+                                
                                 break;
                             case 3:
                                 break;

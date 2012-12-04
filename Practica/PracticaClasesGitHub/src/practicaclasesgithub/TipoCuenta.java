@@ -56,10 +56,17 @@ public class TipoCuenta {
 
     }
 
-    public void ListarDatosTipoCuenta() {
+    public TipoCuenta ListarDatosTipoCuenta() {
         
-        for (int i = 0; i < tipoCuenta.size(); i++) {
-            System.out.println(" I: " + i +" Id: " +tipoCuenta.elementAt(i).idTipocuenta + " Codigo: " + tipoCuenta.elementAt(i).descripcion + "\n");
+        int indMenu=0;
+        System.out.println("Seleccione el tipo de cuenta que desea crear: ");
+        
+        for (int numCta = 0; numCta < tipoCuenta.size(); numCta++) {
+            indMenu++;
+            System.out.println( indMenu +"...   " + tipoCuenta.elementAt(numCta).descripcion);
         }
+        
+        return tipoCuenta.get();
+        
     }
 }

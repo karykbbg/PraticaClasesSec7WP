@@ -8,16 +8,14 @@ package practicaclasesgithub;
  *
  * @author Naretza Ovalles
  */
-public class TipoCuenta {
-    long idTipocuenta;
+public class TipoOperacion {
+    
+    long idTipoOperacion;
     String descripcion;
     
-    public TipoCuenta()
-    {
-    
-    }
-    
-    public void addTipoCuenta()
+    public TipoOperacion()
     {}
     
+    public void addTipoOperacion()
+    {}
 }

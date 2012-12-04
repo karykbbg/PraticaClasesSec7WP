@@ -44,7 +44,7 @@ public class TipoCuenta {
         } while (respuesta.equals("s"));
     }
 
-public TipoCuenta ListarDatosTipoCuenta() {
+public TipoCuenta ListarDatosTipoCuenta() throws IOException {
         
         int indMenu=0;
         int respMenu;
@@ -54,9 +54,8 @@ public TipoCuenta ListarDatosTipoCuenta() {
             indMenu++;
             System.out.println( indMenu +"...   " + tipoCuenta.elementAt(numCta).descripcion);
         }
-       // respMenu = recibirDatosTeclado.
-        
-      //  return tipoCuenta.get();
+       respMenu = recibirDatosTeclado.leerValorEntero();
+       return tipoCuenta.get(respMenu-1);
         
     }
 }

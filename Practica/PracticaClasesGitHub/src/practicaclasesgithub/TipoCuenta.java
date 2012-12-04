@@ -17,56 +17,46 @@ public class TipoCuenta {
 
     long idTipocuenta;
     String descripcion;
-    static Vector<TipoCuenta> tipoCuenta = new Vector<TipoCuenta>();
-
+    private static Vector<TipoCuenta> tipoCuenta = new Vector<TipoCuenta>();
+    EntradaTeclado recibirDatosTeclado = new EntradaTeclado();
+    
     public TipoCuenta() {
     }
 
-    public void addTipoCuenta() {
+    public void addTipoCuenta() throws IOException {
 
-        InputStreamReader entrada = new InputStreamReader(System.in);
-        BufferedReader lector = new BufferedReader(entrada);
-        
         String respuesta;
 
-        try {
-            do {
-                
-                TipoCuenta obj = new TipoCuenta();
-                System.out.println("Ingrese el id del tipo de cuenta: ");
-                obj.idTipocuenta = Long.parseLong(lector.readLine());
-                System.out.println("Ingrese el nombre del Tipo de cuenta a crear: ");
-                obj.descripcion = lector.readLine();
-                System.out.println("fgfg"+obj.idTipocuenta+"--"+obj.descripcion);
-                
-                tipoCuenta.add(obj);
+        do {
 
-                System.out.println("Desea agregar otro tipo de cuenta: (S/N)");
-                respuesta = lector.readLine();
-                respuesta = respuesta.toLowerCase();
+            TipoCuenta obj = new TipoCuenta();
+            System.out.println("Ingrese el id del tipo de cuenta: ");
+            obj.idTipocuenta = recibirDatosTeclado.leerValorLong();
+            System.out.println("Ingrese el nombre del Tipo de cuenta a crear: ");
+            obj.descripcion = recibirDatosTeclado.leerCadenaCaracteres(30);
 
-            } while (respuesta.equals("s"));
+            tipoCuenta.add(obj);
 
+            System.out.println("Desea agregar otro tipo de cuenta: (S/N)");
+            respuesta = recibirDatosTeclado.leerCadenaCaracteres(1);
+            respuesta = respuesta.toLowerCase();
 
-
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-
-        }
-
+        } while (respuesta.equals("s"));
     }
 
-    public TipoCuenta ListarDatosTipoCuenta() {
+public TipoCuenta ListarDatosTipoCuenta() {
         
         int indMenu=0;
+        int respMenu;
         System.out.println("Seleccione el tipo de cuenta que desea crear: ");
         
         for (int numCta = 0; numCta < tipoCuenta.size(); numCta++) {
             indMenu++;
             System.out.println( indMenu +"...   " + tipoCuenta.elementAt(numCta).descripcion);
         }
+       // respMenu = recibirDatosTeclado.
         
-        return tipoCuenta.get();
+      //  return tipoCuenta.get();
         
     }
 }

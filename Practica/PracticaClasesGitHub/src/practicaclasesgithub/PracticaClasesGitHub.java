@@ -28,6 +28,7 @@ public class PracticaClasesGitHub {
         int opcionMenuPcpal;
         int opcionMenuCliente;
         int opcionMenuMaestros;
+        int opcionMenuReportes;
         InputStreamReader entrada = new InputStreamReader(System.in);
         BufferedReader lector = new BufferedReader(entrada);
 
@@ -68,8 +69,27 @@ public class PracticaClasesGitHub {
                     } while (opcionMenuCliente != 4);
                     break;
                 }
-                case 3:
+                case 3: {
+                    do {
+                        opcionMenuReportes = MenuReportes();
+                        switch (opcionMenuReportes) {
+                            case 1:
+                                break;
+                            case 2:
+                                break;
+                            case 3:
+                                break;
+                            case 4:
+                                break;
+                            case 5:
+                                break;
+
+                        }
+
+
+                    } while (opcionMenuReportes != 7);
                     break;
+                }
                 case 4:
                     System.out.println("FIN DEL PROGRAMA...");
                     System.exit(0);
@@ -164,6 +184,34 @@ public class PracticaClasesGitHub {
         }
 
         return opcionMenuMaestros;
+
+    }
+
+    //-------------------------------------------------------
+    public static int MenuReportes() {
+
+        int opcionMenuReporte = 0;
+        InputStreamReader entrada = new InputStreamReader(System.in);
+        BufferedReader lector = new BufferedReader(entrada);
+        try {
+            System.out.println("-------------------------------");
+            System.out.println("     MENÚ REPORTES");
+            System.out.println("-------------------------------");
+            System.out.println("(1).... OBSERVAR CUENTAS POR USUARIO");
+            System.out.println("(2).... DETALLE DE OPERACIONES BANCARIAS POR CUENTA");
+            System.out.println("(3).... LISTADO DE CLIENTES");
+            System.out.println("(4).... LISTADO DE CUENTAS POR TIPO");
+            System.out.println("(5).... LISTADO DE TIPOS DE OPERACIONES");
+            System.out.println("(6).... LISTADO DE TIPOS DE CUENTAS");
+            System.out.println("(7).... SALIR ");
+            System.out.println("---------------------------------");
+            opcionMenuReporte = Integer.parseInt(lector.readLine());
+
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+
+        return opcionMenuReporte;
 
     }
 }

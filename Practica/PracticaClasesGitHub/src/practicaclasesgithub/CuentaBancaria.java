@@ -4,8 +4,14 @@
  */
 package practicaclasesgithub;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
+
 import java.text.SimpleDateFormat;
+import java.text.ParseException;
+
+
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -25,9 +31,8 @@ public class CuentaBancaria {
     private long idCuentaBancaria;
     private String numeroCuenta;
     private TipoCuenta TipoCuenta = new TipoCuenta();
-    
     //ArrayList cliente = new ArrayList();
-   // private static ArrayList<CuentaBancaria> CuentaBancaria = new ArrayList<CuentaBancaria>();
+    private static ArrayList<CuentaBancaria> CuentaBancaria = new ArrayList<CuentaBancaria>();
 
     public CuentaBancaria() {
     }
@@ -38,24 +43,64 @@ public class CuentaBancaria {
         numeroCuenta = numCuenta;
     }
 
+    public CuentaBancaria getNewObject() {
+        return new CuentaBancaria();
+    }
+
     public void createCuentaBancaria() {
-        
-        int nroCuentas=0;
-        String DescCuenta=TipoCuenta.descripcion;
-        long tipoCuenta=TipoCuenta.idTipocuenta;
-        
-        System.out.println("Tipos de Cuentas:");
-        
-        for(int cantidadCuentas=0;nroCuentas<cantidadCuentas;cantidadCuentas++)
-        {
-         System.out.println("* "+ tipoCuenta+"-"+DescCuenta);
+
+
+        InputStreamReader lector = new InputStreamReader(System.in);
+        BufferedReader entrada = new BufferedReader(lector);
+
+        try {
+
+            //tipo de cuenta
+            System.out.println(" Ingrese Id de la cuenta :  ");
+            this.idCuentaBancaria = Long.parseLong(entrada.readLine());
+
+            System.out.println(" Ingrese numero de cuenta :  ");
+            this.numeroCuenta = entrada.readLine();
+
+            System.out.println("Fecha de creacion cuenta (dd/mm/aaaa):  ");
+            this.fechaApertura = entrada.readLine();
+
+            if (this.validarFecha(fechaApertura) == true) {
+                CuentaBancaria.add(this);
+            }
+
+
+
+        } catch (IOException e) {
+            System.out.println("No válido\n" + e);
         }
-        
-        
-        
+
+
     }
 
     public long getCuentaBancariaByID() {
         return idCuentaBancaria;
+    }
+
+    public boolean validarFecha(String fecha) {
+
+        if (fecha == null) {
+            return false;
+        }
+
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+
+        if (fecha.trim().length() != dateFormat.toPattern().length()) {
+            return false;
+        }
+
+        dateFormat.setLenient(false);
+
+        try {
+            dateFormat.parse(fecha.trim());
+        } catch (ParseException pe) {
+            return false;
+        }
+        return true;
     }
 }

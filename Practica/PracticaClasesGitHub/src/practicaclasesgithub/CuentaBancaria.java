@@ -24,8 +24,10 @@ public class CuentaBancaria {
     private String fechaApertura;
     private long idCuentaBancaria;
     private String numeroCuenta;
+    private TipoCuenta TipoCuenta = new TipoCuenta();
     
-    ArrayList cliente = new ArrayList();
+    //ArrayList cliente = new ArrayList();
+   // private static ArrayList<CuentaBancaria> CuentaBancaria = new ArrayList<CuentaBancaria>();
 
     public CuentaBancaria() {
     }
@@ -37,8 +39,23 @@ public class CuentaBancaria {
     }
 
     public void createCuentaBancaria() {
+        
+        int nroCuentas=0;
+        String DescCuenta=TipoCuenta.descripcion;
+        long tipoCuenta=TipoCuenta.idTipocuenta;
+        
+        System.out.println("Tipos de Cuentas:");
+        
+        for(int cantidadCuentas=0;nroCuentas<cantidadCuentas;cantidadCuentas++)
+        {
+         System.out.println("* "+ tipoCuenta+"-"+DescCuenta);
+        }
+        
+        
+        
     }
 
-    public void getCuentaBancariaByID(long idCuenta) {
+    public long getCuentaBancariaByID() {
+        return idCuentaBancaria;
     }
 }

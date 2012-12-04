@@ -53,7 +53,7 @@ public class EntradaTeclado {
                         {
                             Errorlectura=false;
                             System.out.println("-> \n");  
-                            valorTeclado = new Long(Long.parseLong(entrada.readLine()));
+                            valorTeclado = Long.parseLong(entrada.readLine());
                         }catch (IOException error) 
                         {                           
                             System.out.println("Numero no válido\n" + error);  

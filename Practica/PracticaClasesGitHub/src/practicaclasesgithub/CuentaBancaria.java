@@ -3,6 +3,7 @@
  * and open the template in the editor.
  */
 package practicaclasesgithub;
+import java.util.Date;
 
 /**
  *
@@ -12,5 +13,9 @@ package practicaclasesgithub;
  * @author Naretza Ovalles
  */
 public class CuentaBancaria {
+    
+    Date fechaApertura= new Date();
+            long idCuentaBancaria;
+            String numeroCuenta;
     
 }

@@ -17,6 +17,7 @@ public class TipoCuenta {
 
     long idTipocuenta;
     String descripcion;
+    Vector tipoCuenta = new Vector();
 
     public TipoCuenta() {
     }
@@ -27,8 +28,13 @@ public class TipoCuenta {
         BufferedReader lector = new BufferedReader(entrada);
         try {
            
+            System.out.println("Ingrese el id del tipo de cuenta: ");
+            idTipocuenta = Long.parseLong(lector.readLine());
+            tipoCuenta.add(idTipocuenta);
             System.out.println("Ingrese el nombre del Tipo de cuenta a crear: ");
             descripcion = lector.readLine();
+            tipoCuenta.add(descripcion);
+            
             
         } catch (IOException e) {
             System.out.println(e.getMessage());

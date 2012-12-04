@@ -30,9 +30,10 @@ public class CuentaBancaria {
     private String fechaApertura;
     private long idCuentaBancaria;
     private String numeroCuenta;
-    private TipoCuenta TipoCuenta = new TipoCuenta();
+    
+    private TipoCuenta tiposCuenta = new TipoCuenta();
     //ArrayList cliente = new ArrayList();
-    private static ArrayList<CuentaBancaria> CuentaBancaria = new ArrayList<CuentaBancaria>();
+    private static ArrayList<CuentaBancaria> CuentaBancarias = new ArrayList<CuentaBancaria>();
 
     public CuentaBancaria() {
     }
@@ -49,6 +50,7 @@ public class CuentaBancaria {
 
     public void createCuentaBancaria() {
 
+         TipoCuenta tipoCuentaBancaria = new TipoCuenta();
 
         InputStreamReader lector = new InputStreamReader(System.in);
         BufferedReader entrada = new BufferedReader(lector);
@@ -56,6 +58,7 @@ public class CuentaBancaria {
         try {
 
             //tipo de cuenta
+            //tipoCuentaBancaria=tiposCuenta
             System.out.println(" Ingrese Id de la cuenta :  ");
             this.idCuentaBancaria = Long.parseLong(entrada.readLine());
 
@@ -66,7 +69,7 @@ public class CuentaBancaria {
             this.fechaApertura = entrada.readLine();
 
             if (this.validarFecha(fechaApertura) == true) {
-                CuentaBancaria.add(this);
+                CuentaBancarias.add(this);
             }
 
 
@@ -82,6 +85,9 @@ public class CuentaBancaria {
         return idCuentaBancaria;
     }
 
+ /* Valida si el parámetro es una fecha con el formato "dd/MM/yyyy"
+  * return true si cumple el formato, false en caso contrario
+  */
     public boolean validarFecha(String fecha) {
 
         if (fecha == null) {

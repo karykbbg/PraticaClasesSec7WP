@@ -22,6 +22,27 @@ public class EntradaTeclado {
         entrada = new BufferedReader(lector);
         }
         
+        public int leerValorEntero() throws IOException
+        {
+            int valorTeclado=0;
+            boolean Errorlectura; 
+             do{
+                    
+                    try
+                        {
+                         Errorlectura=false;
+                         System.out.println("-> \n");
+                         valorTeclado = Integer.parseInt(entrada.readLine());
+                        }catch (NumberFormatException error) 
+                        {                           
+                            System.out.println("Número no válido\n" + error);  
+                            Errorlectura=true;                             
+                        }                   
+                }while(Errorlectura == true);
+             
+            return valorTeclado;
+        }
+        
         //método para la lectura por teclado de varibles long
         public long leerValorLong() throws IOException
         {

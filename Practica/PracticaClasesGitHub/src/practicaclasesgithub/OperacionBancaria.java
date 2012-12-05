@@ -20,10 +20,12 @@ public class OperacionBancaria {
     private Date fechaOperacion;
     private long idOperacion;
     private long montoOperacion;
-    private long idTipocuenta;
+    private long idTipoOperacion;
     private String numeroCuenta;
     EntradaTeclado recibirDatosTeclado = new EntradaTeclado();
     private ArrayList<OperacionBancaria> operacionesBancarias = new ArrayList<OperacionBancaria>();
+    TipoOperacion tipOp = new TipoOperacion(); 
+    TipoOperacion tipoOpe = new  TipoOperacion(); 
 
     public OperacionBancaria() {
     }
@@ -32,15 +34,14 @@ public class OperacionBancaria {
     }
 
     public void createOperacionBancaria() throws IOException {
-        System.out.println("Ingrese el id del tipo de cuenta: ");
-        idTipocuenta = recibirDatosTeclado.leerValorLong();
-        System.out.println("Indique el tipo de operación a realizar: ");
+        tipoOpe = tipOp.ListarDatosTipoOperacion();
+        System.out.println("Lo que retorna la funcion " + tipoOpe.idTipoOperacion + "aaa");
+        idTipoOperacion = tipoOpe.idTipoOperacion;
         numeroCuenta = recibirDatosTeclado.leerCadenaCaracteres(30);
         System.out.println("El numero de Cuenta es: " + numeroCuenta);
         java.util.Date fecha = new Date();
         System.out.println(fecha);
         System.out.println("se imprimio la fecha");
-        
     }
 
 

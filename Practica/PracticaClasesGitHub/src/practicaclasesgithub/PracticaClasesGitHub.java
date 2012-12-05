@@ -31,24 +31,24 @@ public class PracticaClasesGitHub {
         int opcionMenuReportes;
         InputStreamReader entrada = new InputStreamReader(System.in);
         BufferedReader lector = new BufferedReader(entrada);
-        
+
         do {
 
             opcionMenuPcpal = MenuPrincipal(); //Genera el Menu principal
-            System.out.println("");
+            clear();//simula un limpiar pantalla
 
             switch (opcionMenuPcpal) { // Eleige la opcion acorde al numero de mes           
                 case 1: {  //Inicia menu de operaciones realizadas por el cliente      
                     do {
                         opcionMenuMaestros = MenuMestros(); //Genera el menu de maestros
-                        TipoCuenta tipo = new TipoCuenta();
+                        clear();
                         
+                        TipoCuenta tipo = new TipoCuenta();
                         switch (opcionMenuMaestros) {
-                            case 1:
+                            case 1://crear tipo de cuenta
                                 tipo.addTipoCuenta();
-                                tipo.ListarDatosTipoCuenta();
                                 break;
-                            case 2:
+                            case 2://crear tipo de operacion
                                 break;
 
                         }
@@ -60,15 +60,16 @@ public class PracticaClasesGitHub {
                 case 2: {
                     do {
                         opcionMenuCliente = MenuCliente(); //Genera el menu cliente
+                        clear();
+                        
                         CuentaBancaria cuenta = new CuentaBancaria();
                         switch (opcionMenuCliente) {
-                            case 1:
+                            case 1://Registrar nuevo cliente
+                                break;
+                            case 2://Aperturar cuentas
                                 cuenta.createCuentaBancaria();
                                 break;
-                            case 2:
-                                
-                                break;
-                            case 3:
+                            case 3://realizar operacion bancaria
                                 break;
 
                         }
@@ -79,6 +80,9 @@ public class PracticaClasesGitHub {
                 case 3: {
                     do {
                         opcionMenuReportes = MenuReportes();
+                        clear();
+                        
+                        TipoCuenta tipo = new TipoCuenta();
                         switch (opcionMenuReportes) {
                             case 1:
                                 break;
@@ -89,6 +93,9 @@ public class PracticaClasesGitHub {
                             case 4:
                                 break;
                             case 5:
+                                break;
+                            case 6:
+                                tipo.ListarTipoCuenta();
                                 break;
 
                         }
@@ -130,7 +137,7 @@ public class PracticaClasesGitHub {
         do {
             System.out.print("INTRODUZCA EL N° DE LA OPCION: ");
             try {
-               // opcionMenuPcpal = Integer.parseInt(lector.readLine());
+                // opcionMenuPcpal = Integer.parseInt(lector.readLine());
                 opcionMenuPcpal = leeTeclado.leerValorEntero();
             } catch (IOException ex) {
                 Logger.getLogger(PracticaClasesGitHub.class.getName()).log(Level.SEVERE, null, ex);
@@ -221,5 +228,11 @@ public class PracticaClasesGitHub {
 
         return opcionMenuReporte;
 
+    }
+
+    public static void clear() {
+        for (int i = 0; i < 100; i++) {
+            System.out.println();
+        }
     }
 }

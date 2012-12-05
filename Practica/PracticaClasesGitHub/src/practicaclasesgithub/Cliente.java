@@ -59,7 +59,7 @@ public class Cliente {
                   Cliente actualCliente = (Cliente) lista.next(); 
                   System.out.println("_________________________________________________________\n");
                   System.out.println("Id Cliente: " + actualCliente.idCliente + "\n");
-                  System.out.println("Nombre del Cliente: " + actualCliente.idCliente + "\n");                  
+                  System.out.println("Nombre del Cliente: " + actualCliente.nombreCliente + "\n");                  
                   System.out.println("----------------------------------------------------------\n");
                   //aqui incluir lista de cuentas
                   Iterator listaCuentas = actualCliente.misCuentasBancarias.iterator();
@@ -67,12 +67,15 @@ public class Cliente {
                   {
                         while (listaCuentas.hasNext()) {
                             CuentaBancaria actCuentaCliente = (CuentaBancaria) listaCuentas.next();
-                            System.out.println("Id de Cuenta : " + actCuentaCliente.getCuentaBancariaByID() + "\n");
+                            System.out.println("Id de Cuenta : " + actCuentaCliente.getCuentaBancariaByID() + "\n");                           
                         }
                   }
                   System.out.println("_________________________________________________________\n");
                   
                 }
+           }else
+           {
+              System.out.println("_____________NO HAY CLIENTES POR LISTAR__________________\n");
            }
     }
 }

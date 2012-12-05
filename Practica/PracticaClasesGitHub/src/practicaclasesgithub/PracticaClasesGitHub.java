@@ -93,13 +93,19 @@ public class PracticaClasesGitHub {
                         TipoCuenta tipo = new TipoCuenta();
                         switch (opcionMenuReportes) {
                             case 1:
-
+                                    
                                 break;
                             case 2:
                                 break;
                             case 3:
+                                Cliente clienteReporte = new Cliente();
+                                clienteReporte.listadoClientes();
+                                lector.readLine();
                                 break;
                             case 4:
+                                 CuentaBancaria cuenta = new CuentaBancaria();
+                                 cuenta.ListarCuentaporTipo();
+                                 lector.readLine();
                                 break;
                             case 5:
                                 tipOp.ListarTipOperacion();

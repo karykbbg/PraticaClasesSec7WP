@@ -5,6 +5,8 @@
 package practicaclasesgithub;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -20,8 +22,10 @@ public class OperacionBancaria {
     private float montoOperacion;
     EntradaTeclado recibirDatosTeclado = new EntradaTeclado();
     private ArrayList<OperacionBancaria> operacionesBancarias = new ArrayList<OperacionBancaria>();
-    TipoOperacion tipOp = new TipoOperacion(); 
-    TipoOperacion tipoOpe = new  TipoOperacion(); 
+    TipoOperacion tipOp = new TipoOperacion();
+    TipoOperacion tipoOpe = new TipoOperacion();
+    private String fechaInicio;
+    private String fechaFinal;
 
     public OperacionBancaria() {
     }
@@ -30,17 +34,60 @@ public class OperacionBancaria {
     }
 
     public void createOperacionBancaria() throws IOException {
-        tipoOpe = tipOp.ListarDatosTipoOperacion();
-        if(tipoOpe.idTipoOperacion != -1)
-        { 
-            System.out.println(" Ingrese el monto de la operación :  ");
-            montoOperacion = recibirDatosTeclado.leerValorFloat();
-            java.util.Date fecha = new Date();
-            fechaOperacion = fecha;
-        }
+        OperacionBancaria obj = new OperacionBancaria();
+        String resp;
+
+        do {
+
+            obj.tipoOpe = tipOp.ListarDatosTipoOperacion();
+            if (obj.tipoOpe.idTipoOperacion != -1) {
+                System.out.println(" Ingrese el monto de la operación :  ");
+                obj.montoOperacion = recibirDatosTeclado.leerValorFloat();
+                java.util.Date fecha = new Date();
+                obj.fechaOperacion = fecha;
+                operacionesBancarias.add(obj);
+            }
+            System.out.println("Desea realizar otra operaci{on: (S/N)");
+            resp = recibirDatosTeclado.leerCadenaCaracteres(1);
+            resp = resp.toLowerCase();
+
+        } while (resp.equals("s"));
+
+
     }
 
+    public void getListOperacionesByDate(Date fechaIni, Date fechaFin) throws IOException {
+        System.out.println("Fecha de Inicio (dd/mm/aaaa):  ");
+        fechaInicio = recibirDatosTeclado.leerCadenaCaracteres(10);
 
-    public void getListOperacionesByDate(Date fechaIni, Date fechaFin) {
+        System.out.println("Fecha de Fin (dd/mm/aaaa):  ");
+        fechaFinal = recibirDatosTeclado.leerCadenaCaracteres(10);
+
+        if ((this.validarFecha(fechaInicio) == true) && (this.validarFecha(fechaFinal) == true)) {
+            System.out.println(operacionesBancarias.size());
+        }
+
+    }
+
+    public boolean validarFecha(String fecha) {
+
+        if (fecha == null) {
+            return false;
+        }
+
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+
+        if (fecha.trim().length() != dateFormat.toPattern().length()) {
+            return false;
+        }
+
+        dateFormat.setLenient(false);
+
+        try {
+            dateFormat.parse(fecha.trim());
+        } catch (ParseException pe) {
+            return false;
+        }
+        return true;
     }
 }

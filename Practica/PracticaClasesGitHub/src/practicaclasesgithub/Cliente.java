@@ -28,10 +28,7 @@ public class Cliente {
       System.out.println("Ingrese el identificador Unico del Cliente (debe ser un valor numérico) :\n" );
       idCliente=recibirDatosTeclado.leerValorLong();      
       System.out.println("Ingrese el nombre del Cliente:\n" );
-      nombreCliente=recibirDatosTeclado.leerCadenaCaracteres(100); 
-         
-      listaClientes.add(this);
-      
+      nombreCliente=recibirDatosTeclado.leerCadenaCaracteres(100);           
       String opcionCrearCuenta;
       do
       {            
@@ -47,6 +44,6 @@ public class Cliente {
             
       }while( "S".equals(opcionCrearCuenta));
       
-      
+       listaClientes.add(this);
     }
 }

@@ -67,8 +67,10 @@ public class PracticaClasesGitHub {
 
                         CuentaBancaria cuenta = new CuentaBancaria();
                         OperacionBancaria operacion = new OperacionBancaria();
+                        Cliente nuevoCliente = new Cliente();
                         switch (opcionMenuCliente) {
                             case 1://Registrar nuevo cliente
+                                nuevoCliente.createCliente();
                                 break;
                             case 2://Aperturar cuentas
                                 cuenta.createCuentaBancaria();

@@ -110,13 +110,13 @@ public class TipoCuenta {
 
         String entradaTecl = "";
         do {
-            System.out.println("---------------------------");
-            System.out.println("  TIPOS DE CUENTAS CREADAS ");
-            System.out.println("---------------------------");
-            System.out.println("ID           DESCRIPCION");
-            System.out.println("---------------------------");
+            System.out.println("        ----------------------------------------------------------------    ");
+            System.out.println("                           TIPOS DE CUENTAS CREADAS                         ");
+            System.out.println("        ----------------------------------------------------------------    ");
+            System.out.println("        ID                  DESCRIPCION                                     ");
+            System.out.println("        ----------------------------------------------------------------    ");
             for (int numCta = 0; numCta < tipoCuenta.size(); numCta++) {
-                System.out.println(tipoCuenta.elementAt(numCta).idTipocuenta + "    " + String.format("%-40s", tipoCuenta.elementAt(numCta).descripcion));
+                System.out.println(String.format("%10o",tipoCuenta.elementAt(numCta).idTipocuenta) + "    " + String.format("%-35s", tipoCuenta.elementAt(numCta).descripcion));
             }
 
             System.out.println("Presione cualquier tecla para continuar.....");

@@ -120,15 +120,20 @@ public class TipoOperacion {
 
 
         String entradaTecl = "";
+        String tip;
         do {
             if (tipOperacion.size() > 0) {
-                System.out.println("---------------------------");
-                System.out.println("  TIPOS DE OPERACIONES CREADAS ");
-                System.out.println("---------------------------");
-                System.out.println("ID           DESCRIPCION     TIPO");
-                System.out.println("---------------------------");
+                System.out.println("        ----------------------------------------------------------------    ");
+                System.out.println("                            TIPOS DE OPERACIONES CREADAS                    ");
+                System.out.println("        ----------------------------------------------------------------    ");
+                System.out.println("         ID     DESCRIPCION                                     TIPO        ");
+                System.out.println("        ----------------------------------------------------------------    ");
                 for (int numOp = 0; numOp < tipOperacion.size(); numOp++) {
-                    System.out.println(tipOperacion.elementAt(numOp).idTipoOperacion + "    " + String.format("%-40s", tipOperacion.elementAt(numOp).descripcion + "        " + tipOperacion.elementAt(numOp).tipo));
+                    if(tipOperacion.elementAt(numOp).tipo==1) 
+                        tip = "Adicionar Saldo";
+                    else
+                        tip = "Restar Saldo";
+                    System.out.println(String.format("%10o",tipOperacion.elementAt(numOp).idTipoOperacion) + "    " + String.format("%-35s", tipOperacion.elementAt(numOp).descripcion) + "        " + String.format("%-20s",tip));
                 }
 
 

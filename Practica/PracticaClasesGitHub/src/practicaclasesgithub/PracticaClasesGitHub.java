@@ -113,7 +113,7 @@ public class PracticaClasesGitHub {
                     break;
                 }
                 case 4:
-                    System.out.println("FIN DEL PROGRAMA...");
+                    System.out.println("\033[31mFIN DEL PROGRAMA...");
                     System.exit(0);
                     break;
                 default: // El default es para cuando no se ejecuto ninguna de las otras opciones
@@ -134,17 +134,18 @@ public class PracticaClasesGitHub {
         BufferedReader lector = new BufferedReader(entrada);
         // EntradaTeclado leeTeclado = new EntradaTeclado();
 
-        System.out.println("        -------------------------------     ");
-        System.out.println("                MENÚ PRINCIPAL              ");
-        System.out.println("        -------------------------------     ");
-        System.out.println("        1.... CARGAR MAESTROS               ");
-        System.out.println("        2.... OPERACIONES DEL CLIENTE       ");
-        System.out.println("        3.... REPORTES                      ");
-        System.out.println("        4.... SALIR                         ");
-        System.out.println("        -------------------------------     ");
+        System.out.println("        \033[31m-------------------------------     ");
+        System.out.println("                \033[31mMENÚ PRINCIPAL              ");
+        System.out.println("        \033[31m-------------------------------     ");
+        System.out.println("        \033[34m1.... CARGAR MAESTROS               ");
+        System.out.println("        \033[34m2.... OPERACIONES DEL CLIENTE       ");
+        System.out.println("        \033[34m3.... REPORTES                      ");
+        System.out.println("        \033[34m4.... SALIR                         ");
+        System.out.println("        \033[31m-------------------------------     ");
 
         do {
-            System.out.print("      INTRODUZCA EL N° DE LA OPCION: ");
+            System.out.print("      \033[34mINTRODUZCA EL N° DE LA OPCION: ");
+            
             try {
                 opcionMenuPcpal = Integer.parseInt(lector.readLine()); //leeTeclado.leerValorEntero();
             } catch (IOException ex) {
@@ -152,7 +153,7 @@ public class PracticaClasesGitHub {
             }
 
             if ((opcionMenuPcpal > 4) || (opcionMenuPcpal < 1)) {
-                System.out.println("\n      ERROR:____NO EXISTE LA OPCION SELECCIONADA");
+                System.out.println("\n      \033[31mERROR:____NO EXISTE LA OPCION SELECCIONADA");
             }
 
         } while ((opcionMenuPcpal > 4) || (opcionMenuPcpal < 1));
@@ -168,17 +169,20 @@ public class PracticaClasesGitHub {
         InputStreamReader entrada = new InputStreamReader(System.in);
         BufferedReader lector = new BufferedReader(entrada);
 
-        System.out.println("            -------------------------------------   ");
-        System.out.println("                 MENÚ OPERACIONES CLIENTE           ");
-        System.out.println("            -------------------------------------   ");
-        System.out.println("            (1).... REGISTRAR NUEVO CLIENTE         ");
-        System.out.println("            (2).... APERTURAR CUENTA BANCARIA       ");
-        System.out.println("            (3).... REALIZAR OPERACION BANCARIA     ");
-        System.out.println("            (4).... SALIR MENÚ CLIENTE              ");
-        System.out.println("            -------------------------------------   ");
+        System.out.println("            \033[31m-------------------------------------   ");
+        System.out.println("                 \033[31mMENÚ OPERACIONES CLIENTE           ");
+        System.out.println("            \033[31m-------------------------------------   ");
+        System.out.println("            \033[34m(1).... REGISTRAR NUEVO CLIENTE         ");
+        System.out.println("            \033[34m(2).... APERTURAR CUENTA BANCARIA       ");
+        System.out.println("            \033[34m(3).... REALIZAR OPERACION BANCARIA     ");
+        System.out.println("            \033[34m(4).... SALIR MENÚ CLIENTE              ");
+        System.out.println("            \033[31m-------------------------------------   ");
 
         do {
-            System.out.print("              INTRODUZCA EL N° DE LA OPCIÓN: ");
+            System.out.print("             \033[34mINTRODUZCA EL N° DE LA OPCIÓN: ");
+            System.out.print("");
+            System.out.print("");
+            System.out.print("");
             try {
                 opcionMenuCliente = Integer.parseInt(lector.readLine());
             } catch (IOException ex) {
@@ -186,7 +190,7 @@ public class PracticaClasesGitHub {
             }
 
             if ((opcionMenuCliente > 4) || (opcionMenuCliente < 1)) {
-                System.out.println("\n      ERROR:____NO EXISTE LA OPCION SELECCIONADA");
+                System.out.println("\n      \033[31mERROR:____NO EXISTE LA OPCION SELECCIONADA");
             }
 
         } while ((opcionMenuCliente > 4) || (opcionMenuCliente < 1));
@@ -201,16 +205,16 @@ public class PracticaClasesGitHub {
         InputStreamReader entrada = new InputStreamReader(System.in);
         BufferedReader lector = new BufferedReader(entrada);
 
-        System.out.println("            ----------------------------------------------  ");
-        System.out.println("            MENÚ CARGA DE TIPOS DE CUENTAS Y OPERACIONES    ");
-        System.out.println("            ----------------------------------------------  ");
-        System.out.println("                (1).... REGISTRAR TIPOS DE CUENTAS          ");
-        System.out.println("                (2).... REGISTRAR TIPOS DE OPERACIONES      ");
-        System.out.println("                (3).... SALIR                               ");
-        System.out.println("            ----------------------------------------------  ");
+        System.out.println("            \033[31m----------------------------------------------  ");
+        System.out.println("            \033[31mMENÚ CARGA DE TIPOS DE CUENTAS Y OPERACIONES    ");
+        System.out.println("            \033[31m----------------------------------------------  ");
+        System.out.println("                \033[34m(1).... REGISTRAR TIPOS DE CUENTAS          ");
+        System.out.println("                \033[34m(2).... REGISTRAR TIPOS DE OPERACIONES      ");
+        System.out.println("                \033[34m(3).... SALIR                               ");
+        System.out.println("            \033[31m----------------------------------------------  ");
 
         do {
-            System.out.print("              INTRODUZCA EL N° DE LA OPCIÓN: ");
+            System.out.print("              \033[34mINTRODUZCA EL N° DE LA OPCIÓN: ");
             try {
                 opcionMenuMaestros = Integer.parseInt(lector.readLine());
             } catch (IOException ex) {
@@ -234,20 +238,20 @@ public class PracticaClasesGitHub {
         InputStreamReader entrada = new InputStreamReader(System.in);
         BufferedReader lector = new BufferedReader(entrada);
 
-        System.out.println("            ----------------------------------------------------    ");
-        System.out.println("                                 MENÚ REPORTES                      ");
-        System.out.println("            ----------------------------------------------------    ");
-        System.out.println("            (1).... OBSERVAR CUENTAS POR USUARIO                    ");
-        System.out.println("            (2).... DETALLE DE OPERACIONES BANCARIAS POR CUENTA     ");
-        System.out.println("            (3).... LISTADO DE CLIENTES                             ");
-        System.out.println("            (4).... LISTADO DE CUENTAS POR TIPO                     ");
-        System.out.println("            (5).... LISTADO DE TIPOS DE OPERACIONES                 ");
-        System.out.println("            (6).... LISTADO DE TIPOS DE CUENTAS                     ");
-        System.out.println("            (7).... SALIR                                           ");
-        System.out.println("            -----------------------------------------------------   ");
+        System.out.println("            \033[31m----------------------------------------------------    ");
+        System.out.println("                                 \033[31mMENÚ REPORTES                      ");
+        System.out.println("            \033[31m----------------------------------------------------    ");
+        System.out.println("            \033[34m(1).... OBSERVAR CUENTAS POR USUARIO                    ");
+        System.out.println("            \033[34m(2).... DETALLE DE OPERACIONES BANCARIAS POR CUENTA     ");
+        System.out.println("            \033[34m(3).... LISTADO DE CLIENTES                             ");
+        System.out.println("            \033[34m(4).... LISTADO DE CUENTAS POR TIPO                     ");
+        System.out.println("            \033[34m(5).... LISTADO DE TIPOS DE OPERACIONES                 ");
+        System.out.println("            \033[34m(6).... LISTADO DE TIPOS DE CUENTAS                     ");
+        System.out.println("            \033[34m(7).... SALIR                                           ");
+        System.out.println("            \033[31m-----------------------------------------------------   ");
 
         do {
-            System.out.print("              INTRODUZCA EL N° DE LA OPCIÓN: ");
+            System.out.print("             \033[34mINTRODUZCA EL N° DE LA OPCIÓN: ");
             try {
                 opcionMenuReporte = Integer.parseInt(lector.readLine());
             } catch (IOException ex) {

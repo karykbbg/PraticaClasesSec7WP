@@ -35,13 +35,14 @@ public class OperacionBancaria {
 
     public void createOperacionBancaria() throws IOException {
         tipoOpe = tipOp.ListarDatosTipoOperacion();
-        System.out.println("Lo que retorna la funcion " + tipoOpe.idTipoOperacion + "aaa");
-        idTipoOperacion = tipoOpe.idTipoOperacion;
+        System.out.println(tipoOpe.idTipoOperacion);
+        /*idTipoOperacion = tipoOpe.idTipoOperacion;
+        System.out.println(" Ingrese numero de cuenta :  ");
         numeroCuenta = recibirDatosTeclado.leerCadenaCaracteres(30);
-        System.out.println("El numero de Cuenta es: " + numeroCuenta);
         java.util.Date fecha = new Date();
-        System.out.println(fecha);
-        System.out.println("se imprimio la fecha");
+        fechaOperacion = fecha;
+        System.out.println(" Ingrese el id de la operacion:  ");
+        numeroCuenta = recibirDatosTeclado.leerCadenaCaracteres(30);*/
     }
 
 

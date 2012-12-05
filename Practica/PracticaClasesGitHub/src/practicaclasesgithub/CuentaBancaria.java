@@ -24,8 +24,11 @@ public class CuentaBancaria {
     private String fechaApertura;
     private long idCuentaBancaria;
     private String numeroCuenta;
+    public int elementoEncontrado = 0;
     private TipoCuenta tiposCuenta = new TipoCuenta();
-    //ArrayList cliente = new ArrayList();
+     EntradaTeclado recibirDatosTeclado = new EntradaTeclado();
+
+
     private static ArrayList<CuentaBancaria> CuentaBancarias = new ArrayList<CuentaBancaria>();
 
     public CuentaBancaria() {
@@ -43,22 +46,19 @@ public class CuentaBancaria {
 
     public void createCuentaBancaria() throws IOException {
 
-        EntradaTeclado recibirDatosTeclado = new EntradaTeclado();
-
+       
         TipoCuenta tipoCuentaBancaria = new TipoCuenta();
-        
+
         boolean constanteError;
         int existe;
-        int elementoEncontrado = 0;
+
         //tipo de cuenta
-        tipoCuentaBancaria = tiposCuenta.ListarDatosTipoCuenta();
-           
-        if(tipoCuentaBancaria.idTipocuenta==-1)
-        {
-         System.out.println("datos:"+tipoCuentaBancaria.descripcion+"/"+tipoCuentaBancaria.idTipocuenta);
-         return;
+       tiposCuenta =tipoCuentaBancaria.ListarDatosTipoCuenta();
+
+        if (tiposCuenta.idTipocuenta == -1) {
+            System.out.println("datos:" + tiposCuenta.descripcion + "/" + tiposCuenta.idTipocuenta);
+            return;
         }
-           
 
         System.out.println(" Ingrese Id de la cuenta :  ");
         this.idCuentaBancaria = recibirDatosTeclado.leerValorLong();
@@ -89,9 +89,10 @@ public class CuentaBancaria {
                     System.out.println("Fecha de creacion cuenta (dd/mm/aaaa):  ");
                     this.fechaApertura = recibirDatosTeclado.leerCadenaCaracteres(10);
 
-
                     if (this.validarFecha(fechaApertura) == true) {
                         CuentaBancarias.add(this);
+                        elementoEncontrado = 4;//creada la cuenta
+                        System.out.println("Cuenta Bancaria creada con éxito  ");
                         constanteError = false;
                     } else {
                         System.out.println("Número no válido\n");
@@ -189,4 +190,51 @@ public class CuentaBancaria {
         }
 
     }
+    
+     //listado de cuenta por tipos
+    
+    public void ListarCuenta() throws IOException {
+
+        String entradaTecl = "";
+        do {
+            System.out.println("        ----------------------------------------------------------------    ");
+            System.out.println("                          CUENTAS                                           ");
+            System.out.println("        ----------------------------------------------------------------    ");
+            System.out.println("        ID                  NRO CUENTA                FECHA                 ");
+            System.out.println("        ----------------------------------------------------------------    ");
+            for (int numCta = 0; numCta < CuentaBancarias.size(); numCta++) {
+                System.out.println(String.format("%10o",CuentaBancarias.get(numCta).idCuentaBancaria) + "    " +String.format("%10o",CuentaBancarias.get(numCta).numeroCuenta) + "    " + String.format("%-35s", CuentaBancarias.get(numCta).fechaApertura));
+            }
+
+            System.out.println("Presione cualquier tecla para continuar.....");
+            entradaTecl = recibirDatosTeclado.leerCadenaCaracteres(1);
+
+        } while (entradaTecl == "");
+
+    }
+    
+    
+    //listado de cuenta por tipos
+    
+    public void ListarCuentaporTipo() throws IOException {
+
+        String entradaTecl = "";
+        do {
+            System.out.println("        ----------------------------------------------------------------    ");
+            System.out.println("                          CUENTAS POR TIPO                         ");
+            System.out.println("        ----------------------------------------------------------------    ");
+            System.out.println("       TIPO   ID                  NRO CUENTA                FECHA                     ");
+            System.out.println("        ----------------------------------------------------------------    ");
+            for (int numCta = 0; numCta < CuentaBancarias.size(); numCta++) {
+                System.out.println(tiposCuenta.descripcion +String.format("%10o",CuentaBancarias.get(numCta).idCuentaBancaria) + "    " +String.format("%10o",CuentaBancarias.get(numCta).numeroCuenta) + "    " + String.format("%-35s", CuentaBancarias.get(numCta).fechaApertura));
+            }
+
+            System.out.println("Presione cualquier tecla para continuar.....");
+            entradaTecl = recibirDatosTeclado.leerCadenaCaracteres(1);
+
+        } while (entradaTecl == "");
+
+    }
+    
+    
 }

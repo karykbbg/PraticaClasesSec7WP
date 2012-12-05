@@ -24,7 +24,7 @@ public class TipoOperacion {
     }
 
     public void addTipoOperacion() throws IOException {
-        
+
         String respuesta;
         int existe;
         do {
@@ -35,17 +35,16 @@ public class TipoOperacion {
 
             System.out.println("Ingrese el nombre del Tipo de operacion a crear: ");
             obj.descripcion = recibirDatosTeclado.leerCadenaCaracteres(30);
-            
+
             System.out.println("Ingrese el tipo de operación a realizar en la cuenta: (1).. Adicionar saldo (2)... Restar saldo");
             obj.tipo = recibirDatosTeclado.leerValorEntero();
-           
+
             existe = this.validarId(obj.idTipoOperacion);
-            
-            if(obj.tipo!=1 && obj.tipo!=2)
-            {
+
+            if (obj.tipo != 1 && obj.tipo != 2) {
                 System.out.println("\n ERROR:____Debe seleccionar solo los valores de la lista..");
-                existe=1;
-            }            
+                existe = 1;
+            }
             if (existe == 0) {
                 tipOperacion.add(obj);
             }
@@ -56,7 +55,7 @@ public class TipoOperacion {
 
         } while (respuesta.equals("s"));
     }
-    
+
     public int validarId(long idTipOper) {
 
 
@@ -83,40 +82,55 @@ public class TipoOperacion {
         }
 
     }
-    
+
     public TipoOperacion ListarDatosTipoOperacion() throws IOException {
 
         int indMenu = 0;
         int respMenu;
-        System.out.println("Seleccione el tipo de operacion que desea realizar: ");
+        //if (tipOperacion.size() > 0) {
+            System.out.println("Seleccione el tipo de operacion que desea realizar: ");
 
-        for (int numCta = 0; numCta < tipOperacion.size(); numCta++) {
-            indMenu++;
-            System.out.println(indMenu + "...   " + tipOperacion.elementAt(numCta).descripcion);
+            for (int numCta = 0; numCta < tipOperacion.size(); numCta++) {
+                indMenu++;
+                System.out.println(indMenu + "...   " + tipOperacion.elementAt(numCta).descripcion);
+            }
+            respMenu = recibirDatosTeclado.leerValorEntero();
+            return tipOperacion.get(respMenu - 1);
+
+        /*} else {
+            System.out.println("\n ERROR:____Debe ingresar el tipo de operaciones a realizar. \n Diríjase al menú de Mestros y registre las operaciones\n");
+            return;
         }
-        respMenu = recibirDatosTeclado.leerValorEntero();
-        return tipOperacion.get(respMenu - 1);
+*/
 
     }
-    
+
     public void ListarTipOperacion() throws IOException {
-        
+
+
         String entradaTecl = "";
-        do
-        {
-        System.out.println("---------------------------");
-        System.out.println("  TIPOS DE OPERACIONES CREADAS ");
-        System.out.println("---------------------------");
-        System.out.println("ID           DESCRIPCION     TIPO");
-        System.out.println("---------------------------");
-        for (int numOp = 0; numOp < tipOperacion.size(); numOp++) {
-            System.out.println(tipOperacion.elementAt(numOp).idTipoOperacion+ "    " + String.format("%-40s", tipOperacion.elementAt(numOp).descripcion+"        "+tipOperacion.elementAt(numOp).tipo));
-        }
-        
-        System.out.println("Presione cualquier tecla para continuar.....");
-        entradaTecl = recibirDatosTeclado.leerCadenaCaracteres(1);
-        
-       }while(entradaTecl=="");
-        
+        do {
+            if (tipOperacion.size() > 0) {
+                System.out.println("---------------------------");
+                System.out.println("  TIPOS DE OPERACIONES CREADAS ");
+                System.out.println("---------------------------");
+                System.out.println("ID           DESCRIPCION     TIPO");
+                System.out.println("---------------------------");
+                for (int numOp = 0; numOp < tipOperacion.size(); numOp++) {
+                    System.out.println(tipOperacion.elementAt(numOp).idTipoOperacion + "    " + String.format("%-40s", tipOperacion.elementAt(numOp).descripcion + "        " + tipOperacion.elementAt(numOp).tipo));
+                }
+
+
+            } else {
+                System.out.println("\n ERROR:____Debe ingresar el tipo de operaciones a realizar. \n Diríjase al menú de Mestros y registre las operaciones\n");
+
+            }
+
+            System.out.println("Presione cualquier tecla para continuar.....");
+            entradaTecl = recibirDatosTeclado.leerCadenaCaracteres(1);
+
+        } while (entradaTecl == "");
+
+
     }
 }

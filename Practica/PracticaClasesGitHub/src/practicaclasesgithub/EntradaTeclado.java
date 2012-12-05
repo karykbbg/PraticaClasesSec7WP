@@ -80,6 +80,7 @@ public class EntradaTeclado {
                 valorTeclado = entrada.readLine();
                 if (valorTeclado.length() > longitudMax) {
                     System.out.println("Tamaño no válido Máximo  \n" + longitudMax + " caracteres");
+                     ErrorValidacion = true;
                 }
             } catch (IOException error) {
                 System.out.println("Error de lectura \n" + error);

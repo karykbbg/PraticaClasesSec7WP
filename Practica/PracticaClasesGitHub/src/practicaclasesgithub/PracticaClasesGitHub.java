@@ -31,7 +31,7 @@ public class PracticaClasesGitHub {
         int opcionMenuReportes;
         InputStreamReader entrada = new InputStreamReader(System.in);
         BufferedReader lector = new BufferedReader(entrada);
-
+        
         do {
 
             opcionMenuPcpal = MenuPrincipal(); //Genera el Menu principal
@@ -117,7 +117,7 @@ public class PracticaClasesGitHub {
         int opcionMenuPcpal = 0;
         InputStreamReader entrada = new InputStreamReader(System.in);
         BufferedReader lector = new BufferedReader(entrada);
-
+        EntradaTeclado leeTeclado = new EntradaTeclado();
         System.out.println("------------------------");
         System.out.println("     MENÚ PRINCIPAL");
         System.out.println("------------------------");
@@ -130,7 +130,8 @@ public class PracticaClasesGitHub {
         do {
             System.out.print("INTRODUZCA EL N° DE LA OPCION: ");
             try {
-                opcionMenuPcpal = Integer.parseInt(lector.readLine());
+               // opcionMenuPcpal = Integer.parseInt(lector.readLine());
+                opcionMenuPcpal = leeTeclado.leerValorEntero();
             } catch (IOException ex) {
                 Logger.getLogger(PracticaClasesGitHub.class.getName()).log(Level.SEVERE, null, ex);
             }

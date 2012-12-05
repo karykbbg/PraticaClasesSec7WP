@@ -32,6 +32,7 @@ public class TipoCuenta {
             TipoCuenta obj = new TipoCuenta();
             System.out.println("Ingrese el id del tipo de cuenta: ");
             obj.idTipocuenta = recibirDatosTeclado.leerValorLong();
+            
             System.out.println("Ingrese el nombre del Tipo de cuenta a crear: ");
             obj.descripcion = recibirDatosTeclado.leerCadenaCaracteres(30);
 

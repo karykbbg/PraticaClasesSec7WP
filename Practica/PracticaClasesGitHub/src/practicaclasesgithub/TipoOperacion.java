@@ -87,7 +87,7 @@ public class TipoOperacion {
 
         int indMenu = 0;
         int respMenu;
-        //if (tipOperacion.size() > 0) {
+        if (tipOperacion.size() > 0) {
             System.out.println("Seleccione el tipo de operacion que desea realizar: ");
 
             for (int numCta = 0; numCta < tipOperacion.size(); numCta++) {
@@ -97,11 +97,12 @@ public class TipoOperacion {
             respMenu = recibirDatosTeclado.leerValorEntero();
             return tipOperacion.get(respMenu - 1);
 
-        /*} else {
+        } else {
             System.out.println("\n ERROR:____Debe ingresar el tipo de operaciones a realizar. \n Diríjase al menú de Mestros y registre las operaciones\n");
-            return;
+            TipoOperacion objAux = new TipoOperacion();
+            objAux.idTipoOperacion = -1;
+            return objAux;
         }
-*/
 
     }
 

@@ -66,6 +66,7 @@ public class PracticaClasesGitHub {
                         clear();
                         
                         CuentaBancaria cuenta = new CuentaBancaria();
+                        OperacionBancaria operacion= new OperacionBancaria();
                         switch (opcionMenuCliente) {
                             case 1://Registrar nuevo cliente
                                 break;
@@ -73,6 +74,7 @@ public class PracticaClasesGitHub {
                                 cuenta.createCuentaBancaria();
                                 break;
                             case 3://realizar operacion bancaria
+                                operacion.createOperacionBancaria();
                                 break;
 
                         }

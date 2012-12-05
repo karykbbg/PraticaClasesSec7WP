@@ -3,6 +3,7 @@
  * and open the template in the editor.
  */
 package practicaclasesgithub;
+
 import java.io.IOException;
 import java.util.*;
 
@@ -79,36 +80,49 @@ public class TipoCuenta {
 
         int indMenu = 0;
         int respMenu;
-        System.out.println("Seleccione el tipo de cuenta que desea crear: ");
+        if (tipoCuenta.size() > 0) {
+            System.out.println("Seleccione el tipo de cuenta que desea crear: ");
 
-        for (int numCta = 0; numCta < tipoCuenta.size(); numCta++) {
-            indMenu++;
-            System.out.println(indMenu + "...   " + tipoCuenta.elementAt(numCta).descripcion);
+            for (int numCta = 0; numCta < tipoCuenta.size(); numCta++) {
+                indMenu++;
+                System.out.println(indMenu + "...   " + tipoCuenta.elementAt(numCta).descripcion);
+            }
+            respMenu = recibirDatosTeclado.leerValorEntero();
+            return tipoCuenta.get(respMenu - 1);
+        } else {
+            String entradaTecl = "";
+            TipoCuenta objAux = new TipoCuenta();
+            System.out.println("\n ERROR:____Debe ingresar el tipo de cuenta. \n Diríjase al menú de Maestros y registre el tipo de cuenta deseado\n");
+            objAux.idTipocuenta = -1;
+
+            do {
+
+                System.out.println("Presione cualquier tecla para continuar.....");
+                entradaTecl = recibirDatosTeclado.leerCadenaCaracteres(1);
+
+            } while (entradaTecl == "");
+            return objAux;
         }
-        respMenu = recibirDatosTeclado.leerValorEntero();
-        return tipoCuenta.get(respMenu - 1);
-
     }
 
     //Lista todos los tipos de cuentas creados
     public void ListarTipoCuenta() throws IOException {
-        
+
         String entradaTecl = "";
-        do
-        {
-        System.out.println("---------------------------");
-        System.out.println("  TIPOS DE CUENTAS CREADAS ");
-        System.out.println("---------------------------");
-        System.out.println("ID           DESCRIPCION");
-        System.out.println("---------------------------");
-        for (int numCta = 0; numCta < tipoCuenta.size(); numCta++) {
-            System.out.println(tipoCuenta.elementAt(numCta).idTipocuenta + "    " + String.format("%-40s",tipoCuenta.elementAt(numCta).descripcion));
-        }
-        
-        System.out.println("Presione cualquier tecla para continuar.....");
-        entradaTecl = recibirDatosTeclado.leerCadenaCaracteres(1);
-        
-       }while(entradaTecl=="");
-        
+        do {
+            System.out.println("---------------------------");
+            System.out.println("  TIPOS DE CUENTAS CREADAS ");
+            System.out.println("---------------------------");
+            System.out.println("ID           DESCRIPCION");
+            System.out.println("---------------------------");
+            for (int numCta = 0; numCta < tipoCuenta.size(); numCta++) {
+                System.out.println(tipoCuenta.elementAt(numCta).idTipocuenta + "    " + String.format("%-40s", tipoCuenta.elementAt(numCta).descripcion));
+            }
+
+            System.out.println("Presione cualquier tecla para continuar.....");
+            entradaTecl = recibirDatosTeclado.leerCadenaCaracteres(1);
+
+        } while (entradaTecl == "");
+
     }
 }

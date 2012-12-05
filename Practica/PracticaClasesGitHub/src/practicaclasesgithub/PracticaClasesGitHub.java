@@ -42,10 +42,10 @@ public class PracticaClasesGitHub {
                     do {
                         opcionMenuMaestros = MenuMestros(); //Genera el menu de maestros
                         clear();
-                        
+
                         TipoCuenta tipo = new TipoCuenta();
                         TipoOperacion tipOp = new TipoOperacion();
-                        
+
                         switch (opcionMenuMaestros) {
                             case 1://crear tipo de cuenta
                                 tipo.addTipoCuenta();
@@ -64,9 +64,9 @@ public class PracticaClasesGitHub {
                     do {
                         opcionMenuCliente = MenuCliente(); //Genera el menu cliente
                         clear();
-                        
+
                         CuentaBancaria cuenta = new CuentaBancaria();
-                        OperacionBancaria operacion= new OperacionBancaria();
+                        OperacionBancaria operacion = new OperacionBancaria();
                         switch (opcionMenuCliente) {
                             case 1://Registrar nuevo cliente
                                 break;
@@ -87,10 +87,11 @@ public class PracticaClasesGitHub {
                         opcionMenuReportes = MenuReportes();
                         TipoOperacion tipOp = new TipoOperacion();
                         clear();
-                        
+
                         TipoCuenta tipo = new TipoCuenta();
                         switch (opcionMenuReportes) {
                             case 1:
+
                                 break;
                             case 2:
                                 break;
@@ -131,27 +132,27 @@ public class PracticaClasesGitHub {
         int opcionMenuPcpal = 0;
         InputStreamReader entrada = new InputStreamReader(System.in);
         BufferedReader lector = new BufferedReader(entrada);
-        EntradaTeclado leeTeclado = new EntradaTeclado();
-        System.out.println("------------------------");
-        System.out.println("     MENÚ PRINCIPAL");
-        System.out.println("------------------------");
-        System.out.println("1.... CARGAR MAESTROS");
-        System.out.println("2.... OPERACIONES DEL CLIENTE");
-        System.out.println("3.... REPORTES");
-        System.out.println("4.... SALIR");
-        System.out.println("------------------------");
+        // EntradaTeclado leeTeclado = new EntradaTeclado();
+
+        System.out.println("        -------------------------------     ");
+        System.out.println("                MENÚ PRINCIPAL              ");
+        System.out.println("        -------------------------------     ");
+        System.out.println("        1.... CARGAR MAESTROS               ");
+        System.out.println("        2.... OPERACIONES DEL CLIENTE       ");
+        System.out.println("        3.... REPORTES                      ");
+        System.out.println("        4.... SALIR                         ");
+        System.out.println("        -------------------------------     ");
 
         do {
-            System.out.print("INTRODUZCA EL N° DE LA OPCION: ");
+            System.out.print("      INTRODUZCA EL N° DE LA OPCION: ");
             try {
-                // opcionMenuPcpal = Integer.parseInt(lector.readLine());
-                opcionMenuPcpal = leeTeclado.leerValorEntero();
+                opcionMenuPcpal = Integer.parseInt(lector.readLine()); //leeTeclado.leerValorEntero();
             } catch (IOException ex) {
                 Logger.getLogger(PracticaClasesGitHub.class.getName()).log(Level.SEVERE, null, ex);
             }
 
             if ((opcionMenuPcpal > 4) || (opcionMenuPcpal < 1)) {
-                System.out.println("NO EXISTE LA OPCION SELECCIONADA");
+                System.out.println("\n      ERROR:____NO EXISTE LA OPCION SELECCIONADA");
             }
 
         } while ((opcionMenuPcpal > 4) || (opcionMenuPcpal < 1));
@@ -166,44 +167,61 @@ public class PracticaClasesGitHub {
         int opcionMenuCliente = 0;
         InputStreamReader entrada = new InputStreamReader(System.in);
         BufferedReader lector = new BufferedReader(entrada);
-        try {
-            System.out.println("-------------------------------");
-            System.out.println("     MENÚ OPERACIONES CLIENTE");
-            System.out.println("-------------------------------");
-            System.out.println("(1).... REGISTRAR NUEVO CLIENTE");
-            System.out.println("(2).... APERTURAR CUENTA BANCARIA");
-            System.out.println("(3).... REALIZAR OPERACION BANCARIA");
-            System.out.println("(4).... SALIR MENÚ CLIENTE");
-            System.out.println("---------------------------------");
-            opcionMenuCliente = Integer.parseInt(lector.readLine());
 
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-        }
+        System.out.println("            -------------------------------------   ");
+        System.out.println("                 MENÚ OPERACIONES CLIENTE           ");
+        System.out.println("            -------------------------------------   ");
+        System.out.println("            (1).... REGISTRAR NUEVO CLIENTE         ");
+        System.out.println("            (2).... APERTURAR CUENTA BANCARIA       ");
+        System.out.println("            (3).... REALIZAR OPERACION BANCARIA     ");
+        System.out.println("            (4).... SALIR MENÚ CLIENTE              ");
+        System.out.println("            -------------------------------------   ");
+
+        do {
+            System.out.print("              INTRODUZCA EL N° DE LA OPCIÓN: ");
+            try {
+                opcionMenuCliente = Integer.parseInt(lector.readLine());
+            } catch (IOException ex) {
+                Logger.getLogger(PracticaClasesGitHub.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            if ((opcionMenuCliente > 4) || (opcionMenuCliente < 1)) {
+                System.out.println("\n      ERROR:____NO EXISTE LA OPCION SELECCIONADA");
+            }
+
+        } while ((opcionMenuCliente > 4) || (opcionMenuCliente < 1));
 
         return opcionMenuCliente;
-
     }
 
-    //-------------------------------------------------------
+//-------------------------------------------------------
     public static int MenuMestros() {
 
         int opcionMenuMaestros = 0;
         InputStreamReader entrada = new InputStreamReader(System.in);
         BufferedReader lector = new BufferedReader(entrada);
-        try {
-            System.out.println("-------------------------------");
-            System.out.println("MENÚ CARGA DE TIPOS DE CUENTAS Y OPERACIONES");
-            System.out.println("-------------------------------");
-            System.out.println("(1).... REGISTRAR TIPOS DE CUENTAS");
-            System.out.println("(2).... REGISTRAR TIPOS DE OPERACIONES");
-            System.out.println("(3).... SALIR ");
-            System.out.println("---------------------------------");
-            opcionMenuMaestros = Integer.parseInt(lector.readLine());
 
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-        }
+        System.out.println("            ----------------------------------------------  ");
+        System.out.println("            MENÚ CARGA DE TIPOS DE CUENTAS Y OPERACIONES    ");
+        System.out.println("            ----------------------------------------------  ");
+        System.out.println("                (1).... REGISTRAR TIPOS DE CUENTAS          ");
+        System.out.println("                (2).... REGISTRAR TIPOS DE OPERACIONES      ");
+        System.out.println("                (3).... SALIR                               ");
+        System.out.println("            ----------------------------------------------  ");
+
+        do {
+            System.out.print("              INTRODUZCA EL N° DE LA OPCIÓN: ");
+            try {
+                opcionMenuMaestros = Integer.parseInt(lector.readLine());
+            } catch (IOException ex) {
+                Logger.getLogger(PracticaClasesGitHub.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            if ((opcionMenuMaestros > 3) || (opcionMenuMaestros < 1)) {
+                System.out.println("\n      ERROR:____NO EXISTE LA OPCION SELECCIONADA");
+            }
+
+        } while ((opcionMenuMaestros > 3) || (opcionMenuMaestros < 1));
 
         return opcionMenuMaestros;
 
@@ -215,26 +233,34 @@ public class PracticaClasesGitHub {
         int opcionMenuReporte = 0;
         InputStreamReader entrada = new InputStreamReader(System.in);
         BufferedReader lector = new BufferedReader(entrada);
-        try {
-            System.out.println("-------------------------------");
-            System.out.println("     MENÚ REPORTES");
-            System.out.println("-------------------------------");
-            System.out.println("(1).... OBSERVAR CUENTAS POR USUARIO");
-            System.out.println("(2).... DETALLE DE OPERACIONES BANCARIAS POR CUENTA");
-            System.out.println("(3).... LISTADO DE CLIENTES");
-            System.out.println("(4).... LISTADO DE CUENTAS POR TIPO");
-            System.out.println("(5).... LISTADO DE TIPOS DE OPERACIONES");
-            System.out.println("(6).... LISTADO DE TIPOS DE CUENTAS");
-            System.out.println("(7).... SALIR ");
-            System.out.println("---------------------------------");
-            opcionMenuReporte = Integer.parseInt(lector.readLine());
 
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-        }
+        System.out.println("            ----------------------------------------------------    ");
+        System.out.println("                                 MENÚ REPORTES                      ");
+        System.out.println("            ----------------------------------------------------    ");
+        System.out.println("            (1).... OBSERVAR CUENTAS POR USUARIO                    ");
+        System.out.println("            (2).... DETALLE DE OPERACIONES BANCARIAS POR CUENTA     ");
+        System.out.println("            (3).... LISTADO DE CLIENTES                             ");
+        System.out.println("            (4).... LISTADO DE CUENTAS POR TIPO                     ");
+        System.out.println("            (5).... LISTADO DE TIPOS DE OPERACIONES                 ");
+        System.out.println("            (6).... LISTADO DE TIPOS DE CUENTAS                     ");
+        System.out.println("            (7).... SALIR                                           ");
+        System.out.println("            -----------------------------------------------------   ");
+
+        do {
+            System.out.print("              INTRODUZCA EL N° DE LA OPCIÓN: ");
+            try {
+                opcionMenuReporte = Integer.parseInt(lector.readLine());
+            } catch (IOException ex) {
+                Logger.getLogger(PracticaClasesGitHub.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            if ((opcionMenuReporte > 7) || (opcionMenuReporte < 1)) {
+                System.out.println("\n      ERROR:____NO EXISTE LA OPCION SELECCIONADA");
+            }
+
+        } while ((opcionMenuReporte > 7) || (opcionMenuReporte < 1));
 
         return opcionMenuReporte;
-
     }
 
     public static void clear() {

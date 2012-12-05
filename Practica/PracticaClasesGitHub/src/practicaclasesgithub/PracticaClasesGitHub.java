@@ -44,11 +44,14 @@ public class PracticaClasesGitHub {
                         clear();
                         
                         TipoCuenta tipo = new TipoCuenta();
+                        TipoOperacion tipOp = new TipoOperacion();
+                        
                         switch (opcionMenuMaestros) {
                             case 1://crear tipo de cuenta
                                 tipo.addTipoCuenta();
                                 break;
                             case 2://crear tipo de operacion
+                                tipOp.addTipoOperacion();
                                 break;
 
                         }
@@ -80,6 +83,7 @@ public class PracticaClasesGitHub {
                 case 3: {
                     do {
                         opcionMenuReportes = MenuReportes();
+                        TipoOperacion tipOp = new TipoOperacion();
                         clear();
                         
                         TipoCuenta tipo = new TipoCuenta();
@@ -93,6 +97,7 @@ public class PracticaClasesGitHub {
                             case 4:
                                 break;
                             case 5:
+                                tipOp.ListarTipOperacion();
                                 break;
                             case 6:
                                 tipo.ListarTipoCuenta();

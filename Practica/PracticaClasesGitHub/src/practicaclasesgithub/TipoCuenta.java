@@ -3,10 +3,7 @@
  * and open the template in the editor.
  */
 package practicaclasesgithub;
-
-//import java.io.BufferedReader;
 import java.io.IOException;
-//import java.io.InputStreamReader;
 import java.util.*;
 
 /**
@@ -94,8 +91,11 @@ public class TipoCuenta {
     }
 
     //Lista todos los tipos de cuentas creados
-    public void ListarTipoCuenta() {
+    public void ListarTipoCuenta() throws IOException {
         
+        String entradaTecl = "";
+        do
+        {
         System.out.println("---------------------------");
         System.out.println("  TIPOS DE CUENTAS CREADAS ");
         System.out.println("---------------------------");
@@ -104,5 +104,11 @@ public class TipoCuenta {
         for (int numCta = 0; numCta < tipoCuenta.size(); numCta++) {
             System.out.println(tipoCuenta.elementAt(numCta).idTipocuenta + "    " + String.format("%-40s",tipoCuenta.elementAt(numCta).descripcion));
         }
+        
+        System.out.println("Presione cualquier tecla para continuar.....");
+        entradaTecl = recibirDatosTeclado.leerCadenaCaracteres(1);
+        
+       }while(entradaTecl=="");
+        
     }
 }

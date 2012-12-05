@@ -47,10 +47,22 @@ public class CuentaBancaria {
 
         TipoCuenta tipoCuentaBancaria = new TipoCuenta();
         boolean constanteError;
+        int existe;
+        int elementoEncontrado=0;
         //tipo de cuenta
         tipoCuentaBancaria = tiposCuenta.ListarDatosTipoCuenta();
+        
+         
         System.out.println(" Ingrese Id de la cuenta :  ");
         this.idCuentaBancaria = recibirDatosTeclado.leerValorLong();
+        existe = this.validarIdCuentaBancaria(this.idCuentaBancaria);
+            if (existe == 1) {
+                elementoEncontrado++;
+                       //CuentaBancarias.add(this);
+            }else
+            {
+            elementoEncontrado=0;
+            }
 
         System.out.println(" Ingrese numero de cuenta :  ");
         this.numeroCuenta = recibirDatosTeclado.leerCadenaCaracteres(50);
@@ -101,4 +113,34 @@ public class CuentaBancaria {
         }
         return true;
     }
+    
+     //Valida que no exista el id
+    public int validarIdCuentaBancaria(long idCuentaBanc) {
+
+
+        int posicion = -1;
+        int contadorPosiciones = -1;
+        Iterator listaElementos = CuentaBancarias.iterator();
+                     
+
+        while (listaElementos.hasNext()) {
+
+            CuentaBancaria CtaActual = (CuentaBancaria) listaElementos.next();
+            contadorPosiciones += 1;
+
+            if (CtaActual.idCuentaBancaria == idCuentaBanc) {
+                posicion = contadorPosiciones;
+                break;
+            }
+
+        }
+        if (posicion > -1) {
+            System.out.println("\n ERROR:____**No** se insertó Cuenta Bancaria, código ya existe / Debe utilizar otro identificador _______________\n");
+            return 1;
+        } else {
+            return 0;
+        }
+
+    }
+    
 }

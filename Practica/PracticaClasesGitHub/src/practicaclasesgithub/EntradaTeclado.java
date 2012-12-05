@@ -42,6 +42,29 @@ public class EntradaTeclado {
         return valorTeclado;
     }
 
+    //método para la lectura por teclado de varibles Float
+    public float leerValorFloat() throws IOException {
+
+        InputStreamReader lector = new InputStreamReader(System.in);
+        BufferedReader entrada = new BufferedReader(lector);
+
+        float valorTeclado = 0;
+        boolean Errorlectura;
+        do {
+
+            try {
+                Errorlectura = false;
+                System.out.println("-> \n");
+                valorTeclado = Float.parseFloat(entrada.readLine());
+            } catch (NumberFormatException error) {
+                System.out.println("Número no válido\n" + error);
+                Errorlectura = true;
+            }
+        } while (Errorlectura == true);
+
+        return valorTeclado;
+    }
+    
     //método para la lectura por teclado de varibles long
     public long leerValorLong() throws IOException {
         InputStreamReader lector = new InputStreamReader(System.in);

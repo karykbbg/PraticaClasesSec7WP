@@ -46,42 +46,61 @@ public class CuentaBancaria {
         EntradaTeclado recibirDatosTeclado = new EntradaTeclado();
 
         TipoCuenta tipoCuentaBancaria = new TipoCuenta();
+        
         boolean constanteError;
         int existe;
-        int elementoEncontrado=0;
+        int elementoEncontrado = 0;
         //tipo de cuenta
         tipoCuentaBancaria = tiposCuenta.ListarDatosTipoCuenta();
-        
-         
+           
+        if(tipoCuentaBancaria.idTipocuenta==-1)
+        {
+         System.out.println("datos:"+tipoCuentaBancaria.descripcion+"/"+tipoCuentaBancaria.idTipocuenta);
+         return;
+        }
+           
+
         System.out.println(" Ingrese Id de la cuenta :  ");
         this.idCuentaBancaria = recibirDatosTeclado.leerValorLong();
         existe = this.validarIdCuentaBancaria(this.idCuentaBancaria);
+        if (existe == 1) {
+            elementoEncontrado = 1;
+            //CuentaBancarias.add(this);
+        } else {
+            existe = 0;
+            elementoEncontrado = 2;
+        }
+
+        if (elementoEncontrado == 2) {
+            System.out.println(" Ingrese numero de cuenta :  ");
+            this.numeroCuenta = recibirDatosTeclado.leerCadenaCaracteres(50);
+
+            existe = this.validarNumCuentaBancaria(this.numeroCuenta);
             if (existe == 1) {
-                elementoEncontrado++;
-                       //CuentaBancarias.add(this);
-            }else
-            {
-            elementoEncontrado=0;
-            }
-
-        System.out.println(" Ingrese numero de cuenta :  ");
-        this.numeroCuenta = recibirDatosTeclado.leerCadenaCaracteres(50);
-
-
-        do {
-            System.out.println("Fecha de creacion cuenta (dd/mm/aaaa):  ");
-            this.fechaApertura = recibirDatosTeclado.leerCadenaCaracteres(10);
-
-
-            if (this.validarFecha(fechaApertura) == true) {
-                CuentaBancarias.add(this);
-                constanteError = false;
+                elementoEncontrado = 1;
+                //CuentaBancarias.add(this);
             } else {
-                System.out.println("Número no válido\n");
-                constanteError = true;
-
+                existe = 0;
+                elementoEncontrado = 3;
             }
-        } while (constanteError == true);
+
+            if (elementoEncontrado == 3) {
+                do {
+                    System.out.println("Fecha de creacion cuenta (dd/mm/aaaa):  ");
+                    this.fechaApertura = recibirDatosTeclado.leerCadenaCaracteres(10);
+
+
+                    if (this.validarFecha(fechaApertura) == true) {
+                        CuentaBancarias.add(this);
+                        constanteError = false;
+                    } else {
+                        System.out.println("Número no válido\n");
+                        constanteError = true;
+
+                    }
+                } while (constanteError == true);
+            }
+        }
 
     }
 
@@ -113,15 +132,15 @@ public class CuentaBancaria {
         }
         return true;
     }
-    
-     //Valida que no exista el id
+
+    //Valida que no exista el id
     public int validarIdCuentaBancaria(long idCuentaBanc) {
 
 
         int posicion = -1;
         int contadorPosiciones = -1;
         Iterator listaElementos = CuentaBancarias.iterator();
-                     
+
 
         while (listaElementos.hasNext()) {
 
@@ -142,5 +161,32 @@ public class CuentaBancaria {
         }
 
     }
-    
+
+    //Valida que no exista el numero de cuenta
+    public int validarNumCuentaBancaria(String numeroCuent) {
+
+
+        int posicion = -1;
+        int contadorPosiciones = -1;
+        Iterator listaElementos = CuentaBancarias.iterator();
+
+
+        while (listaElementos.hasNext()) {
+
+            CuentaBancaria CtaActual = (CuentaBancaria) listaElementos.next();
+            contadorPosiciones += 1;
+            if (CtaActual.numeroCuenta.compareTo(numeroCuent) == 0) {
+                posicion = contadorPosiciones;
+                break;
+            }
+
+        }
+        if (posicion > -1) {
+            System.out.println("\n ERROR:____**No** se insertó Cuenta Bancaria, Número de cuenta ya existe / Debe utilizar otro identificador _______________\n");
+            return 1;
+        } else {
+            return 0;
+        }
+
+    }
 }

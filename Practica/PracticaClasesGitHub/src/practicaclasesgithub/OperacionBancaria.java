@@ -56,14 +56,8 @@ public class OperacionBancaria {
 
     }
 
-    public void getListOperacionesByDate(Date fechaIni, Date fechaFin) throws IOException {
-        System.out.println("Fecha de Inicio (dd/mm/aaaa):  ");
-        fechaInicio = recibirDatosTeclado.leerCadenaCaracteres(10);
-
-        System.out.println("Fecha de Fin (dd/mm/aaaa):  ");
-        fechaFinal = recibirDatosTeclado.leerCadenaCaracteres(10);
-
-        if ((this.validarFecha(fechaInicio) == true) && (this.validarFecha(fechaFinal) == true)) {
+    public void getListOperacionesByDate(String fechaIni, String fechaFin) throws IOException {
+        if ((this.validarFecha(fechaIni) == true) && (this.validarFecha(fechaFin) == true)) {
             System.out.println(operacionesBancarias.size());
         }
 

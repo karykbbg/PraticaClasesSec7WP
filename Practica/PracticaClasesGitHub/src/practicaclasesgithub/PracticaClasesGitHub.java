@@ -77,6 +77,7 @@ public class PracticaClasesGitHub {
                                 break;
                             case 3://realizar operacion bancaria
                                 operacion.createOperacionBancaria();
+                                operacion.getListOperacionesByDate("05/12/2012", "05/12/2012");
                                 break;
 
                         }

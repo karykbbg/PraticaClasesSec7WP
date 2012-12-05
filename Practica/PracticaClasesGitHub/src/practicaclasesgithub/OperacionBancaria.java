@@ -4,9 +4,7 @@
  */
 package practicaclasesgithub;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -19,9 +17,7 @@ public class OperacionBancaria {
     private String claveOperacion;
     private Date fechaOperacion;
     private long idOperacion;
-    private long montoOperacion;
-    private long idTipoOperacion;
-    private String numeroCuenta;
+    private float montoOperacion;
     EntradaTeclado recibirDatosTeclado = new EntradaTeclado();
     private ArrayList<OperacionBancaria> operacionesBancarias = new ArrayList<OperacionBancaria>();
     TipoOperacion tipOp = new TipoOperacion(); 
@@ -35,14 +31,13 @@ public class OperacionBancaria {
 
     public void createOperacionBancaria() throws IOException {
         tipoOpe = tipOp.ListarDatosTipoOperacion();
-        System.out.println(tipoOpe.idTipoOperacion);
-        /*idTipoOperacion = tipoOpe.idTipoOperacion;
-        System.out.println(" Ingrese numero de cuenta :  ");
-        numeroCuenta = recibirDatosTeclado.leerCadenaCaracteres(30);
-        java.util.Date fecha = new Date();
-        fechaOperacion = fecha;
-        System.out.println(" Ingrese el id de la operacion:  ");
-        numeroCuenta = recibirDatosTeclado.leerCadenaCaracteres(30);*/
+        if(tipoOpe.idTipoOperacion != -1)
+        { 
+            System.out.println(" Ingrese el monto de la operación :  ");
+            montoOperacion = recibirDatosTeclado.leerValorFloat();
+            java.util.Date fecha = new Date();
+            fechaOperacion = fecha;
+        }
     }
 
 

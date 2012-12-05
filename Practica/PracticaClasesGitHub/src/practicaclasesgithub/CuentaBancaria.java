@@ -191,7 +191,28 @@ public class CuentaBancaria {
 
     }
     
-     //listado de cuenta por tipos
+     public void ListarCuentaActual() throws IOException {
+
+        String entradaTecl = "";
+        do {
+            System.out.println("        ----------------------------------------------------------------    ");
+            System.out.println("                                  CUENTA                                    ");
+            System.out.println("        ----------------------------------------------------------------    ");
+            System.out.println("        ID                  NRO CUENTA                FECHA                 ");
+            System.out.println("        ----------------------------------------------------------------    ");
+           
+            System.out.println(this.idCuentaBancaria + "    " +this.numeroCuenta+"     "+this.fechaApertura);
+       
+
+            System.out.println("Presione cualquier tecla para continuar.....");
+            entradaTecl = recibirDatosTeclado.leerCadenaCaracteres(1);
+
+        } while (entradaTecl == "");
+
+    }
+    
+    
+     //listado de cuentas
     
     public void ListarCuenta() throws IOException {
 

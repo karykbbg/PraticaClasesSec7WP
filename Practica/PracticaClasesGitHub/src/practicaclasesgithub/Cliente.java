@@ -6,6 +6,7 @@ package practicaclasesgithub;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
  *
@@ -14,9 +15,8 @@ import java.util.ArrayList;
 public class Cliente {
     private long idCliente;
     private String nombreCliente;
-    private ArrayList<CuentaBancaria> misCuentasBancarias = new ArrayList<CuentaBancaria>();    
+    private ArrayList<CuentaBancaria> misCuentasBancarias = new ArrayList<CuentaBancaria>();   
     private static ArrayList<Cliente> listaClientes = new ArrayList<Cliente>();
-    
     public void Cliente()
     {
         
@@ -36,6 +36,7 @@ public class Cliente {
             System.out.println("Ingrese los datos de la cuenta bancaria :\n" );
             CuentaBancaria CuentaBancariaInicial = new  CuentaBancaria();
             CuentaBancariaInicial.createCuentaBancaria(); 
+            
             misCuentasBancarias.add(CuentaBancariaInicial);
             
             System.out.println("Desea agregar cuenta bancaria al Cliente ingrese (S) sí :\n" ); 
@@ -44,6 +45,34 @@ public class Cliente {
             
       }while( "S".equals(opcionCrearCuenta));
       
-       listaClientes.add(this);
+      listaClientes.add(this);
+      
+    }
+    
+    public void listadoClientes()
+    {
+          Iterator lista = listaClientes.iterator();
+           if (listaClientes.size() > 0) 
+           {
+                while (lista.hasNext()) {
+                    
+                  Cliente actualCliente = (Cliente) lista.next(); 
+                  System.out.println("_________________________________________________________\n");
+                  System.out.println("Id Cliente: " + actualCliente.idCliente + "\n");
+                  System.out.println("Nombre del Cliente: " + actualCliente.idCliente + "\n");                  
+                  System.out.println("----------------------------------------------------------\n");
+                  //aqui incluir lista de cuentas
+                  Iterator listaCuentas = actualCliente.misCuentasBancarias.iterator();
+                  if(actualCliente.misCuentasBancarias.size() > 0)
+                  {
+                        while (listaCuentas.hasNext()) {
+                            CuentaBancaria actCuentaCliente = (CuentaBancaria) listaCuentas.next();
+                            System.out.println("Id de Cuenta : " + actCuentaCliente.getCuentaBancariaByID() + "\n");
+                        }
+                  }
+                  System.out.println("_________________________________________________________\n");
+                  
+                }
+           }
     }
 }

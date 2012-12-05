@@ -31,7 +31,7 @@ public class PracticaClasesGitHub {
         int opcionMenuReportes;
         InputStreamReader entrada = new InputStreamReader(System.in);
         BufferedReader lector = new BufferedReader(entrada);
-
+            
         do {
 
             opcionMenuPcpal = MenuPrincipal(); //Genera el Menu principal
@@ -70,7 +70,7 @@ public class PracticaClasesGitHub {
                         Cliente nuevoCliente = new Cliente();
                         switch (opcionMenuCliente) {
                             case 1://Registrar nuevo cliente
-                                nuevoCliente.createCliente();
+                                nuevoCliente.createCliente();                                
                                 break;
                             case 2://Aperturar cuentas
                                 cuenta.createCuentaBancaria();
@@ -89,7 +89,7 @@ public class PracticaClasesGitHub {
                         opcionMenuReportes = MenuReportes();
                         TipoOperacion tipOp = new TipoOperacion();
                         clear();
-
+                    
                         TipoCuenta tipo = new TipoCuenta();
                         switch (opcionMenuReportes) {
                             case 1:

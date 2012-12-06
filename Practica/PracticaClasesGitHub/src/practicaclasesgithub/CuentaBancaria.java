@@ -54,11 +54,11 @@ public class CuentaBancaria {
         tiposCuenta = tipoCuentaBancaria.ListarDatosTipoCuenta();
 
         if (tiposCuenta.idTipocuenta == -1) {
-            System.out.println("datos:" + tiposCuenta.descripcion + "/" + tiposCuenta.idTipocuenta);
+            //System.out.println("datos:" + tiposCuenta.descripcion + "/" + tiposCuenta.idTipocuenta);
             return;
         }
-        System.out.println("datos entro:" + tiposCuenta.descripcion + "/" + tiposCuenta.idTipocuenta);
-        System.out.println(" Ingrese Id de la cuenta :  ");
+       // System.out.println("datos entro:" + tiposCuenta.descripcion + "/" + tiposCuenta.idTipocuenta);
+        System.out.println("\033[34m Ingrese Id de la cuenta :  ");
         this.idCuentaBancaria = recibirDatosTeclado.leerValorLong();
         existe = this.validarIdCuentaBancaria(this.idCuentaBancaria);
         if (existe == 1) {
@@ -70,7 +70,7 @@ public class CuentaBancaria {
         }
 
         if (elementoEncontrado == 2) {
-            System.out.println(" Ingrese numero de cuenta :  ");
+            System.out.println("\033[34m Ingrese numero de cuenta :  ");
             this.numeroCuenta = recibirDatosTeclado.leerCadenaCaracteres(50);
 
             existe = this.validarNumCuentaBancaria(this.numeroCuenta);
@@ -84,16 +84,16 @@ public class CuentaBancaria {
 
             if (elementoEncontrado == 3) {
                 do {
-                    System.out.println("Fecha de creacion cuenta (dd/mm/aaaa):  ");
+                    System.out.println("\033[34m Fecha de creacion cuenta (dd/mm/aaaa):  ");
                     this.fechaApertura = recibirDatosTeclado.leerCadenaCaracteres(10);
 
                     if (this.validarFecha(fechaApertura) == true) {
                         CuentaBancarias.add(this);
                         elementoEncontrado = 4;//creada la cuenta
-                        System.out.println("Cuenta Bancaria creada con éxito  ");
+                        System.out.println("\033[34m     Cuenta Bancaria creada con éxito  ");
                         constanteError = false;
                     } else {
-                        System.out.println("Número no válido\n");
+                        System.out.println("\033[31m Número no válido\n");
                         constanteError = true;
 
                     }
@@ -153,7 +153,7 @@ public class CuentaBancaria {
 
         }
         if (posicion > -1) {
-            System.out.println("\n ERROR:____**No** se insertó Cuenta Bancaria, código ya existe / Debe utilizar otro identificador _______________\n");
+            System.out.println("\033[31m \n ERROR:____**No** se insertó Cuenta Bancaria, código ya existe / Debe utilizar otro identificador _______________\n");
             return 1;
         } else {
             return 0;
@@ -181,7 +181,7 @@ public class CuentaBancaria {
 
         }
         if (posicion > -1) {
-            System.out.println("\n ERROR:____**No** se insertó Cuenta Bancaria, Número de cuenta ya existe / Debe utilizar otro identificador _______________\n");
+            System.out.println("\033[31m \n ERROR:____**No** se insertó Cuenta Bancaria, Número de cuenta ya existe / Debe utilizar otro identificador _______________\n");
             return 1;
         } else {
             return 0;
@@ -193,13 +193,13 @@ public class CuentaBancaria {
 
         String entradaTecl = "";
         do {
-            System.out.println("        ----------------------------------------------------------------    ");
-            System.out.println("                                  CUENTA                                    ");
-            System.out.println("        ----------------------------------------------------------------    ");
-            System.out.println("        ID                  NRO CUENTA                FECHA                 ");
-            System.out.println("        ----------------------------------------------------------------    ");
+            System.out.println("\033[31m        ----------------------------------------------------------------    ");
+            System.out.println("\033[31m                                  CUENTA                                    ");
+            System.out.println("\033[31m        ----------------------------------------------------------------    ");
+            System.out.println("\033[31m        ID                  NRO CUENTA                FECHA                 ");
+            System.out.println("\033[31m        ----------------------------------------------------------------    ");
 
-            System.out.println(this.idCuentaBancaria + "    " + this.numeroCuenta + "     " + this.fechaApertura);
+            System.out.println("\033[34m        "+this.idCuentaBancaria + "                    " + this.numeroCuenta + "                     " + this.fechaApertura);
 
 
             System.out.println("Presione cualquier tecla para continuar.....");
@@ -220,7 +220,7 @@ public class CuentaBancaria {
             System.out.println("        ID                  NRO CUENTA                FECHA                 ");
             System.out.println("        ----------------------------------------------------------------    ");
             for (int numCta = 0; numCta < CuentaBancarias.size(); numCta++) {
-                System.out.println(CuentaBancarias.get(numCta).idCuentaBancaria + "    " + CuentaBancarias.get(numCta).numeroCuenta + "    " + CuentaBancarias.get(numCta).fechaApertura);
+                System.out.println("\033[34m        "+CuentaBancarias.get(numCta).idCuentaBancaria + "              " + CuentaBancarias.get(numCta).numeroCuenta + "                 " + CuentaBancarias.get(numCta).fechaApertura);
             }
 
             System.out.println("Presione cualquier tecla para continuar.....");

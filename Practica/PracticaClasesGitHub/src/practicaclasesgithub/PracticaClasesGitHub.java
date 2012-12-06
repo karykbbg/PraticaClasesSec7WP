@@ -31,7 +31,7 @@ public class PracticaClasesGitHub {
         int opcionMenuReportes;
         InputStreamReader entrada = new InputStreamReader(System.in);
         BufferedReader lector = new BufferedReader(entrada);
-            
+
         do {
 
             opcionMenuPcpal = MenuPrincipal(); //Genera el Menu principal
@@ -65,25 +65,23 @@ public class PracticaClasesGitHub {
                         opcionMenuCliente = MenuCliente(); //Genera el menu cliente
                         clear();
 
-                        
+
                         OperacionBancaria operacion = new OperacionBancaria();
-                        
+
                         switch (opcionMenuCliente) {
                             case 1://Registrar nuevo cliente
                                 Cliente nuevoCliente = new Cliente();
-                                nuevoCliente.createCliente();                                
+                                nuevoCliente.createCliente();
                                 break;
                             case 2://Aperturar cuentas
                                 Cliente clienteAperturaCuenta = new Cliente();
                                 CuentaBancaria cuenta = new CuentaBancaria();
                                 int resultadoApertura = 0;
-                                if(clienteAperturaCuenta.getCantidadClientes()>0)
-                                {
-                                cuenta.createCuentaBancaria();
-                                resultadoApertura = clienteAperturaCuenta.agregarCuentaBancaria(cuenta);                                
+                                if (clienteAperturaCuenta.getCantidadClientes() > 0) {
+                                    cuenta.createCuentaBancaria();
+                                    resultadoApertura = clienteAperturaCuenta.agregarCuentaBancaria(cuenta);
                                 }
-                                if(clienteAperturaCuenta.getCantidadClientes() == 0 || resultadoApertura ==0 )
-                                {
+                                if (clienteAperturaCuenta.getCantidadClientes() == 0 || resultadoApertura == 0) {
                                     System.out.println("Debe registrar un cliente al cual asociar la cuenta");
                                     clienteAperturaCuenta.createCliente();
                                 }
@@ -103,13 +101,13 @@ public class PracticaClasesGitHub {
                         opcionMenuReportes = MenuReportes();
                         TipoOperacion tipOp = new TipoOperacion();
                         clear();
-                    
+
                         TipoCuenta tipo = new TipoCuenta();
                         switch (opcionMenuReportes) {
                             case 1:
-                                   Cliente clienteConsulta = new Cliente();
-                                   clienteConsulta.consultar();
-                                   lector.readLine();
+                                Cliente clienteConsulta = new Cliente();
+                                clienteConsulta.consultar();
+                                lector.readLine();
                                 break;
                             case 2:
                                 break;
@@ -119,9 +117,9 @@ public class PracticaClasesGitHub {
                                 lector.readLine();
                                 break;
                             case 4:
-                                 CuentaBancaria cuenta = new CuentaBancaria();
-                                 cuenta.ListarCuentaporTipo();
-                                 lector.readLine();
+                                CuentaBancaria cuenta = new CuentaBancaria();
+                                cuenta.ListarCuentaporTipo();
+                                lector.readLine();
                                 break;
                             case 5:
                                 tipOp.ListarTipOperacion();
@@ -154,6 +152,7 @@ public class PracticaClasesGitHub {
     public static int MenuPrincipal() {
 
         int opcionMenuPcpal = 0;
+        String op;
         InputStreamReader entrada = new InputStreamReader(System.in);
         BufferedReader lector = new BufferedReader(entrada);
         // EntradaTeclado leeTeclado = new EntradaTeclado();
@@ -169,9 +168,14 @@ public class PracticaClasesGitHub {
 
         do {
             System.out.print("      \033[34mINTRODUZCA EL N° DE LA OPCION: ");
-            
+
             try {
-                opcionMenuPcpal = Integer.parseInt(lector.readLine()); //leeTeclado.leerValorEntero();
+                op = lector.readLine();
+                if (op.isEmpty()) {//valida en caso que nos seleccione ninguna opcion
+                    op = "0";
+                }
+                opcionMenuPcpal = Integer.parseInt(op); //leeTeclado.leerValorEntero();
+
             } catch (IOException ex) {
                 Logger.getLogger(PracticaClasesGitHub.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -190,6 +194,7 @@ public class PracticaClasesGitHub {
     public static int MenuCliente() {
 
         int opcionMenuCliente = 0;
+        String op;
         InputStreamReader entrada = new InputStreamReader(System.in);
         BufferedReader lector = new BufferedReader(entrada);
 
@@ -208,7 +213,11 @@ public class PracticaClasesGitHub {
             System.out.print("");
             System.out.print("");
             try {
-                opcionMenuCliente = Integer.parseInt(lector.readLine());
+                op = lector.readLine();
+                if (op.isEmpty()) {//valida en caso que nos seleccione ninguna opcion
+                    op = "0";
+                }
+                opcionMenuCliente = Integer.parseInt(op);
             } catch (IOException ex) {
                 Logger.getLogger(PracticaClasesGitHub.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -226,6 +235,7 @@ public class PracticaClasesGitHub {
     public static int MenuMestros() {
 
         int opcionMenuMaestros = 0;
+        String op;
         InputStreamReader entrada = new InputStreamReader(System.in);
         BufferedReader lector = new BufferedReader(entrada);
 
@@ -240,7 +250,12 @@ public class PracticaClasesGitHub {
         do {
             System.out.print("              \033[34mINTRODUZCA EL N° DE LA OPCIÓN: ");
             try {
-                opcionMenuMaestros = Integer.parseInt(lector.readLine());
+                op = lector.readLine();
+                if (op.isEmpty()) {//valida en caso que nos seleccione ninguna opcion
+                    op = "0";
+                }
+                opcionMenuMaestros = Integer.parseInt(op);
+
             } catch (IOException ex) {
                 Logger.getLogger(PracticaClasesGitHub.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -259,6 +274,7 @@ public class PracticaClasesGitHub {
     public static int MenuReportes() {
 
         int opcionMenuReporte = 0;
+        String op;
         InputStreamReader entrada = new InputStreamReader(System.in);
         BufferedReader lector = new BufferedReader(entrada);
 
@@ -277,7 +293,11 @@ public class PracticaClasesGitHub {
         do {
             System.out.print("             \033[34mINTRODUZCA EL N° DE LA OPCIÓN: ");
             try {
-                opcionMenuReporte = Integer.parseInt(lector.readLine());
+                op = lector.readLine();
+                if (op.isEmpty()) {//valida en caso que nos seleccione ninguna opcion
+                    op = "0";
+                }
+                opcionMenuReporte = Integer.parseInt(op);
             } catch (IOException ex) {
                 Logger.getLogger(PracticaClasesGitHub.class.getName()).log(Level.SEVERE, null, ex);
             }

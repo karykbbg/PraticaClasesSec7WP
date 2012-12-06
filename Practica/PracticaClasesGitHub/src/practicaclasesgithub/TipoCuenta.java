@@ -21,12 +21,14 @@ public class TipoCuenta {
     public TipoCuenta() {
     }
 
-      public long getTipoCuentaByID() {
+    public long getTipoCuentaByID() {
         return idTipocuenta;
     }
-        public String getCuentaBancariaByDesc() {
+
+    public String getCuentaBancariaByDesc() {
         return descripcion;
     }
+
     public void addTipoCuenta() throws IOException {
 
         String respuesta;
@@ -96,9 +98,9 @@ public class TipoCuenta {
             respMenu = recibirDatosTeclado.leerValorEntero();
             return tipoCuenta.get(respMenu - 1);
         } else {
-            String entradaTecl = "";
+            String entradaTecl;
             TipoCuenta objAux = new TipoCuenta();
-            System.out.println("\n ERROR:____Debe ingresar el tipo de cuenta. \n Diríjase al menú de Maestros y registre el tipo de cuenta deseado\n");
+            System.out.println("\n ERROR:____Debe ingresar los tipo de cuenta que se pueden realizar. \n Diríjase al menú de Maestros y registre las cuentas deseadas\n");
             objAux.idTipocuenta = -1;
 
             do {
@@ -106,7 +108,7 @@ public class TipoCuenta {
                 System.out.println("Presione cualquier tecla para continuar.....");
                 entradaTecl = recibirDatosTeclado.leerCadenaCaracteres(1);
 
-            } while (entradaTecl == "");
+            } while (" ".equals(entradaTecl));
             return objAux;
         }
     }
@@ -114,21 +116,27 @@ public class TipoCuenta {
     //Lista todos los tipos de cuentas creados
     public void ListarTipoCuenta() throws IOException {
 
-        String entradaTecl = "";
+        String entradaTecl;
         do {
-            System.out.println("        ----------------------------------------------------------------    ");
-            System.out.println("                           TIPOS DE CUENTAS CREADAS                         ");
-            System.out.println("        ----------------------------------------------------------------    ");
-            System.out.println("        ID                  DESCRIPCION                                     ");
-            System.out.println("        ----------------------------------------------------------------    ");
-            for (int numCta = 0; numCta < tipoCuenta.size(); numCta++) {
-                System.out.println(String.format("%10o",tipoCuenta.elementAt(numCta).idTipocuenta) + "    " + String.format("%-35s", tipoCuenta.elementAt(numCta).descripcion));
+            if (tipoCuenta.size() > 0) {
+                System.out.println("        ________________________________________________________________    ");
+                System.out.println("                           TIPOS DE CUENTAS CREADAS                         ");
+                System.out.println("        ________________________________________________________________    ");
+                System.out.println("            ID                  DESCRIPCION                                 ");
+                System.out.println("        ________________________________________________________________    ");
+                for (int numCta = 0; numCta < tipoCuenta.size(); numCta++) {
+                    System.out.println(String.format("%10o", tipoCuenta.elementAt(numCta).idTipocuenta) + "    " + String.format("%-40s", tipoCuenta.elementAt(numCta).descripcion));
+                }
+            } else {
+                System.out.println("\n ERROR:____Debe ingresar los tipo de cuenta que se pueden realizar. \n Diríjase al menú de Maestros y registre las cuentas deseadas\n");
             }
 
             System.out.println("Presione cualquier tecla para continuar.....");
             entradaTecl = recibirDatosTeclado.leerCadenaCaracteres(1);
-
-        } while (entradaTecl == "");
+           
+            //System.out.println("te c"+entradaTecl);
+            
+        } while (!"".equals(entradaTecl));
 
     }
 }

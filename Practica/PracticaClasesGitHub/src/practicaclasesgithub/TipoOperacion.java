@@ -98,7 +98,7 @@ public class TipoOperacion {
             return tipOperacion.get(respMenu - 1);
 
         } else {
-            String entradaTecl = "";
+            String entradaTecl ;
             TipoOperacion objAux = new TipoOperacion();
             System.out.println("\n ERROR:____Debe ingresar el tipo de operaciones a realizar. \n Diríjase al menú de Maestros y registre el tipo de operación deseado\n");
             objAux.idTipoOperacion = -1;
@@ -108,7 +108,7 @@ public class TipoOperacion {
                 System.out.println("Presione cualquier tecla para continuar.....");
                 entradaTecl = recibirDatosTeclado.leerCadenaCaracteres(1);
 
-            } while (entradaTecl == "");
+            } while ("".equals(entradaTecl));
             return objAux;
         }
 
@@ -119,7 +119,7 @@ public class TipoOperacion {
     public void ListarTipOperacion() throws IOException {
 
 
-        String entradaTecl = "";
+        String entradaTecl;
         String tip;
         do {
             if (tipOperacion.size() > 0) {
@@ -129,23 +129,25 @@ public class TipoOperacion {
                 System.out.println("         ID     DESCRIPCION                                     TIPO        ");
                 System.out.println("        ----------------------------------------------------------------    ");
                 for (int numOp = 0; numOp < tipOperacion.size(); numOp++) {
-                    if(tipOperacion.elementAt(numOp).tipo==1) 
+                    if(tipOperacion.elementAt(numOp).tipo==1) { 
                         tip = "Adicionar Saldo";
-                    else
+                    }
+                    else {
                         tip = "Restar Saldo";
+                    }
                     System.out.println(String.format("%10o",tipOperacion.elementAt(numOp).idTipoOperacion) + "    " + String.format("%-35s", tipOperacion.elementAt(numOp).descripcion) + "        " + String.format("%-20s",tip));
                 }
 
 
             } else {
-                System.out.println("\n ERROR:____Debe ingresar el tipo de operaciones a realizar. \n Diríjase al menú de Mestros y registre las operaciones\n");
+                System.out.println("\n ERROR:____Debe ingresar el tipo de operaciones que se pueden realizar. \n Diríjase al menú de Maestros y registre las operaciones\n");
 
             }
 
             System.out.println("Presione cualquier tecla para continuar.....");
             entradaTecl = recibirDatosTeclado.leerCadenaCaracteres(1);
 
-        } while (entradaTecl == "");
+        } while (!"".equals(entradaTecl));
 
 
     }

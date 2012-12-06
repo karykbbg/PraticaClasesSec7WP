@@ -65,15 +65,28 @@ public class PracticaClasesGitHub {
                         opcionMenuCliente = MenuCliente(); //Genera el menu cliente
                         clear();
 
-                        CuentaBancaria cuenta = new CuentaBancaria();
+                        
                         OperacionBancaria operacion = new OperacionBancaria();
-                        Cliente nuevoCliente = new Cliente();
+                        
                         switch (opcionMenuCliente) {
                             case 1://Registrar nuevo cliente
+                                Cliente nuevoCliente = new Cliente();
                                 nuevoCliente.createCliente();                                
                                 break;
                             case 2://Aperturar cuentas
+                                Cliente clienteAperturaCuenta = new Cliente();
+                                CuentaBancaria cuenta = new CuentaBancaria();
+                                int resultadoApertura = 0;
+                                if(clienteAperturaCuenta.getCantidadClientes()>0)
+                                {
                                 cuenta.createCuentaBancaria();
+                                resultadoApertura = clienteAperturaCuenta.agregarCuentaBancaria(cuenta);                                
+                                }
+                                if(clienteAperturaCuenta.getCantidadClientes() == 0 || resultadoApertura ==0 )
+                                {
+                                    System.out.println("Debe registrar un cliente al cual asociar la cuenta");
+                                    clienteAperturaCuenta.createCliente();
+                                }
                                 break;
                             case 3://realizar operacion bancaria
                                 operacion.createOperacionBancaria();
@@ -94,7 +107,9 @@ public class PracticaClasesGitHub {
                         TipoCuenta tipo = new TipoCuenta();
                         switch (opcionMenuReportes) {
                             case 1:
-                                    
+                                   Cliente clienteConsulta = new Cliente();
+                                   clienteConsulta.consultar();
+                                   lector.readLine();
                                 break;
                             case 2:
                                 break;

@@ -31,7 +31,7 @@ public class EntradaTeclado {
 
             try {
                 Errorlectura = false;
-                System.out.println("-> \n");
+                System.out.println("-> : ");
                 valorTeclado = Integer.parseInt(entrada.readLine());
             } catch (NumberFormatException error) {
                 System.out.println("Número no válido\n" + error);
@@ -54,7 +54,7 @@ public class EntradaTeclado {
 
             try {
                 Errorlectura = false;
-                System.out.println("-> \n");
+                System.out.println("-> : ");
                 valorTeclado = Float.parseFloat(entrada.readLine());
             } catch (NumberFormatException error) {
                 System.out.println("Número no válido\n" + error);
@@ -75,7 +75,7 @@ public class EntradaTeclado {
         do {
             try {
                 Errorlectura = false;
-                System.out.println("-> \n");
+                System.out.println("-> : ");
                 valorTeclado = Long.parseLong(entrada.readLine());
             } catch (IOException error) {
                 System.out.println("Numero no válido\n" + error);
@@ -99,7 +99,7 @@ public class EntradaTeclado {
             ErrorValidacion = false;
             try {
 
-                System.out.println("-> \n");
+                System.out.println("-> : ");
                 valorTeclado = entrada.readLine();
                 if (valorTeclado.length() > longitudMax) {
                     System.out.println("Tamaño no válido Máximo  \n" + longitudMax + " caracteres");

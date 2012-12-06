@@ -25,7 +25,7 @@ public class CuentaBancaria {
     private long idCuentaBancaria;
     private String numeroCuenta;
     public int elementoEncontrado = 0;
-    private TipoCuenta tiposCuenta = new TipoCuenta();
+    public TipoCuenta tiposCuenta= new TipoCuenta();
      EntradaTeclado recibirDatosTeclado = new EntradaTeclado();
 
 
@@ -48,7 +48,7 @@ public class CuentaBancaria {
 
        
         TipoCuenta tipoCuentaBancaria = new TipoCuenta();
-
+     
         boolean constanteError;
         int existe;
 
@@ -59,7 +59,7 @@ public class CuentaBancaria {
             System.out.println("datos:" + tiposCuenta.descripcion + "/" + tiposCuenta.idTipocuenta);
             return;
         }
-
+    System.out.println("datos entro:" + tiposCuenta.descripcion + "/" + tiposCuenta.idTipocuenta);
         System.out.println(" Ingrese Id de la cuenta :  ");
         this.idCuentaBancaria = recibirDatosTeclado.leerValorLong();
         existe = this.validarIdCuentaBancaria(this.idCuentaBancaria);
@@ -224,7 +224,7 @@ public class CuentaBancaria {
             System.out.println("        ID                  NRO CUENTA                FECHA                 ");
             System.out.println("        ----------------------------------------------------------------    ");
             for (int numCta = 0; numCta < CuentaBancarias.size(); numCta++) {
-                System.out.println(String.format("%10o",CuentaBancarias.get(numCta).idCuentaBancaria) + "    " +String.format("%10o",CuentaBancarias.get(numCta).numeroCuenta) + "    " + String.format("%-35s", CuentaBancarias.get(numCta).fechaApertura));
+                System.out.println(CuentaBancarias.get(numCta).idCuentaBancaria + "    " +CuentaBancarias.get(numCta).numeroCuenta + "    " + CuentaBancarias.get(numCta).fechaApertura);
             }
 
             System.out.println("Presione cualquier tecla para continuar.....");
@@ -247,7 +247,7 @@ public class CuentaBancaria {
             System.out.println("       TIPO   ID                  NRO CUENTA                FECHA                     ");
             System.out.println("        ----------------------------------------------------------------    ");
             for (int numCta = 0; numCta < CuentaBancarias.size(); numCta++) {
-                System.out.println(tiposCuenta.descripcion +String.format("%10o",CuentaBancarias.get(numCta).idCuentaBancaria) + "    " +String.format("%10o",CuentaBancarias.get(numCta).numeroCuenta) + "    " + String.format("%-35s", CuentaBancarias.get(numCta).fechaApertura));
+                System.out.println(tiposCuenta.getCuentaBancariaByDesc() +CuentaBancarias.get(numCta).idCuentaBancaria + "    " +CuentaBancarias.get(numCta).numeroCuenta + "    " +CuentaBancarias.get(numCta).fechaApertura);
             }
 
             System.out.println("Presione cualquier tecla para continuar.....");

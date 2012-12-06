@@ -21,6 +21,12 @@ public class TipoCuenta {
     public TipoCuenta() {
     }
 
+      public long getTipoCuentaByID() {
+        return idTipocuenta;
+    }
+        public String getCuentaBancariaByDesc() {
+        return descripcion;
+    }
     public void addTipoCuenta() throws IOException {
 
         String respuesta;

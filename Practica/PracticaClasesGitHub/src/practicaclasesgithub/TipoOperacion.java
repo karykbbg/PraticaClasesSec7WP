@@ -42,7 +42,7 @@ public class TipoOperacion {
             existe = this.validarId(obj.idTipoOperacion);
 
             if (obj.tipo != 1 && obj.tipo != 2) {
-                System.out.println("\n ERROR:____Debe seleccionar solo los valores de la lista..");
+                System.out.println("\n \033[31mERROR:____Debe seleccionar solo los valores de la lista..");
                 existe = 1;
             }
             if (existe == 0) {
@@ -75,7 +75,7 @@ public class TipoOperacion {
 
         }
         if (posicion > -1) {
-            System.out.println("\n ERROR:____**No** se insertó el tipo de operación, código ya existe / Debe utilizar otro identificador _______________\n");
+            System.out.println("\n \033[31mERROR:____**No** se insertó el tipo de operación, código ya existe / Debe utilizar otro identificador _______________\n");
             return 1;
         } else {
             return 0;
@@ -100,7 +100,7 @@ public class TipoOperacion {
         } else {
             String entradaTecl ;
             TipoOperacion objAux = new TipoOperacion();
-            System.out.println("\n ERROR:____Debe ingresar el tipo de operaciones a realizar. \n Diríjase al menú de Maestros y registre el tipo de operación deseado\n");
+            System.out.println("\n \033[31mERROR:____Debe ingresar el tipo de operaciones a realizar. \n Diríjase al menú de Maestros y registre el tipo de operación deseado\n");
             objAux.idTipoOperacion = -1;
             
             do {          
@@ -140,7 +140,7 @@ public class TipoOperacion {
 
 
             } else {
-                System.out.println("\n ERROR:____Debe ingresar el tipo de operaciones que se pueden realizar. \n Diríjase al menú de Maestros y registre las operaciones\n");
+                System.out.println("\n \033[31mERROR:____Debe ingresar el tipo de operaciones que se pueden realizar. \n Diríjase al menú de Maestros y registre las operaciones\n");
 
             }
 

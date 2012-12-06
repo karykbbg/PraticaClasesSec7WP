@@ -74,7 +74,7 @@ public class TipoCuenta {
 
         }
         if (posicion > -1) {
-            System.out.println("\n ERROR:____**No** se insertó el tipo de cuenta, código ya existe / Debe utilizar otro identificador _______________\n");
+            System.out.println("\n \033[31mERROR:____**No** se insertó el tipo de cuenta, código ya existe / Debe utilizar otro identificador _______________\n");
             return 1;
         } else {
             return 0;
@@ -100,7 +100,7 @@ public class TipoCuenta {
         } else {
             String entradaTecl;
             TipoCuenta objAux = new TipoCuenta();
-            System.out.println("\n ERROR:____Debe ingresar los tipo de cuenta que se pueden realizar. \n Diríjase al menú de Maestros y registre las cuentas deseadas\n");
+            System.out.println("\n \033[31mERROR:____Debe ingresar los tipo de cuenta que se pueden realizar. \n Diríjase al menú de Maestros y registre las cuentas deseadas\n");
             objAux.idTipocuenta = -1;
 
             do {
@@ -128,7 +128,7 @@ public class TipoCuenta {
                     System.out.println(String.format("%10o", tipoCuenta.elementAt(numCta).idTipocuenta) + "    " + String.format("%-40s", tipoCuenta.elementAt(numCta).descripcion));
                 }
             } else {
-                System.out.println("\n ERROR:____Debe ingresar los tipo de cuenta que se pueden realizar. \n Diríjase al menú de Maestros y registre las cuentas deseadas\n");
+                System.out.println("\n \033[31mERROR:____Debe ingresar los tipo de cuenta que se pueden realizar. \n Diríjase al menú de Maestros y registre las cuentas deseadas\n");
             }
 
             System.out.println("Presione cualquier tecla para continuar.....");

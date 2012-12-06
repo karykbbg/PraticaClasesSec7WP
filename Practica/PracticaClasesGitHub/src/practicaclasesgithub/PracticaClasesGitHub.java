@@ -181,7 +181,7 @@ public class PracticaClasesGitHub {
             }
 
             if ((opcionMenuPcpal > 4) || (opcionMenuPcpal < 1)) {
-                System.out.println("\n      \033[31mERROR:____NO EXISTE LA OPCION SELECCIONADA");
+                System.out.println("\n      \033[31mERROR:____NO EXISTE LA OPCION SELECCIONADA\n");
             }
 
         } while ((opcionMenuPcpal > 4) || (opcionMenuPcpal < 1));
@@ -223,7 +223,7 @@ public class PracticaClasesGitHub {
             }
 
             if ((opcionMenuCliente > 4) || (opcionMenuCliente < 1)) {
-                System.out.println("\n      \033[31mERROR:____NO EXISTE LA OPCION SELECCIONADA");
+                System.out.println("\n      \033[31mERROR:____NO EXISTE LA OPCION SELECCIONADA\n");
             }
 
         } while ((opcionMenuCliente > 4) || (opcionMenuCliente < 1));
@@ -261,7 +261,7 @@ public class PracticaClasesGitHub {
             }
 
             if ((opcionMenuMaestros > 3) || (opcionMenuMaestros < 1)) {
-                System.out.println("\n      ERROR:____NO EXISTE LA OPCION SELECCIONADA");
+                System.out.println("\n      ERROR:____NO EXISTE LA OPCION SELECCIONADA\n");
             }
 
         } while ((opcionMenuMaestros > 3) || (opcionMenuMaestros < 1));
@@ -303,7 +303,7 @@ public class PracticaClasesGitHub {
             }
 
             if ((opcionMenuReporte > 7) || (opcionMenuReporte < 1)) {
-                System.out.println("\n      ERROR:____NO EXISTE LA OPCION SELECCIONADA");
+                System.out.println("\n      ERROR:____NO EXISTE LA OPCION SELECCIONADA\n");
             }
 
         } while ((opcionMenuReporte > 7) || (opcionMenuReporte < 1));

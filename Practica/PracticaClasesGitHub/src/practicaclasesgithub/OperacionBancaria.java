@@ -9,6 +9,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 
 /**
  *
@@ -21,11 +22,10 @@ public class OperacionBancaria {
     private long idOperacion;
     private float montoOperacion;
     EntradaTeclado recibirDatosTeclado = new EntradaTeclado();
-    private ArrayList<OperacionBancaria> operacionesBancarias = new ArrayList<OperacionBancaria>();
+    private static ArrayList<OperacionBancaria> operacionesBancarias = new ArrayList<OperacionBancaria>();
     TipoOperacion tipOp = new TipoOperacion();
     TipoOperacion tipoOpe = new TipoOperacion();
-    private String fechaInicio;
-    private String fechaFinal;
+    private long incremetId = 0;
 
     public OperacionBancaria() {
     }
@@ -34,13 +34,15 @@ public class OperacionBancaria {
     }
 
     public void createOperacionBancaria() throws IOException {
-        OperacionBancaria obj = new OperacionBancaria();
+
         String resp;
 
         do {
-
+            OperacionBancaria obj = new OperacionBancaria();
             obj.tipoOpe = tipOp.ListarDatosTipoOperacion();
             if (obj.tipoOpe.idTipoOperacion != -1) {
+                incremetId += 1;
+                obj.idOperacion = incremetId;
                 System.out.println(" Ingrese el monto de la operación :  ");
                 obj.montoOperacion = recibirDatosTeclado.leerValorFloat();
                 java.util.Date fecha = new Date();
@@ -59,6 +61,16 @@ public class OperacionBancaria {
     public void getListOperacionesByDate(String fechaIni, String fechaFin) throws IOException {
         if ((this.validarFecha(fechaIni) == true) && (this.validarFecha(fechaFin) == true)) {
             System.out.println(operacionesBancarias.size());
+
+            Iterator listaElementos = operacionesBancarias.iterator();
+            System.out.println("Id     fecha         operacion        monto");
+            while (listaElementos.hasNext()) {
+
+                OperacionBancaria OperListado = (OperacionBancaria) listaElementos.next();
+                System.out.println(OperListado.idOperacion + "" + OperListado.fechaOperacion + "" + OperListado.tipoOpe.descripcion + "" + OperListado.montoOperacion);
+
+            }
+
         }
 
     }

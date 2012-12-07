@@ -59,17 +59,26 @@ public class OperacionBancaria {
     }
 
     public void getListOperacionesByDate(String fechaIni, String fechaFin) throws IOException {
+        String formato;
         if ((this.validarFecha(fechaIni) == true) && (this.validarFecha(fechaFin) == true)) {
             System.out.println(operacionesBancarias.size());
 
             Iterator listaElementos = operacionesBancarias.iterator();
-            System.out.println("Id     fecha         operacion        monto");
+            System.out.println("\033[34m---------------------------------------------------------------------------------------------------------");
+            System.out.println("\033[34mId        Fecha                         Operacion                     Ingreso             Egreso         ");
+            System.out.println("\033[34m---------------------------------------------------------------------------------------------------------");
             while (listaElementos.hasNext()) {
 
                 OperacionBancaria OperListado = (OperacionBancaria) listaElementos.next();
-                System.out.println(OperListado.idOperacion + "" + OperListado.fechaOperacion + "" + OperListado.tipoOpe.descripcion + "" + OperListado.montoOperacion);
+                if (OperListado.tipoOpe.tipo == 1) {
+                    formato = "%12.2f";
+                } else {
+                    formato = "%26.2f";
+                }
+                System.out.println(String.format("%-10s", OperListado.idOperacion) + "" + String.format("%-30s", OperListado.fechaOperacion) + "" + String.format("%-30s", OperListado.tipoOpe.descripcion) + "" + String.format(formato, OperListado.montoOperacion));
 
             }
+            System.out.println("\033[34m----------------------------------------------------------------------------------------------------");
 
         }
 

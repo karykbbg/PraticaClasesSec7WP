@@ -21,9 +21,9 @@ import java.util.Iterator;
  */
 public class CuentaBancaria {
 
-    private String fechaApertura;
-    private long idCuentaBancaria;
-    private String numeroCuenta;
+    String fechaApertura;
+    long idCuentaBancaria;
+    String numeroCuenta;
     public int elementoEncontrado = 0;
     public TipoCuenta tiposCuenta = new TipoCuenta();
     EntradaTeclado recibirDatosTeclado = new EntradaTeclado();
@@ -216,7 +216,7 @@ public class CuentaBancaria {
         } else {
             CuentaBancaria objAux = new CuentaBancaria();
             objAux.numeroCuenta= null;
-            System.out.println("\033[31m \n ERROR:____No se insertó Cuenta Bancaria, Número de cuenta ya existe / Debe utilizar otro identificador _______________\n");
+            System.out.println("\033[31m \n ERROR:____No se encontro Cuenta Bancaria\n");
             return objAux;
         }
 

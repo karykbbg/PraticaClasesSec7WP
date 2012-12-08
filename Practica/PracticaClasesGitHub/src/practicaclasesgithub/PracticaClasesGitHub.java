@@ -76,7 +76,7 @@ public class PracticaClasesGitHub {
                             case 2://Aperturar cuentas
                                 Cliente clienteAperturaCuenta = new Cliente();
                                 CuentaBancaria cuenta = new CuentaBancaria();
-                                int resultadoApertura = 0;
+                               
                                 if (clienteAperturaCuenta.getCantidadClientes() > 0) {
                                     clienteAperturaCuenta=clienteAperturaCuenta.buscarCliente();
                                     cuenta.createCuentaBancaria(clienteAperturaCuenta);

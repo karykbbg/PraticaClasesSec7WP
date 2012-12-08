@@ -31,10 +31,10 @@ public class EntradaTeclado {
 
             try {
                 Errorlectura = false;
-                System.out.println("-> : ");
+                System.out.print("-> : ");
                 valorTeclado = Integer.parseInt(entrada.readLine());
             } catch (NumberFormatException error) {
-                System.out.println("Número no válido\n" + error);
+                System.out.print("Número no válido\n" + error);
                 Errorlectura = true;
             }
         } while (Errorlectura == true);
@@ -54,10 +54,10 @@ public class EntradaTeclado {
 
             try {
                 Errorlectura = false;
-                System.out.println("-> : ");
+                System.out.print("-> : ");
                 valorTeclado = Float.parseFloat(entrada.readLine());
             } catch (NumberFormatException error) {
-                System.out.println("Número no válido\n" + error);
+                System.out.print("Número no válido\n" + error);
                 Errorlectura = true;
             }
         } while (Errorlectura == true);
@@ -75,10 +75,10 @@ public class EntradaTeclado {
         do {
             try {
                 Errorlectura = false;
-                System.out.println("-> : ");
+                System.out.print("-> : ");
                 valorTeclado = Long.parseLong(entrada.readLine());
-            } catch (IOException error) {
-                System.out.println("Numero no válido\n" + error);
+            } catch (NumberFormatException error) {
+                System.out.print("Numero no válido" + error);
                 Errorlectura = true;
 
             }
@@ -99,14 +99,14 @@ public class EntradaTeclado {
             ErrorValidacion = false;
             try {
 
-                System.out.println("-> : ");
+                System.out.print("-> : ");
                 valorTeclado = entrada.readLine();
                 if (valorTeclado.length() > longitudMax) {
-                    System.out.println("Tamaño no válido Máximo  \n" + longitudMax + " caracteres");
+                     System.out.print("Tamaño no válido Máximo  " + longitudMax + " caracteres \n");
                      ErrorValidacion = true;
                 }
             } catch (IOException error) {
-                System.out.println("Error de lectura \n" + error);
+                System.out.println("Error de lectura " + error);
                 ErrorValidacion = true;
             }
         } while (ErrorValidacion == true);

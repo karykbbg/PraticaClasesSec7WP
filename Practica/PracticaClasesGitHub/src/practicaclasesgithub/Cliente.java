@@ -16,8 +16,9 @@ import java.util.logging.Logger;
  */
 public class Cliente {
 
-    private long idCliente;
-    private String nombreCliente;
+    public long idCliente;
+    public String nombreCliente;
+    public String ClaveOperaciones;
     private ArrayList<CuentaBancaria> misCuentasBancarias = new ArrayList<CuentaBancaria>();
     private static ArrayList<Cliente> listaClientes = new ArrayList<Cliente>();
 

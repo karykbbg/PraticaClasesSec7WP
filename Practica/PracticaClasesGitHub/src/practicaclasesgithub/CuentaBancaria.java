@@ -98,7 +98,6 @@ public class CuentaBancaria {
                     } else {
                         System.out.println("\033[31m Número no válido\n");
                         constanteError = true;
-
                     }
                 } while (constanteError == true);
             }

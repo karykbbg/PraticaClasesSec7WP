@@ -192,6 +192,34 @@ public class CuentaBancaria {
 
     }
 
+     //Buscar numero de cuenta
+    public CuentaBancaria BuscarNumCuentaBancaria(String numeroCuent) {
+
+
+        int posicion = -1;
+        int contadorPosiciones = -1;
+        Iterator listaElementos = CuentaBancarias.iterator();
+        while (listaElementos.hasNext()) {
+            CuentaBancaria CtaActual = (CuentaBancaria) listaElementos.next();
+            contadorPosiciones += 1;
+            if (CtaActual.numeroCuenta.compareTo(numeroCuent) == 0) {
+                posicion = contadorPosiciones;
+                break;
+            }
+
+        }
+        if (posicion > -1) {
+             return CuentaBancarias;
+         
+        } else {
+            CuentaBancaria objAux = new CuentaBancaria();
+            objAux.numeroCuenta= null;
+            System.out.println("\033[31m \n ERROR:____No se insertó Cuenta Bancaria, Número de cuenta ya existe / Debe utilizar otro identificador _______________\n");
+            return objAux;
+        }
+
+    }
+    
     public void ListarCuentaActual() throws IOException {
 
         String entradaTecl = "";

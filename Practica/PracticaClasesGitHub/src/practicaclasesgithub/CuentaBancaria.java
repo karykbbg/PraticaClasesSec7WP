@@ -214,7 +214,7 @@ public class CuentaBancaria {
          
         } else {
             CuentaBancaria objAux = new CuentaBancaria();
-            objAux.numeroCuenta= null;
+            objAux.idCuentaBancaria=-1;
             System.out.println("\033[31m \n ERROR:____No se encontro Cuenta Bancaria\n");
             return objAux;
         }

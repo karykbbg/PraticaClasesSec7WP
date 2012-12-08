@@ -49,7 +49,7 @@ public class TipoOperacion {
                 tipOperacion.add(obj);
             }
 
-            System.out.println("Desea agregar otro tipo de cuenta: (S/N)");
+            System.out.println("Desea agregar otro tipo de operacion: (S/N)");
             respuesta = recibirDatosTeclado.leerCadenaCaracteres(1);
             respuesta = respuesta.toLowerCase();
 

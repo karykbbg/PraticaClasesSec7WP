@@ -28,6 +28,8 @@ public class CuentaBancaria {
     public TipoCuenta tiposCuenta = new TipoCuenta();
     EntradaTeclado recibirDatosTeclado = new EntradaTeclado();
     private static ArrayList<CuentaBancaria> CuentaBancarias = new ArrayList<CuentaBancaria>();
+    private static ArrayList<Cliente> Clientes = new ArrayList<Cliente>();
+   
 
     public CuentaBancaria() {
     }
@@ -42,17 +44,19 @@ public class CuentaBancaria {
         return new CuentaBancaria();
     }
 
-    public void createCuentaBancaria() throws IOException {
+    public void createCuentaBancaria(Cliente ClienteTitular) throws IOException {
 
 
         TipoCuenta tipoCuentaBancaria = new TipoCuenta();
 
         boolean constanteError;
         int existe;
+        //Cliente Titular
+        Clientes.add(ClienteTitular);
 
         //tipo de cuenta
         tiposCuenta = tipoCuentaBancaria.ListarDatosTipoCuenta();
-
+     
         if (tiposCuenta.idTipocuenta == -1) {
             //System.out.println("datos:" + tiposCuenta.descripcion + "/" + tiposCuenta.idTipocuenta);
             return;

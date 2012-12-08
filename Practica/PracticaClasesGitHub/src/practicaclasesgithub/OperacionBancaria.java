@@ -45,19 +45,23 @@ public class OperacionBancaria {
             if (obj.tipoOpe.idTipoOperacion != -1) {
                 incremetId += 1;
                 obj.idOperacion = incremetId;
-                
+
                 System.out.println(" Indique el Número de Cuenta:  ");
                 numCuentaTeclado = recibirDatosTeclado.leerCadenaCaracteres(50);
-   
-                ctaBanc= ctaBancAux.BuscarNumCuentaBancaria(numCuentaTeclado);
-                if (validarClave("1234")) {
-                    System.out.println(" Ingrese el monto de la operación :  ");
-                    obj.montoOperacion = recibirDatosTeclado.leerValorFloat();
-                    java.util.Date fecha = new Date();
-                    obj.fechaOperacion = fecha;
-                    operacionesBancarias.add(obj);
+
+                ctaBanc = ctaBancAux.BuscarNumCuentaBancaria(numCuentaTeclado);
+                if (ctaBanc.idCuentaBancaria != -1) {
+                    if (validarClave(ctaBanc.Clientes.ClaveOperaciones)) {
+                        System.out.println(" Ingrese el monto de la operación :  ");
+                        obj.montoOperacion = recibirDatosTeclado.leerValorFloat();
+                        java.util.Date fecha = new Date();
+                        obj.fechaOperacion = fecha;
+                        operacionesBancarias.add(obj);
+                    } else {
+                        System.out.println(" Usted superó la cantidad máxima de intentos para esta operación  ");
+                    }
                 } else {
-                    System.out.println(" Usted superó la cantidad máxima de intentos para esta operación  ");
+                    System.out.println(" No se encontró el número de Cuenta ");
                 }
             }
             System.out.println("Desea realizar otra operación: (S/N)");
@@ -87,7 +91,7 @@ public class OperacionBancaria {
                 }
                 System.out.println(String.format("%-10s", OperListado.idOperacion) + "" + String.format("%-30s", OperListado.fechaOperacion) + "" + String.format("%-30s", OperListado.tipoOpe.descripcion) + "" + String.format(formato, OperListado.montoOperacion));
             }
-            System.out.println("\033[34m----------------------------------------------------------------------------------------------------");
+            System.out.println("\033[34m---------------------------------------------------------------------------------------------------------");
 
         }
 

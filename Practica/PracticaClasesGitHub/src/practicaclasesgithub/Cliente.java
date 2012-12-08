@@ -46,7 +46,7 @@ public class Cliente {
             System.out.println("-> \n");
             System.out.println("Ingrese los datos de la cuenta bancaria :\n");
             CuentaBancaria CuentaBancariaInicial = new CuentaBancaria();
-            CuentaBancariaInicial.createCuentaBancaria();
+            CuentaBancariaInicial.createCuentaBancaria(this);
 
             misCuentasBancarias.add(CuentaBancariaInicial);
 
@@ -64,29 +64,26 @@ public class Cliente {
         return listaClientes.size();
     }
 
-    public int agregarCuentaBancaria(CuentaBancaria nuevaCuenta) {
+    public Cliente buscarCliente() {
         EntradaTeclado recibirDatosTeclado = new EntradaTeclado();
         boolean validarIngreso;
         String respuestaIntentos;
-
+        Cliente clienteEncontrado = null;
+        long idClienteConsulta=0;
         do {
             respuestaIntentos = "N";
-          validarIngreso = false;
-            System.out.println("Ingrese el identificador del Cliente al que desea agregar la cuenta :");
+            validarIngreso = false;
+            System.out.println("Ingrese el identificador del Cliente:");
             try {
-                idCliente = recibirDatosTeclado.leerValorLong();
+                idClienteConsulta = recibirDatosTeclado.leerValorLong();
             } catch (IOException ex) {
                 Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, ex);
             }
             int posicionLista;
-            posicionLista = this.buscarPosicionClientebyId(idCliente);
-            if (posicionLista >= 0) {
-                Cliente clienteEncontrado = listaClientes.get(posicionLista);
-                
-                clienteEncontrado.misCuentasBancarias.add(nuevaCuenta);
-                listaClientes.set(posicionLista, clienteEncontrado);
-                System.out.println("Id Cliente : " + clienteEncontrado.idCliente + " Nombre Cliente " + clienteEncontrado.nombreCliente);
-                 System.out.println("Imprimiendo tamaño " + listaClientes.get(posicionLista).misCuentasBancarias.size());
+            posicionLista = this.buscarPosicionClientebyId(idClienteConsulta);
+            clienteEncontrado = listaClientes.get(posicionLista);
+            if (posicionLista >= 0) {               
+                System.out.println("Cliente Encontrado Datos: Identificador.- " + clienteEncontrado.idCliente + " Nombre Cliente.- " + clienteEncontrado.nombreCliente);
             } else {
                 System.out.println("Cliente no encontrado");
                 validarIngreso = true;
@@ -100,11 +97,26 @@ public class Cliente {
             }
         } while (validarIngreso == true && (("S").equals(respuestaIntentos) || ("s").equals(respuestaIntentos)));
 
-        if (validarIngreso == true) {
-            return 0;
+
+        return clienteEncontrado;
+    }
+
+    //Antes de llamar al método agregarCuentaBancaria el objeto debe estar creado o asignado
+    public void agregarCuentaBancaria(CuentaBancaria nuevaCuenta) {
+        Cliente clienteEncontrado;
+        int posicionLista;
+        posicionLista = this.buscarPosicionClientebyId(idCliente);
+         System.out.println("Ubicando posicion");
+        if (posicionLista >= 0) {
+            clienteEncontrado = listaClientes.get(posicionLista);
+            clienteEncontrado.misCuentasBancarias.add(nuevaCuenta);
+            listaClientes.set(posicionLista, clienteEncontrado);
+            System.out.println("Cuenta Agregada");
+        } else {
+            System.out.println("Error no se encontro el cliente");
         }
 
-        return 1;
+
     }
 
     public void listadoClientes() {

@@ -78,10 +78,11 @@ public class PracticaClasesGitHub {
                                 CuentaBancaria cuenta = new CuentaBancaria();
                                 int resultadoApertura = 0;
                                 if (clienteAperturaCuenta.getCantidadClientes() > 0) {
-                                    cuenta.createCuentaBancaria();
-                                    resultadoApertura = clienteAperturaCuenta.agregarCuentaBancaria(cuenta);
+                                    clienteAperturaCuenta=clienteAperturaCuenta.buscarCliente();
+                                    cuenta.createCuentaBancaria(clienteAperturaCuenta);
+                                    clienteAperturaCuenta.agregarCuentaBancaria(cuenta);
                                 }
-                                if (clienteAperturaCuenta.getCantidadClientes() == 0 || resultadoApertura == 0) {
+                                if (clienteAperturaCuenta.getCantidadClientes() == 0) {
                                     System.out.println("Debe registrar un cliente al cual asociar la cuenta");
                                     clienteAperturaCuenta.createCliente();
                                 }

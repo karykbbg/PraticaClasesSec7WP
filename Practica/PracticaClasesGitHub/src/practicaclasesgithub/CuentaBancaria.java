@@ -28,8 +28,7 @@ public class CuentaBancaria {
     public TipoCuenta tiposCuenta = new TipoCuenta();
     EntradaTeclado recibirDatosTeclado = new EntradaTeclado();
     private static ArrayList<CuentaBancaria> CuentaBancarias = new ArrayList<CuentaBancaria>();
-    private static ArrayList<Cliente> Clientes = new ArrayList<Cliente>();
-   
+    public Cliente Clientes = new Cliente();
 
     public CuentaBancaria() {
     }
@@ -56,12 +55,12 @@ public class CuentaBancaria {
 
         //tipo de cuenta
         tiposCuenta = tipoCuentaBancaria.ListarDatosTipoCuenta();
-     
+
         if (tiposCuenta.idTipocuenta == -1) {
             //System.out.println("datos:" + tiposCuenta.descripcion + "/" + tiposCuenta.idTipocuenta);
             return;
         }
-       // System.out.println("datos entro:" + tiposCuenta.descripcion + "/" + tiposCuenta.idTipocuenta);
+        // System.out.println("datos entro:" + tiposCuenta.descripcion + "/" + tiposCuenta.idTipocuenta);
         System.out.println("\033[34m Ingrese Id de la cuenta :  ");
         this.idCuentaBancaria = recibirDatosTeclado.leerValorLong();
         existe = this.validarIdCuentaBancaria(this.idCuentaBancaria);
@@ -203,7 +202,7 @@ public class CuentaBancaria {
             System.out.println("\033[31m        ID                  NRO CUENTA                FECHA                 ");
             System.out.println("\033[31m        ----------------------------------------------------------------    ");
 
-            System.out.println("\033[34m        "+this.idCuentaBancaria + "                    " + this.numeroCuenta + "                     " + this.fechaApertura);
+            System.out.println("\033[34m        " + this.idCuentaBancaria + "                    " + this.numeroCuenta + "                     " + this.fechaApertura);
 
 
             System.out.println("Presione cualquier tecla para continuar.....");
@@ -224,7 +223,7 @@ public class CuentaBancaria {
             System.out.println("        ID                  NRO CUENTA                FECHA                 ");
             System.out.println("        ----------------------------------------------------------------    ");
             for (int numCta = 0; numCta < CuentaBancarias.size(); numCta++) {
-                System.out.println("\033[34m        "+CuentaBancarias.get(numCta).idCuentaBancaria + "              " + CuentaBancarias.get(numCta).numeroCuenta + "                 " + CuentaBancarias.get(numCta).fechaApertura);
+                System.out.println("\033[34m        " + CuentaBancarias.get(numCta).idCuentaBancaria + "              " + CuentaBancarias.get(numCta).numeroCuenta + "                 " + CuentaBancarias.get(numCta).fechaApertura);
             }
 
             System.out.println("Presione cualquier tecla para continuar.....");
@@ -237,11 +236,11 @@ public class CuentaBancaria {
     //listado de cuenta por tipos
     public void ListarCuentaporTipo() throws IOException {
         long idTipo;
-        String entradaTecl="";
+        String entradaTecl = "";
         EntradaTeclado recibirDatosTeclado = new EntradaTeclado();
-        
+
         tiposCuenta.ListarTipoCuenta();//enlisto los tipos de cuenta
-        
+
         System.out.println("\033[34m            Ingrese el tipo de cuenta a listar :");
         idTipo = recibirDatosTeclado.leerValorLong();
 
@@ -258,12 +257,12 @@ public class CuentaBancaria {
                 System.out.println("\033[31m        ----------------------------------------------------------------------------------------");
                 System.out.println("\033[31m       TIPO CUENTA      ID                  NRO CUENTA                FECHA                     ");
                 System.out.println("\033[31m        ----------------------------------------------------------------------------------------");
-                System.out.println("\033[34m        "+cuentaListado.tiposCuenta.descripcion+"              "+cuentaListado.idCuentaBancaria + "              " +cuentaListado.numeroCuenta+"               "+cuentaListado.fechaApertura);
+                System.out.println("\033[34m        " + cuentaListado.tiposCuenta.descripcion + "              " + cuentaListado.idCuentaBancaria + "              " + cuentaListado.numeroCuenta + "               " + cuentaListado.fechaApertura);
             }
         }
-         System.out.println("\033[31m Presione cualquier tecla para continuar.....");
-            entradaTecl = recibirDatosTeclado.leerCadenaCaracteres(1);
+        System.out.println("\033[31m Presione cualquier tecla para continuar.....");
+        entradaTecl = recibirDatosTeclado.leerCadenaCaracteres(1);
 
-     
+
     }
 }

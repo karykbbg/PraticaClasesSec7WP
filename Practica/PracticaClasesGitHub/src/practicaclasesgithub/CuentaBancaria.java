@@ -198,18 +198,20 @@ public class CuentaBancaria {
 
         int posicion = -1;
         int contadorPosiciones = -1;
+        CuentaBancaria objDevolver = new CuentaBancaria();
         Iterator listaElementos = CuentaBancarias.iterator();
         while (listaElementos.hasNext()) {
             CuentaBancaria CtaActual = (CuentaBancaria) listaElementos.next();
             contadorPosiciones += 1;
             if (CtaActual.numeroCuenta.compareTo(numeroCuent) == 0) {
                 posicion = contadorPosiciones;
+                objDevolver=CtaActual;
                 break;
             }
 
         }
         if (posicion > -1) {
-             return CuentaBancarias;
+             return objDevolver;
          
         } else {
             CuentaBancaria objAux = new CuentaBancaria();

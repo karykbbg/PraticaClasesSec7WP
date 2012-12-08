@@ -221,25 +221,7 @@ public class CuentaBancaria {
 
     }
     
-    public void ListarCuentaActual() throws IOException {
-
-        String entradaTecl = "";
-        do {
-            System.out.println("\033[34m        ----------------------------------------------------------------    ");
-            System.out.println("\033[34m                                  CUENTA                                    ");
-            System.out.println("\033[34m        ----------------------------------------------------------------    ");
-            System.out.println("\033[34m        ID                  NRO CUENTA                FECHA                 ");
-            System.out.println("\033[34m        ----------------------------------------------------------------    ");
-
-            System.out.println("4        " + this.idCuentaBancaria + "                    " + this.numeroCuenta + "                     " + this.fechaApertura);
-
-
-            System.out.println("Presione cualquier tecla para continuar.....");
-            entradaTecl = recibirDatosTeclado.leerCadenaCaracteres(1);
-
-        } while (entradaTecl == "");
-
-    }
+   
 
     //listado de cuentas
     public void ListarCuenta() throws IOException {

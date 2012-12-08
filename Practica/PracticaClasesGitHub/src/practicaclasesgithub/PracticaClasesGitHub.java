@@ -76,14 +76,15 @@ public class PracticaClasesGitHub {
                             case 2://Aperturar cuentas
                                 Cliente clienteAperturaCuenta = new Cliente();
                                 CuentaBancaria cuenta = new CuentaBancaria();
-                               
+
                                 if (clienteAperturaCuenta.getCantidadClientes() > 0) {
-                                    clienteAperturaCuenta=clienteAperturaCuenta.buscarCliente();
+                                    clienteAperturaCuenta = clienteAperturaCuenta.buscarCliente();
                                     cuenta.createCuentaBancaria(clienteAperturaCuenta);
                                     clienteAperturaCuenta.agregarCuentaBancaria(cuenta);
                                 }
                                 if (clienteAperturaCuenta.getCantidadClientes() == 0) {
-                                    System.out.println("Debe registrar un cliente al cual asociar la cuenta");
+                                    System.out.println("        \033[31m Debe registrar un cliente al cual asociar la cuenta");
+
                                     clienteAperturaCuenta.createCliente();
                                 }
                                 break;
@@ -149,18 +150,15 @@ public class PracticaClasesGitHub {
         System.out.println("\nHasta pronto!");
     }
 //----------------------------------------------
-    
-  public static boolean esEntero(String cadena)
-  {
-      for(int i=0; i < cadena.length(); i++)
-      {
-          if(!Character.isDigit(cadena.charAt(i)))
-          {
-              return false;
-          }
-      }
-      return true;
-  }
+
+    public static boolean esEntero(String cadena) {
+        for (int i = 0; i < cadena.length(); i++) {
+            if (!Character.isDigit(cadena.charAt(i))) {
+                return false;
+            }
+        }
+        return true;
+    }
 
     public static int MenuPrincipal() {
 
@@ -184,7 +182,7 @@ public class PracticaClasesGitHub {
 
             try {
                 op = lector.readLine();
-                if (op.isEmpty() || !PracticaClasesGitHub.esEntero(op) ) {//valida en caso que nos seleccione ninguna opcion
+                if (op.isEmpty() || !PracticaClasesGitHub.esEntero(op)) {//valida en caso que nos seleccione ninguna opcion
                     op = "0";
                 }
                 opcionMenuPcpal = Integer.parseInt(op); //leeTeclado.leerValorEntero();
@@ -202,8 +200,6 @@ public class PracticaClasesGitHub {
         return opcionMenuPcpal;
 
     }
-    
-    
 
     //-------------------------------------------------------
     public static int MenuCliente() {
@@ -229,7 +225,7 @@ public class PracticaClasesGitHub {
             System.out.print("");
             try {
                 op = lector.readLine();
-                if (op.isEmpty()|| !PracticaClasesGitHub.esEntero(op)) {//valida en caso que nos seleccione ninguna opcion
+                if (op.isEmpty() || !PracticaClasesGitHub.esEntero(op)) {//valida en caso que nos seleccione ninguna opcion
                     op = "0";
                 }
                 opcionMenuCliente = Integer.parseInt(op);
@@ -266,7 +262,7 @@ public class PracticaClasesGitHub {
             System.out.print("              \033[34mINTRODUZCA EL N° DE LA OPCIÓN: ");
             try {
                 op = lector.readLine();
-                if (op.isEmpty()|| !PracticaClasesGitHub.esEntero(op)) {//valida en caso que nos seleccione ninguna opcion
+                if (op.isEmpty() || !PracticaClasesGitHub.esEntero(op)) {//valida en caso que nos seleccione ninguna opcion
                     op = "0";
                 }
                 opcionMenuMaestros = Integer.parseInt(op);
@@ -309,7 +305,7 @@ public class PracticaClasesGitHub {
             System.out.print("             \033[34mINTRODUZCA EL N° DE LA OPCIÓN: ");
             try {
                 op = lector.readLine();
-                if (op.isEmpty()|| !PracticaClasesGitHub.esEntero(op)) {//valida en caso que nos seleccione ninguna opcion
+                if (op.isEmpty() || !PracticaClasesGitHub.esEntero(op)) {//valida en caso que nos seleccione ninguna opcion
                     op = "0";
                 }
                 opcionMenuReporte = Integer.parseInt(op);
@@ -331,5 +327,4 @@ public class PracticaClasesGitHub {
             System.out.println();
         }
     }
-
 }

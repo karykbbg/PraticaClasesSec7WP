@@ -100,7 +100,7 @@ public class TipoOperacion {
         } else {
             String entradaTecl ;
             TipoOperacion objAux = new TipoOperacion();
-            System.out.println("\n \033[31mERROR:____Debe ingresar el tipo de operaciones a realizar. \n Diríjase al menú de Maestros y registre el tipo de operación deseado\n");
+            System.out.println("\n \033[31mERROR:____Debe ingresar el tipo de operaciones a realizar. \n \033[31mDiríjase al menú de Maestros y registre el tipo de operación deseado\n");
             objAux.idTipoOperacion = -1;
             
             do {          
@@ -123,11 +123,11 @@ public class TipoOperacion {
         String tip;
         do {
             if (tipOperacion.size() > 0) {
-                System.out.println("        ----------------------------------------------------------------    ");
-                System.out.println("                            TIPOS DE OPERACIONES CREADAS                    ");
-                System.out.println("        ----------------------------------------------------------------    ");
-                System.out.println("         ID     DESCRIPCION                                     TIPO        ");
-                System.out.println("        ----------------------------------------------------------------    ");
+                System.out.println("        \033[34m----------------------------------------------------------------    ");
+                System.out.println("                            \033[34mTIPOS DE OPERACIONES CREADAS                    ");
+                System.out.println("        \033[34m----------------------------------------------------------------    ");
+                System.out.println("         \033[34mID     DESCRIPCION                                     TIPO        ");
+                System.out.println("        \033[34m----------------------------------------------------------------    ");
                 for (int numOp = 0; numOp < tipOperacion.size(); numOp++) {
                     if(tipOperacion.elementAt(numOp).tipo==1) { 
                         tip = "Adicionar Saldo";
@@ -140,7 +140,7 @@ public class TipoOperacion {
 
 
             } else {
-                System.out.println("\n \033[31mERROR:____Debe ingresar el tipo de operaciones que se pueden realizar. \n Diríjase al menú de Maestros y registre las operaciones\n");
+                System.out.println("\n \033[31mERROR:____Debe ingresar el tipo de operaciones que se pueden realizar. \n \033[31mDiríjase al menú de Maestros y registre las operaciones\n");
 
             }
 

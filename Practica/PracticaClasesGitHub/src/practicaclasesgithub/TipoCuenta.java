@@ -100,7 +100,7 @@ public class TipoCuenta {
         } else {
             String entradaTecl;
             TipoCuenta objAux = new TipoCuenta();
-            System.out.println("\n \033[31mERROR:____Debe ingresar los tipo de cuenta que se pueden realizar. \n Diríjase al menú de Maestros y registre las cuentas deseadas\n");
+            System.out.println("\n \033[31mERROR:____Debe ingresar los tipo de cuenta que se pueden realizar. \n \033[31mDiríjase al menú de Maestros y registre las cuentas deseadas\n");
             objAux.idTipocuenta = -1;
 
             do {
@@ -119,16 +119,16 @@ public class TipoCuenta {
         String entradaTecl;
         do {
             if (tipoCuenta.size() > 0) {
-                System.out.println("        ________________________________________________________________    ");
-                System.out.println("                           TIPOS DE CUENTAS CREADAS                         ");
-                System.out.println("        ________________________________________________________________    ");
-                System.out.println("            ID                  DESCRIPCION                                 ");
-                System.out.println("        ________________________________________________________________    ");
+                System.out.println("        \033[34m----------------------------------------------------------------    ");
+                System.out.println("                           \033[34mTIPOS DE CUENTAS CREADAS                         ");
+                System.out.println("        \033[34m----------------------------------------------------------------    ");
+                System.out.println("           \033[34mID                  DESCRIPCION                                 ");
+                System.out.println("        \033[34m----------------------------------------------------------------    ");
                 for (int numCta = 0; numCta < tipoCuenta.size(); numCta++) {
-                    System.out.println(String.format("%10o", tipoCuenta.elementAt(numCta).idTipocuenta) + "    " + String.format("%-40s", tipoCuenta.elementAt(numCta).descripcion));
+                    System.out.println(String.format("%12o", tipoCuenta.elementAt(numCta).idTipocuenta) + "                   " + String.format("%-50s", tipoCuenta.elementAt(numCta).descripcion));
                 }
             } else {
-                System.out.println("\n \033[31mERROR:____Debe ingresar los tipo de cuenta que se pueden realizar. \n Diríjase al menú de Maestros y registre las cuentas deseadas\n");
+                System.out.println("\n \033[31mERROR:____Debe ingresar los tipo de cuenta que se pueden realizar. \n \033[31mDiríjase al menú de Maestros y registre las cuentas deseadas\n");
             }
 
             System.out.println("Presione cualquier tecla para continuar.....");

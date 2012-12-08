@@ -29,6 +29,10 @@ public class TipoCuenta {
         return descripcion;
     }
 
+    public int totalTiposCuentas() {
+        return tipoCuenta.size();
+    }
+
     public void addTipoCuenta() throws IOException {
 
         String respuesta;
@@ -133,9 +137,9 @@ public class TipoCuenta {
 
             System.out.println("Presione cualquier tecla para continuar.....");
             entradaTecl = recibirDatosTeclado.leerCadenaCaracteres(1);
-           
+
             //System.out.println("te c"+entradaTecl);
-            
+
         } while (!"".equals(entradaTecl));
 
     }

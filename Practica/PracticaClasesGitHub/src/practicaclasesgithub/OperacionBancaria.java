@@ -25,6 +25,7 @@ public class OperacionBancaria {
     private static ArrayList<OperacionBancaria> operacionesBancarias = new ArrayList<OperacionBancaria>();
     TipoOperacion tipOp = new TipoOperacion();
     TipoOperacion tipoOpe = new TipoOperacion();
+    CuentaBancaria ctaBanc = new CuentaBancaria();
     private long incremetId = 0;
 
     public OperacionBancaria() {
@@ -37,17 +38,20 @@ public class OperacionBancaria {
 
         String resp;
 
+
         do {
             OperacionBancaria obj = new OperacionBancaria();
             obj.tipoOpe = tipOp.ListarDatosTipoOperacion();
             if (obj.tipoOpe.idTipoOperacion != -1) {
                 incremetId += 1;
                 obj.idOperacion = incremetId;
+
                 System.out.println(" Ingrese el monto de la operación :  ");
                 obj.montoOperacion = recibirDatosTeclado.leerValorFloat();
                 java.util.Date fecha = new Date();
                 obj.fechaOperacion = fecha;
                 operacionesBancarias.add(obj);
+
             }
             System.out.println("Desea realizar otra operaci{on: (S/N)");
             resp = recibirDatosTeclado.leerCadenaCaracteres(1);
@@ -84,7 +88,7 @@ public class OperacionBancaria {
 
     }
 
-    public boolean validarFecha(String fecha) {
+    private boolean validarFecha(String fecha) {
 
         if (fecha == null) {
             return false;
@@ -104,5 +108,21 @@ public class OperacionBancaria {
             return false;
         }
         return true;
+    }
+
+    private boolean validarClave(String claveCli) throws IOException {
+
+        String claveOperacion;
+        int cuentaClave = 0;
+
+
+        do {
+            System.out.println(" Ingrese la clave de Operaciones Especiales :  ");
+            claveOperacion = recibirDatosTeclado.leerCadenaCaracteres(4);
+            cuentaClave += 1;
+
+        } while (claveOperacion.equals("1234") || cuentaClave == 3);
+        return true;
+
     }
 }

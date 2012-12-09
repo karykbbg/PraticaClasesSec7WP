@@ -66,7 +66,7 @@ public class PracticaClasesGitHub {
                         clear();
 
 
-                        OperacionBancaria operacion = new OperacionBancaria();
+                        
 
                         switch (opcionMenuCliente) {
                             case 1://Registrar nuevo cliente
@@ -89,8 +89,15 @@ public class PracticaClasesGitHub {
                                 }
                                 break;
                             case 3://realizar operacion bancaria
+                                OperacionBancaria operacion = new OperacionBancaria();
+                                TipoOperacion listaTiposOperacion = new TipoOperacion();
+                                if(listaTiposOperacion.cantidadTipoOperaciones()>0){
                                 operacion.createOperacionBancaria();
                                 operacion.getListOperacionesByDate("05/12/2012", "05/12/2012");
+                                }else{
+                                System.out.println("  \033[31m No se puede procesar ninguna operación bancaria hasta no configurar los tipos de operaciones");
+                                
+                                }
                                 break;
 
                         }

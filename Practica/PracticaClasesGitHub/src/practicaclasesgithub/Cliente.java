@@ -42,22 +42,22 @@ public class Cliente {
 
             consultaExistencia = this.buscarPosicionClientebyId(idCliente);
             if (consultaExistencia >= 0) {
-                System.out.println("El identificador ya esta siendo utilizado, por favor ingrese otro -> :");
+                System.out.println("El identificador ya esta siendo utilizado, por favor ingrese otro :");
             }
         } while (consultaExistencia > 0);
 
         System.out.print("Ingrese el nombre del cliente:\n");
         nombreCliente = recibirDatosTeclado.leerCadenaCaracteres(100);
-        
+
         System.out.print("Ingresar clave especial de operaciones:\n");
         ClaveOperaciones = recibirDatosTeclado.leerCadenaCaracteres(100);
-        
+
         String opcionCrearCuenta;
 
 
         System.out.println("        \033[34m A continuación debe ingresar los datos de la cuenta bancaria asociada al nuevo cliente");
         do {
-            
+
             CuentaBancaria CuentaBancariaInicial = new CuentaBancaria();
             CuentaBancariaInicial.createCuentaBancaria(this);
 
@@ -102,7 +102,7 @@ public class Cliente {
             if (posicionLista >= 0) {
                 System.out.println("Cliente Encontrado Datos: Identificador.- " + clienteEncontrado.idCliente + " Nombre Cliente.- " + clienteEncontrado.nombreCliente);
             } else {
-                System.out.println("        \033[34mCliente no encontrado");
+                System.out.println("        \033[34mCLIENTE NO ENCONTRADO");
                 validarIngreso = true;
                 System.out.println("        \033 Desea intentar nuevamente ? (S) ");
 
@@ -122,7 +122,7 @@ public class Cliente {
     public void agregarCuentaBancaria(CuentaBancaria nuevaCuenta) {
         Cliente clienteEncontrado;
         int posicionLista;
-        posicionLista = this.buscarPosicionClientebyId(idCliente);      
+        posicionLista = this.buscarPosicionClientebyId(idCliente);
         if (posicionLista >= 0) {
             clienteEncontrado = listaClientes.get(posicionLista);
             clienteEncontrado.misCuentasBancarias.add(nuevaCuenta);
@@ -138,15 +138,16 @@ public class Cliente {
     public void listadoClientes() {
         Iterator lista = listaClientes.iterator();
         if (listaClientes.size() > 0) {
+            System.out.println("        \033[34m----------------------------------------------------------------    ");
+            System.out.println("                           \033[34mCLIENTES                     ");
+            System.out.println("        \033[34m----------------------------------------------------------------    ");
+            System.out.println("         \033[34m ID                                NOMBRE        ");
+            System.out.println("        \033[34m----------------------------------------------------------------    ");
+
             while (lista.hasNext()) {
 
                 Cliente actualCliente = (Cliente) lista.next();
 
-                System.out.println("        \033[34m----------------------------------------------------------------    ");
-                System.out.println("                           \033[34mCLIENTES                     ");
-                System.out.println("        \033[34m----------------------------------------------------------------    ");
-                System.out.println("         \033[34m ID                                NOMBRE        ");
-                System.out.println("        \033[34m----------------------------------------------------------------    ");
                 System.out.println(String.format("%20s", Long.toString(actualCliente.idCliente)) + "                 " + String.format("%-55s", actualCliente.nombreCliente));
 
 
@@ -181,7 +182,7 @@ public class Cliente {
                 CuentaBancaria actualCuentaCliente = (CuentaBancaria) listaCuentas.next();
 
 
-                System.out.println("        \033" + String.format("%10s", actualCuentaCliente.fechaApertura) + "               " + String.format("%-20s",Long.toString(actualCuentaCliente.idCuentaBancaria)) + "  " + String.format("%-50s", actualCuentaCliente.numeroCuenta) + "   " + String.format("%-30s", actualCuentaCliente.tiposCuenta.descripcion));
+                System.out.println("        \033" + String.format("%10s", actualCuentaCliente.fechaApertura) + "               " + String.format("%-20s", Long.toString(actualCuentaCliente.idCuentaBancaria)) + "  " + String.format("%-50s", actualCuentaCliente.numeroCuenta) + "   " + String.format("%-30s", actualCuentaCliente.tiposCuenta.descripcion));
 
             }
         }

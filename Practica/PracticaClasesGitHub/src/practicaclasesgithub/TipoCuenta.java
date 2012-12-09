@@ -99,7 +99,12 @@ public class TipoCuenta {
                 indMenu++;
                 System.out.println(indMenu + "...   " + tipoCuenta.elementAt(numCta).descripcion);
             }
+            do{
             respMenu = recibirDatosTeclado.leerValorEntero();
+            if(respMenu  <= 0 || respMenu>tipoCuenta.size()){
+               System.out.println("Opción no válida por favor seleccione nuevamente:");  
+            }
+            }while(respMenu  <= 0 || respMenu>tipoCuenta.size());
             return tipoCuenta.get(respMenu - 1);
         } else {
             String entradaTecl;

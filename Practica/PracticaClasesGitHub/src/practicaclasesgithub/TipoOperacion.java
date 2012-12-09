@@ -23,6 +23,9 @@ public class TipoOperacion {
     public TipoOperacion() {
     }
 
+    public int cantidadTipoOperaciones(){
+    return tipOperacion.size();
+    }
     public void addTipoOperacion() throws IOException {
 
         String respuesta;
@@ -98,17 +101,15 @@ public class TipoOperacion {
             return tipOperacion.get(respMenu - 1);
 
         } else {
-            String entradaTecl ;
+            String entradaTecl;
             TipoOperacion objAux = new TipoOperacion();
             System.out.println("\n \033[31mERROR:____Debe ingresar el tipo de operaciones a realizar. \n \033[31mDiríjase al menú de Maestros y registre el tipo de operación deseado\n");
             objAux.idTipoOperacion = -1;
-            
-            do {          
 
-                System.out.println("Presione cualquier tecla para continuar.....");
-                entradaTecl = recibirDatosTeclado.leerCadenaCaracteres(1);
 
-            } while ("".equals(entradaTecl));
+            System.out.println(" \033Presione Enter para continuar.....");
+            entradaTecl = recibirDatosTeclado.leerCadenaCaracteres(1);
+
             return objAux;
         }
 
@@ -129,13 +130,12 @@ public class TipoOperacion {
                 System.out.println("         \033[34mID     DESCRIPCION                                     TIPO        ");
                 System.out.println("        \033[34m----------------------------------------------------------------    ");
                 for (int numOp = 0; numOp < tipOperacion.size(); numOp++) {
-                    if(tipOperacion.elementAt(numOp).tipo==1) { 
+                    if (tipOperacion.elementAt(numOp).tipo == 1) {
                         tip = "Adicionar Saldo";
-                    }
-                    else {
+                    } else {
                         tip = "Restar Saldo";
                     }
-                    System.out.println(String.format("%20s",Long.toString(tipOperacion.elementAt(numOp).idTipoOperacion)) + "    " + String.format("%-35s", tipOperacion.elementAt(numOp).descripcion) + "        " + String.format("%-20s",tip));
+                    System.out.println(String.format("%20s", Long.toString(tipOperacion.elementAt(numOp).idTipoOperacion)) + "    " + String.format("%-35s", tipOperacion.elementAt(numOp).descripcion) + "        " + String.format("%-20s", tip));
                 }
 
 

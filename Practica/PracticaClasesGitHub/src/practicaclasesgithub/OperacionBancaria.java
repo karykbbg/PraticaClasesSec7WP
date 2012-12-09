@@ -42,7 +42,9 @@ public class OperacionBancaria {
         CuentaBancaria ctaBancAux = new CuentaBancaria();
         do {
             OperacionBancaria obj = new OperacionBancaria();
+            
             obj.tipoOpe = tipOp.ListarDatosTipoOperacion();
+            
             if (obj.tipoOpe.idTipoOperacion != -1) {
                 incremetId += 1;
                 obj.idOperacion = incremetId;

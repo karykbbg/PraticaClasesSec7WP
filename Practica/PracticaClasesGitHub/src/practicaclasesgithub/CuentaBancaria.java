@@ -90,7 +90,7 @@ public class CuentaBancaria {
                     if (this.validarFecha(fechaApertura) == true) {
                         CuentaBancarias.add(this);
                         elementoEncontrado = 4;//creada la cuenta
-                        System.out.println("\033[34m     Cuenta Bancaria creada con éxito  ");
+                        System.out.println("\033[34m     Cuenta Bancaria creada con éxito  \n");
                         constanteError = false;
                     } else {
                         System.out.println("\033[31m Número no válido\n");
@@ -221,7 +221,7 @@ public class CuentaBancaria {
             for (int numCta = 0; numCta < CuentaBancarias.size(); numCta++) {
                 System.out.println("        " + CuentaBancarias.get(numCta).idCuentaBancaria + "              " + CuentaBancarias.get(numCta).numeroCuenta + "                 " + CuentaBancarias.get(numCta).fechaApertura);
             }
-
+            System.out.println("\033[34m-----------------------------------------------------------------------------------------------\n");
             System.out.println("Presione cualquier tecla para continuar.....");
             entradaTecl = recibirDatosTeclado.leerCadenaCaracteres(1);
 
@@ -254,6 +254,7 @@ public class CuentaBancaria {
                 System.out.println("\033[34m       TIPO CUENTA      IDENTIFICADOR         NRO CUENTA              FECHA                    ");
                 System.out.println("\033[34m-----------------------------------------------------------------------------------------------");
                 System.out.println(cuentaListado.tiposCuenta.descripcion + String.format("%20s", Long.toString(cuentaListado.idCuentaBancaria)) + "              " + cuentaListado.numeroCuenta + "               " + cuentaListado.fechaApertura);
+                System.out.println("\033[34m-----------------------------------------------------------------------------------------------\n");
             }
         }
         System.out.println(" Presione cualquier tecla para continuar.....");

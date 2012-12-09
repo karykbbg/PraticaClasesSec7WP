@@ -10,6 +10,9 @@ import java.util.Vector;
 
 /**
  *
+ * @author Kary Bonilla
+ * @author Monica Batista
+ * @author Johanna Duarte
  * @author Naretza Ovalles
  */
 public class TipoOperacion {
@@ -23,9 +26,10 @@ public class TipoOperacion {
     public TipoOperacion() {
     }
 
-    public int cantidadTipoOperaciones(){
-    return tipOperacion.size();
+    public int cantidadTipoOperaciones() {
+        return tipOperacion.size();
     }
+
     public void addTipoOperacion() throws IOException {
 
         String respuesta;
@@ -33,7 +37,7 @@ public class TipoOperacion {
         do {
 
             TipoOperacion obj = new TipoOperacion();
-            System.out.println("Ingrese el id del tipo de operación: ");
+            System.out.println("Ingrese el identificador del tipo de operación: ");
             obj.idTipoOperacion = recibirDatosTeclado.leerValorLong();
 
             System.out.println("Ingrese el nombre del Tipo de operacion a crear: ");
@@ -45,7 +49,7 @@ public class TipoOperacion {
             existe = this.validarId(obj.idTipoOperacion);
 
             if (obj.tipo != 1 && obj.tipo != 2) {
-                System.out.println("\n \033[31mERROR:____Debe seleccionar solo los valores de la lista..");
+                System.out.println("\n \033[31mDebe seleccionar solo los valores de la lista");
                 existe = 1;
             }
             if (existe == 0) {
@@ -60,7 +64,6 @@ public class TipoOperacion {
     }
 
     public int validarId(long idTipOper) {
-
 
         int posicion = -1;
         int contadorPosiciones = -1;
@@ -78,7 +81,7 @@ public class TipoOperacion {
 
         }
         if (posicion > -1) {
-            System.out.println("\n \033[31mERROR:____**No** se insertó el tipo de operación, código ya existe / Debe utilizar otro identificador _______________\n");
+            System.out.println("\n \033[31m No se insertó el tipo de operación, código ya existe / Debe utilizar otro identificador\n");
             return 1;
         } else {
             return 0;
@@ -103,7 +106,7 @@ public class TipoOperacion {
         } else {
             String entradaTecl;
             TipoOperacion objAux = new TipoOperacion();
-            System.out.println("\n \033[31mERROR:____Debe ingresar el tipo de operaciones a realizar. \n \033[31mDiríjase al menú de Maestros y registre el tipo de operación deseado\n");
+            System.out.println("\n \033[31m Debe ingresar el tipo de operaciones a realizar. \n \033[31mDiríjase al menú de Maestros y registre el tipo de operación deseado\n");
             objAux.idTipoOperacion = -1;
 
 
@@ -112,8 +115,6 @@ public class TipoOperacion {
 
             return objAux;
         }
-
-
 
     }
 
@@ -127,7 +128,7 @@ public class TipoOperacion {
                 System.out.println("        \033[34m----------------------------------------------------------------    ");
                 System.out.println("                            \033[34mTIPOS DE OPERACIONES CREADAS                    ");
                 System.out.println("        \033[34m----------------------------------------------------------------    ");
-                System.out.println("         \033[34mID     DESCRIPCION                                     TIPO        ");
+                System.out.println("         \033[34mIDENTIFICADOR     DESCRIPCION                                     TIPO        ");
                 System.out.println("        \033[34m----------------------------------------------------------------    ");
                 for (int numOp = 0; numOp < tipOperacion.size(); numOp++) {
                     if (tipOperacion.elementAt(numOp).tipo == 1) {
@@ -140,15 +141,12 @@ public class TipoOperacion {
 
 
             } else {
-                System.out.println("\n \033[31mERROR:____Debe ingresar el tipo de operaciones que se pueden realizar. \n \033[31mDiríjase al menú de Maestros y registre las operaciones\n");
-
+                System.out.println("\n \033[31mDebe ingresar el tipo de operaciones que se pueden realizar. \n \033[31mDiríjase al menú de Maestros y registre los tipos de operaciones\n");
             }
 
             System.out.println("Presione cualquier tecla para continuar.....");
             entradaTecl = recibirDatosTeclado.leerCadenaCaracteres(1);
 
         } while (!"".equals(entradaTecl));
-
-
     }
 }

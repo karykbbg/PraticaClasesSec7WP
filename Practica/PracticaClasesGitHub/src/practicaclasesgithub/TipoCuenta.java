@@ -9,6 +9,9 @@ import java.util.*;
 
 /**
  *
+ * @author Kary Bonilla
+ * @author Monica Batista
+ * @author Johanna Duarte
  * @author Naretza Ovalles
  */
 public class TipoCuenta {
@@ -40,7 +43,7 @@ public class TipoCuenta {
         do {
 
             TipoCuenta obj = new TipoCuenta();
-            System.out.println("Ingrese el id del tipo de cuenta: ");
+            System.out.println("Ingrese el identificador del tipo de cuenta: ");
             obj.idTipocuenta = recibirDatosTeclado.leerValorLong();
 
             System.out.println("Ingrese el nombre del Tipo de cuenta a crear: ");
@@ -58,9 +61,8 @@ public class TipoCuenta {
         } while (respuesta.equals("s"));
     }
 
-    //Valida que no exista el id
+    //Valida que no exista el identificador de tipo de cuenta
     public int validarId(long idTipoCuenta) {
-
 
         int posicion = -1;
         int contadorPosiciones = -1;
@@ -75,10 +77,9 @@ public class TipoCuenta {
                 posicion = contadorPosiciones;
                 break;
             }
-
         }
         if (posicion > -1) {
-            System.out.println("\n \033[31mERROR:____**No** se insertó el tipo de cuenta, código ya existe / Debe utilizar otro identificador _______________\n");
+            System.out.println("\n \033[31m No se insertó el tipo de cuenta, código ya existe / Debe utilizar otro identificador\n");
             return 1;
         } else {
             return 0;
@@ -99,17 +100,17 @@ public class TipoCuenta {
                 indMenu++;
                 System.out.println(indMenu + "...   " + tipoCuenta.elementAt(numCta).descripcion);
             }
-            do{
-            respMenu = recibirDatosTeclado.leerValorEntero();
-            if(respMenu  <= 0 || respMenu>tipoCuenta.size()){
-               System.out.println("Opción no válida por favor seleccione nuevamente:");  
-            }
-            }while(respMenu  <= 0 || respMenu>tipoCuenta.size());
+            do {
+                respMenu = recibirDatosTeclado.leerValorEntero();
+                if (respMenu <= 0 || respMenu > tipoCuenta.size()) {
+                    System.out.println("Opción no válida por favor seleccione nuevamente:");
+                }
+            } while (respMenu <= 0 || respMenu > tipoCuenta.size());
             return tipoCuenta.get(respMenu - 1);
         } else {
             String entradaTecl;
             TipoCuenta objAux = new TipoCuenta();
-            System.out.println("\n \033[31mERROR:____Debe ingresar los tipo de cuenta que se pueden realizar. \n \033[31mDiríjase al menú de Maestros y registre las cuentas deseadas\n");
+            System.out.println("\n \033[31mDebe ingresar los tipos de cuenta que se pueden realizar. \n \033[31mDiríjase al menú de Maestros y registre los tipos de cuentas deseadas\n");
             objAux.idTipocuenta = -1;
 
             do {
@@ -131,19 +132,16 @@ public class TipoCuenta {
                 System.out.println("        \033[34m----------------------------------------------------------------    ");
                 System.out.println("                           \033[34mTIPOS DE CUENTAS CREADAS                         ");
                 System.out.println("        \033[34m----------------------------------------------------------------    ");
-                System.out.println("           \033[34mID                  DESCRIPCION                                 ");
+                System.out.println("           \033[34mIDENTIFICADOR                  DESCRIPCION                                 ");
                 System.out.println("        \033[34m----------------------------------------------------------------    ");
-                for (int numCta = 0; numCta < tipoCuenta.size(); numCta++) {                    
+                for (int numCta = 0; numCta < tipoCuenta.size(); numCta++) {
                     System.out.println(String.format("%-20s", Long.toString(tipoCuenta.elementAt(numCta).idTipocuenta)) + "                   " + String.format("%-50s", tipoCuenta.elementAt(numCta).descripcion));
                 }
             } else {
-                System.out.println("\n \033[31mERROR:____Debe ingresar los tipo de cuenta que se pueden realizar. \n \033[31mDiríjase al menú de Maestros y registre las cuentas deseadas\n");
+                System.out.println("\n \033[31mDebe ingresar los tipos de cuenta que se pueden realizar. \n \033[31mDiríjase al menú de Maestros y registre los tipos de cuentas deseadas\n");
             }
-
             System.out.println("Presione cualquier tecla para continuar.....");
             entradaTecl = recibirDatosTeclado.leerCadenaCaracteres(1);
-
-            //System.out.println("te c"+entradaTecl);
 
         } while (!"".equals(entradaTecl));
 

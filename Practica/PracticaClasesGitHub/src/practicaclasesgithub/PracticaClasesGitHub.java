@@ -12,10 +12,12 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author Kary Bonilla
- * @author Monica Batista
- * @author Johanna Duarte
- * @author Naretza Ovalles
+ * Seccion: 7 Grupo de Exposicion Windows Phone
+ *
+ * @author Kary Bonilla CI 15233412
+ * @author Monica Batista CI 14281041
+ * @author Johanna Duarte CI 15538692
+ * @author Naretza Ovalles CI 17021921
  */
 public class PracticaClasesGitHub {
 
@@ -69,7 +71,7 @@ public class PracticaClasesGitHub {
                         clear();
 
 
-                        
+
 
                         switch (opcionMenuCliente) {
                             case 1://Registrar nuevo cliente
@@ -77,26 +79,26 @@ public class PracticaClasesGitHub {
                                 nuevoCliente.createCliente();
                                 break;
                             case 2://Aperturar cuentas
-                               Cliente clienteAperturaCuenta = new Cliente();
+                                Cliente clienteAperturaCuenta = new Cliente();
                                 CuentaBancaria cuenta = new CuentaBancaria();
 
                                 if (clienteAperturaCuenta.getCantidadClientes() > 0) {
                                     clienteAperturaCuenta = clienteAperturaCuenta.buscarCliente();
-                                    if(clienteAperturaCuenta.idCliente!= -1){
-                                    cuenta.idCuentaBancaria=-1;
-                                    cuenta.numeroCuenta="";
-                                     
-                                    do{
+                                    if (clienteAperturaCuenta.idCliente != -1) {
+                                        cuenta.idCuentaBancaria = -1;
+                                        cuenta.numeroCuenta = "";
+
+                                        do {
                                             cuenta.createCuentaBancaria(clienteAperturaCuenta);
                                             System.out.println(" Cuenta :" + cuenta.numeroCuenta);
-                                            if(cuenta.elementoEncontrado!=1){
-                                            clienteAperturaCuenta.agregarCuentaBancaria(cuenta);
-                                            }else{
-                                                System.out.println("        \033[31m La cuenta no ha sido asociada por favor  verifique los datos a ingresar");    
+                                            if (cuenta.elementoEncontrado != 1) {
+                                                clienteAperturaCuenta.agregarCuentaBancaria(cuenta);
+                                            } else {
+                                                System.out.println("        \033[31m La cuenta no ha sido asociada por favor  verifique los datos a ingresar");
                                             }
-                                    }while(cuenta.elementoEncontrado==1);
-                                    }else{
-                                       System.out.println("        \033[31m Si el cliente no esta registrado por favor dirijase al menu y seleccione registrar un nuevo cliente");  
+                                        } while (cuenta.elementoEncontrado == 1);
+                                    } else {
+                                        System.out.println("        \033[31m Si el cliente no esta registrado por favor dirijase al menu y seleccione registrar un nuevo cliente");
                                     }
                                 }
                                 if (clienteAperturaCuenta.getCantidadClientes() == 0) {
@@ -108,11 +110,11 @@ public class PracticaClasesGitHub {
                             case 3://realizar operacion bancaria
                                 OperacionBancaria operacion = new OperacionBancaria();
                                 TipoOperacion listaTiposOperacion = new TipoOperacion();
-                                if(listaTiposOperacion.cantidadTipoOperaciones()>0){
-                                operacion.createOperacionBancaria();
-                                }else{
-                                System.out.println("  \033[31m No se puede procesar ninguna operación bancaria hasta no configurar los tipos de operaciones");
-                                
+                                if (listaTiposOperacion.cantidadTipoOperaciones() > 0) {
+                                    operacion.createOperacionBancaria();
+                                } else {
+                                    System.out.println("  \033[31m No se puede procesar ninguna operación bancaria hasta no configurar los tipos de operaciones");
+
                                 }
                                 break;
 
@@ -137,9 +139,9 @@ public class PracticaClasesGitHub {
                             case 2:
                                 OperacionBancaria operacion = new OperacionBancaria();
                                 System.out.println("DESDE: ");
-                                fechaInicio= operacion.leerFecha();
+                                fechaInicio = operacion.leerFecha();
                                 System.out.println("HASTA: ");
-                                fechaFinal= operacion.leerFecha();
+                                fechaFinal = operacion.leerFecha();
                                 operacion.getListOperacionesByDate(fechaInicio, fechaFinal);
                                 System.out.println("Presione Enter para continuar ");
                                 lector.readLine();
@@ -169,7 +171,7 @@ public class PracticaClasesGitHub {
                 }
                 case 4:
                     System.out.println("\033[31mFIN DEL PROGRAMA...");
-                    System.exit(0);                    
+                    System.exit(0);
                     break;
                 default: // El default es para cuando no se ejecuto ninguna de las otras opciones
                     System.out.println("Opcion invalida");

@@ -16,10 +16,12 @@ import java.util.Iterator;
 
 /**
  *
- * @author Kary Bonilla
- * @author Monica Batista
- * @author Johanna Duarte
- * @author Naretza Ovalles
+ * Seccion: 7 Grupo de Exposicion Windows Phone
+ *
+ * @author Kary Bonilla CI 15233412
+ * @author Monica Batista CI 14281041
+ * @author Johanna Duarte CI 15538692
+ * @author Naretza Ovalles CI 17021921
  */
 public class OperacionBancaria {
 

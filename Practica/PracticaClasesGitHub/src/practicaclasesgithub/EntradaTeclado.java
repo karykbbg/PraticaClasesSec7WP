@@ -10,10 +10,12 @@ import java.io.InputStreamReader;
 
 /**
  *
- * @author Kary Bonilla
- * @author Monica Batista
- * @author Johanna Duarte
- * @author Naretza Ovalles
+ * Seccion: 7 Grupo de Exposicion Windows Phone
+ *
+ * @author Kary Bonilla CI 15233412
+ * @author Monica Batista CI 14281041
+ * @author Johanna Duarte CI 15538692
+ * @author Naretza Ovalles CI 17021921
  */
 public class EntradaTeclado {
 
@@ -33,10 +35,9 @@ public class EntradaTeclado {
                 Errorlectura = false;
                 System.out.print("-> : ");
                 valorTeclado = Integer.parseInt(entrada.readLine());
-                if(valorTeclado<=0)
-                {
-                 System.out.print("        \033[31mNo se permiten valores menores o iguales a cero, Ingrese nuevamente el valor \n");
-                 Errorlectura = true;   
+                if (valorTeclado <= 0) {
+                    System.out.print("        \033[31mNo se permiten valores menores o iguales a cero, Ingrese nuevamente el valor \n");
+                    Errorlectura = true;
                 }
             } catch (NumberFormatException error) {
                 System.out.print("        \033[31mNúmero no válido " + error + " Ingrese el valor nuevamente");
@@ -61,10 +62,9 @@ public class EntradaTeclado {
                 Errorlectura = false;
                 System.out.print("-> : ");
                 valorTeclado = Float.parseFloat(entrada.readLine());
-                if(valorTeclado<=0)
-                {
-                 System.out.print("        \033[31mNo se permiten valores menores o iguales a cero, Ingrese nuevamente el valor \n");
-                 Errorlectura = true;   
+                if (valorTeclado <= 0) {
+                    System.out.print("        \033[31mNo se permiten valores menores o iguales a cero, Ingrese nuevamente el valor \n");
+                    Errorlectura = true;
                 }
             } catch (NumberFormatException error) {
                 System.out.print("         \033[31mNúmero no válido " + error + " Ingrese el valor nuevamente");
@@ -74,7 +74,7 @@ public class EntradaTeclado {
 
         return valorTeclado;
     }
-    
+
     //método para la lectura por teclado de varibles long
     public long leerValorLong() throws IOException {
         InputStreamReader lector = new InputStreamReader(System.in);
@@ -87,10 +87,9 @@ public class EntradaTeclado {
                 Errorlectura = false;
                 System.out.print("-> : ");
                 valorTeclado = Long.parseLong(entrada.readLine());
-                if(valorTeclado<=0)
-                {
-                 System.out.print("        \033[31mNo se permiten valores menores o iguales a cero, Ingrese nuevamente el valor \n");
-                 Errorlectura = true;   
+                if (valorTeclado <= 0) {
+                    System.out.print("        \033[31mNo se permiten valores menores o iguales a cero, Ingrese nuevamente el valor \n");
+                    Errorlectura = true;
                 }
             } catch (NumberFormatException error) {
                 System.out.print("     \033[31mNumero no válido" + error + " Ingrese el valor nuevamente");
@@ -117,10 +116,10 @@ public class EntradaTeclado {
                 System.out.print("-> : ");
                 valorTeclado = entrada.readLine();
                 if (valorTeclado.length() > longitudMax) {
-                     System.out.print("  \033[31mTamaño no válido Máximo  " + longitudMax + " caracteres \n");
-                     ErrorValidacion = true;
+                    System.out.print("  \033[31mTamaño no válido Máximo  " + longitudMax + " caracteres \n");
+                    ErrorValidacion = true;
                 }
-                
+
             } catch (IOException error) {
                 System.out.println("  \033[31mError de lectura " + error + " Ingrese el valor nuevamente");
                 ErrorValidacion = true;

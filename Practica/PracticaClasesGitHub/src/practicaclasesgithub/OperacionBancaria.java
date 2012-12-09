@@ -9,42 +9,42 @@ import java.text.ParseException;
 import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.Iterator;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
+ * @author Kary Bonilla
  * @author Monica Batista
+ * @author Johanna Duarte
+ * @author Naretza Ovalles
  */
 public class OperacionBancaria {
 
-    private String claveOperacion;
-    private String fechaOperacion;
+    private String claveOperacion; // Se valida con clave de operaciones que ingresa el cliente al registrarse
+    Date fechaOperacion; // Fecha de la transaccion
     private long idOperacion;
     private float montoOperacion;
     EntradaTeclado recibirDatosTeclado = new EntradaTeclado();
     private static ArrayList<OperacionBancaria> operacionesBancarias = new ArrayList<OperacionBancaria>();
-    TipoOperacion tipOp = new TipoOperacion();
-    TipoOperacion tipoOpe = new TipoOperacion();
+    TipoOperacion tipOp = new TipoOperacion(); // Objeto auxiliar para llamada de datos
+    TipoOperacion tipoOpe = new TipoOperacion(); // Objeto definitivo asignado a la transaccion
     CuentaBancaria ctaBanc = new CuentaBancaria();
-    private long incremetId;
+    private long incremetId; // Numero autoincrementable para manejar el id de operacion
 
     public OperacionBancaria() {
-    }
-
-    public OperacionBancaria(String numCuenta, long tipOp) {
     }
 
     public void createOperacionBancaria() throws IOException {
 
         String resp;
         String numCuentaTeclado;
-        String fechaOpe;
         float saldoCta;
         boolean constanteError;
         CuentaBancaria ctaBancAux = new CuentaBancaria();
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
         do {
             OperacionBancaria obj = new OperacionBancaria();
@@ -60,16 +60,9 @@ public class OperacionBancaria {
                 saldoCta = getSaldoCuenta(obj.ctaBanc);
                 if (obj.ctaBanc.idCuentaBancaria != -1) {
                     if (validarClave(obj.ctaBanc.Clientes.ClaveOperaciones) == true) {
-                        do {
-                            System.out.println("Fecha de operación (dd/mm/aaaa):  ");
-                            fechaOpe = recibirDatosTeclado.leerCadenaCaracteres(10);
-                            if (this.validarFecha(fechaOpe) == true) {
-                                obj.fechaOperacion = fechaOpe;
-                                constanteError = false;
-                            } else {
-                                constanteError = true;
-                            }
-                        } while (constanteError == true);
+
+                        System.out.println("Fecha de operación ");
+                        obj.fechaOperacion = sdf.parse(leerFecha(), new ParsePosition(0));
 
                         System.out.println("Ingrese el monto de la operación :  ");
                         obj.montoOperacion = recibirDatosTeclado.leerValorFloat();
@@ -77,6 +70,7 @@ public class OperacionBancaria {
                         if ((obj.tipoOpe.tipo == 2 && saldoCta >= obj.montoOperacion) || (obj.tipoOpe.tipo == 1)) {
                             operacionesBancarias.add(obj);
                             System.out.println("\033[34m     Operación realizada con éxito");
+                            System.out.println("\033[34m     Concepto: " + obj.tipoOpe.descripcion);
                             System.out.println("\033[34m     Fecha :   " + obj.fechaOperacion);
                             System.out.println("\033[34m     Cuenta N°:" + obj.ctaBanc.numeroCuenta);
                             System.out.println("\033[34m     Titular:  " + obj.ctaBanc.Clientes.nombreCliente);
@@ -112,28 +106,32 @@ public class OperacionBancaria {
         Date fecha1 = sdf.parse(fechaIni, new ParsePosition(0));
         Date fecha2 = sdf.parse(fechaFin, new ParsePosition(0));
         if (obj.ctaBanc.idCuentaBancaria != -1) {
+
             if (operacionesBancarias.size() > 0) {
+                Collections.sort(operacionesBancarias, new FechaOperacionComparador());
                 Iterator listaElementos = operacionesBancarias.iterator();
-                System.out.println("\033[34m---------------------------------------------------------------------------------------------------------");
-                System.out.println("\033[34mId        Fecha                         Operacion                     Ingreso             Egreso         ");
-                System.out.println("\033[34m---------------------------------------------------------------------------------------------------------");
+                System.out.println("\033[34m--------------------------------------------------------------------------------------------");
+                System.out.println("\033[34m   OPERACIONES BANCARIAS DE LA CUENTA No. " + obj.ctaBanc.numeroCuenta + " CLIENTE: " + obj.ctaBanc.Clientes.nombreCliente);
+                System.out.println("\033[34m--------------------------------------------------------------------------------------------");
+                System.out.println("\033[34mId        Fecha       Operacion                           Ingreso              Egreso       ");
+                System.out.println("\033[34m--------------------------------------------------------------------------------------------");
                 while (listaElementos.hasNext()) {
                     OperacionBancaria OperListado = (OperacionBancaria) listaElementos.next();
                     if (OperListado.ctaBanc.idCuentaBancaria == obj.ctaBanc.idCuentaBancaria) {
 
-                        Date fecha3 = sdf.parse(OperListado.fechaOperacion, new ParsePosition(0));
+                        //Date fecha3 = sdf.parse(OperListado.fechaOperacion, new ParsePosition(0));
                         // Comparacion de fechas
-                        if ((fecha3.before(fecha2) || fecha3.equals(fecha2)) && (fecha1.before(fecha3) || fecha1.equals(fecha3))) {
+                        if ((OperListado.fechaOperacion.before(fecha2) || OperListado.fechaOperacion.equals(fecha2)) && (fecha1.before(OperListado.fechaOperacion) || fecha1.equals(OperListado.fechaOperacion))) {
                             if (OperListado.tipoOpe.tipo == 1) {
-                                formato = "%12.2f";
+                                formato = "%18.2f";
                             } else {
-                                formato = "%26.2f";
+                                formato = "%38.2f";
                             }
-                            System.out.println(String.format("%-10s", OperListado.idOperacion) + "" + String.format("%-30s", OperListado.fechaOperacion) + "" + String.format("%-30s", OperListado.tipoOpe.descripcion) + "" + String.format(formato, OperListado.montoOperacion));
+                            System.out.println(String.format("%-10s", OperListado.idOperacion) + "" + String.format("%-10s", sdf.format(OperListado.fechaOperacion)) + "" + String.format("%-30s", OperListado.tipoOpe.descripcion) + "" + String.format(formato, OperListado.montoOperacion));
                         }
                     }
                 }
-                System.out.println("\033[34m---------------------------------------------------------------------------------------------------------");
+                System.out.println("\033[34m--------------------------------------------------------------------------------------------");
             } else {
                 System.out.println("\n      \033[31mERROR:____NO SE HA REGISTRADO NINGUNA OPERACION EN EL SISTEMA\n");
             }
@@ -145,7 +143,7 @@ public class OperacionBancaria {
         boolean constanteError;
 
         do {
-            System.out.println("Ingrese la fecha (dd/mm/aaaa):  ");
+            System.out.print(" - Ingrese la fecha (dd/mm/aaaa):  ");
             fecha = recibirDatosTeclado.leerCadenaCaracteres(10);
             if (validarFecha(fecha) == true) {
                 constanteError = false;
@@ -196,7 +194,7 @@ public class OperacionBancaria {
             }
 
         }
-        if (verifClave = true) {
+        if (verifClave == true) {
             return true;
         } else {
             return false;

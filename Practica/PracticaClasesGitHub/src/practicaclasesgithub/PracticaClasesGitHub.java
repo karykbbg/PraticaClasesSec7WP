@@ -77,13 +77,27 @@ public class PracticaClasesGitHub {
                                 nuevoCliente.createCliente();
                                 break;
                             case 2://Aperturar cuentas
-                                Cliente clienteAperturaCuenta = new Cliente();
+                               Cliente clienteAperturaCuenta = new Cliente();
                                 CuentaBancaria cuenta = new CuentaBancaria();
 
                                 if (clienteAperturaCuenta.getCantidadClientes() > 0) {
                                     clienteAperturaCuenta = clienteAperturaCuenta.buscarCliente();
-                                    cuenta.createCuentaBancaria(clienteAperturaCuenta);
-                                    clienteAperturaCuenta.agregarCuentaBancaria(cuenta);
+                                    if(clienteAperturaCuenta.idCliente!= -1){
+                                    cuenta.idCuentaBancaria=-1;
+                                    cuenta.numeroCuenta="";
+                                     
+                                    do{
+                                            cuenta.createCuentaBancaria(clienteAperturaCuenta);
+                                            System.out.println(" Cuenta :" + cuenta.numeroCuenta);
+                                            if(cuenta.elementoEncontrado!=1){
+                                            clienteAperturaCuenta.agregarCuentaBancaria(cuenta);
+                                            }else{
+                                                System.out.println("        \033[31m La cuenta no ha sido asociada por favor  verifique los datos a ingresar");    
+                                            }
+                                    }while(cuenta.elementoEncontrado==1);
+                                    }else{
+                                       System.out.println("        \033[31m Si el cliente no esta registrado por favor dirijase al menu y seleccione registrar un nuevo cliente");  
+                                    }
                                 }
                                 if (clienteAperturaCuenta.getCantidadClientes() == 0) {
                                     System.out.println("        \033[31m Debe registrar un cliente al cual asociar la cuenta");

@@ -73,7 +73,7 @@ public class OperacionBancaria {
                             operacionesBancarias.add(obj);
                             System.out.println("\033[34m     Operación realizada con éxito");
                             System.out.println("\033[34m     Concepto: " + obj.tipoOpe.descripcion);
-                            System.out.println("\033[34m     Fecha :   " + obj.fechaOperacion);
+                            System.out.println("\033[34m     Fecha :   " + sdf.format(obj.fechaOperacion));
                             System.out.println("\033[34m     Cuenta N°:" + obj.ctaBanc.numeroCuenta);
                             System.out.println("\033[34m     Titular:  " + obj.ctaBanc.Clientes.nombreCliente);
                             System.out.println("\033[34m     Monto:    " + obj.montoOperacion);
@@ -129,7 +129,7 @@ public class OperacionBancaria {
                             } else {
                                 formato = "%38.2f";
                             }
-                            System.out.println(String.format("%-10s", OperListado.idOperacion) + "" + String.format("%-10s", sdf.format(OperListado.fechaOperacion)) + "" + String.format("%-30s", OperListado.tipoOpe.descripcion) + "" + String.format(formato, OperListado.montoOperacion));
+                            System.out.println(String.format("%-10s", OperListado.idOperacion) + "" + String.format("%-12s", sdf.format(OperListado.fechaOperacion)) + "" + String.format("%-30s", OperListado.tipoOpe.descripcion) + "" + String.format(formato, OperListado.montoOperacion));
                         }
                     }
                 }

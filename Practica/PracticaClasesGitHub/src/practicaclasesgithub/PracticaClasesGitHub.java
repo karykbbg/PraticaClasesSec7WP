@@ -29,8 +29,6 @@ public class PracticaClasesGitHub {
         int opcionMenuCliente;
         int opcionMenuMaestros;
         int opcionMenuReportes;
-        String fechaInicio;
-        String fechaFinal;
         InputStreamReader entrada = new InputStreamReader(System.in);
         BufferedReader lector = new BufferedReader(entrada);
 
@@ -121,12 +119,6 @@ public class PracticaClasesGitHub {
                                 lector.readLine();
                                 break;
                             case 2:
-                                OperacionBancaria operacion = new OperacionBancaria();
-                                System.out.println("DESDE: ");
-                                fechaInicio= operacion.leerFecha();
-                                System.out.println("HASTA: ");
-                                fechaFinal= operacion.leerFecha();
-                                operacion.getListOperacionesByDate(fechaInicio, fechaFinal);
                                 break;
                             case 3:
                                 Cliente clienteReporte = new Cliente();

@@ -16,15 +16,22 @@ import java.util.logging.Logger;
  */
 public class Cliente {
 
+    //atributos del cliente
     public long idCliente;
     public String nombreCliente;
     public String ClaveOperaciones;
+    //lista para el registro de las cuentas bancarias del cliente
     private ArrayList<CuentaBancaria> misCuentasBancarias = new ArrayList<CuentaBancaria>();
+    //lista estatica para autocontener listado de los clientes registrados
     private static ArrayList<Cliente> listaClientes = new ArrayList<Cliente>();
+//constructor de la clase no implementada
 
     public void Cliente() {
     }
 
+//método para la creacion y registro de un nuevo cliente con su respectiva cuenta bancaria
+// requiere una instancia  de la clase CuentaBancaria 
+//no recibe parametros de entrada
     public void createCliente() throws IOException {
         EntradaTeclado recibirDatosTeclado = new EntradaTeclado();
         int consultaExistencia;
@@ -42,15 +49,25 @@ public class Cliente {
 
             consultaExistencia = this.buscarPosicionClientebyId(idCliente);
             if (consultaExistencia >= 0) {
-                System.out.println("El identificador ya esta siendo utilizado, por favor ingrese otro :");
+                System.out.println("        \033[34mEl identificador ya esta siendo utilizado, por favor ingrese otro :");
             }
-        } while (consultaExistencia > 0);
+        } while (consultaExistencia >= 0);
 
-        System.out.print("Ingrese el nombre del cliente:\n");
-        nombreCliente = recibirDatosTeclado.leerCadenaCaracteres(100);
+        do {
+            System.out.print("Ingrese el nombre del cliente:\n");
+            nombreCliente = recibirDatosTeclado.leerCadenaCaracteres(100);
+            if (nombreCliente.length() <= 0) {
+                System.out.println("        \033[34m El nombre debe tener mínimo 1 caracter");
+            }
+        } while (nombreCliente.length() <= 0);
 
-        System.out.print("Ingresar clave especial de operaciones:\n");
-        ClaveOperaciones = recibirDatosTeclado.leerCadenaCaracteres(100);
+        do {
+            System.out.print("Ingrese la clave especial de operaciones (De cuatro(4) caracteres):\n");
+            ClaveOperaciones = recibirDatosTeclado.leerCadenaCaracteres(4);
+            if (ClaveOperaciones.length() < 4) {
+                System.out.println("        \033[34m La clave debe tener mínimo 4 caracteres");
+            }
+        } while (ClaveOperaciones.length() < 4);
 
         String opcionCrearCuenta;
 
@@ -76,11 +93,12 @@ public class Cliente {
         }
 
     }
-
+//método retorna la cantidad de clientes registrados
     public int getCantidadClientes() {
         return listaClientes.size();
     }
-
+//método retorna una instancia de  Cliente obtenido de la lista de clientes registrados
+// el id de consulta del cliente es solicitado por teclado
     public Cliente buscarCliente() {
         EntradaTeclado recibirDatosTeclado = new EntradaTeclado();
         boolean validarIngreso;
@@ -97,12 +115,19 @@ public class Cliente {
                 Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, ex);
             }
             int posicionLista;
+            if(idClienteConsulta>listaClientes.size())
+            {
+                 System.out.println("        \033[31mCLIENTE NO ENCONTRADO");
+                 clienteEncontrado = new Cliente();
+                 clienteEncontrado.idCliente = -1;
+                  return clienteEncontrado;
+            }
             posicionLista = this.buscarPosicionClientebyId(idClienteConsulta);
             clienteEncontrado = listaClientes.get(posicionLista);
             if (posicionLista >= 0) {
                 System.out.println("Cliente Encontrado Datos: Identificador.- " + clienteEncontrado.idCliente + " Nombre Cliente.- " + clienteEncontrado.nombreCliente);
             } else {
-                System.out.println("        \033[34mCLIENTE NO ENCONTRADO");
+                System.out.println("        \033[31mCLIENTE NO ENCONTRADO");
                 validarIngreso = true;
                 System.out.println("        \033 Desea intentar nuevamente ? (S) ");
 
@@ -117,8 +142,8 @@ public class Cliente {
 
         return clienteEncontrado;
     }
-
-    //Antes de llamar al método agregarCuentaBancaria el objeto debe estar creado o asignado
+ // Parametro de entrada una instancia de la clase CuentaBancaria
+ //Antes de llamar al método agregarCuentaBancaria el objeto debe estar creado o creado y asignado
     public void agregarCuentaBancaria(CuentaBancaria nuevaCuenta) {
         Cliente clienteEncontrado;
         int posicionLista;
@@ -135,6 +160,7 @@ public class Cliente {
 
     }
 
+//Este método imprime en consola el listado de los clientes registrados    
     public void listadoClientes() {
         Iterator lista = listaClientes.iterator();
         if (listaClientes.size() > 0) {
@@ -152,11 +178,12 @@ public class Cliente {
 
 
             }
+            System.out.println(" \n Presione Enter para continuar ");
         } else {
             System.out.println("        \033[31mNO HAY CLIENTES POR LISTAR, PRESIONE ENTER PARA CONTINUAR\n");
         }
     }
-
+   //Retorna la posicion dentro de la lista de clientes correspondiente con el idCliente = idClienteConsulta
     public int buscarPosicionClientebyId(long idClienteConsulta) {
         int resultadoBusqueda;
         int contadorPosiciones = -1;
@@ -175,6 +202,9 @@ public class Cliente {
         return resultadoBusqueda;
     }
 
+    //Recibe como parametro de entrada una instancia de la clase Cliente
+//Despliega en consola los datos de la cuenta bancaria de un cliente
+    
     public void showCuentasBancarias(Cliente clienteConsulta) {
         Iterator listaCuentas = clienteConsulta.misCuentasBancarias.iterator();
         if (clienteConsulta.misCuentasBancarias.size() > 0) {
@@ -188,7 +218,7 @@ public class Cliente {
         }
         System.out.println(" \n Presione Enter para continuar ");
     }
-
+// Imprime por consola los datos del cliente y cuentas del cliente registrado con identificar solicitado por teclado
     public void consultar() throws IOException {
         EntradaTeclado recibirDatosTeclado = new EntradaTeclado();
         System.out.println("Ingrese el identificador del cliente  :");

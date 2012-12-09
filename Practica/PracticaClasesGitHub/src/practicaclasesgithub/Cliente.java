@@ -164,17 +164,17 @@ public class Cliente {
     public void listadoClientes() {
         Iterator lista = listaClientes.iterator();
         if (listaClientes.size() > 0) {
-            System.out.println("        \033[34m----------------------------------------------------------------    ");
+            System.out.println("        \033[34m--------------------------------------------------------------------------------------------------");
             System.out.println("                           \033[34mCLIENTES                     ");
-            System.out.println("        \033[34m----------------------------------------------------------------    ");
-            System.out.println("         \033[34m ID                                NOMBRE        ");
-            System.out.println("        \033[34m----------------------------------------------------------------    ");
+            System.out.println("        \033[34m--------------------------------------------------------------------------------------------------");
+            System.out.println("         \033[34m ID                                NOMBRE                                       CLAVE OPERACIONES");
+            System.out.println("        \033[34m--------------------------------------------------------------------------------------------------");
 
             while (lista.hasNext()) {
 
                 Cliente actualCliente = (Cliente) lista.next();
 
-                System.out.println(String.format("%20s", Long.toString(actualCliente.idCliente)) + "                 " + String.format("%-55s", actualCliente.nombreCliente));
+                System.out.println(String.format("%20s", Long.toString(actualCliente.idCliente)) + "                 " + String.format("%-55s", actualCliente.nombreCliente) + "         "+ String.format("%-4s", actualCliente.ClaveOperaciones));
 
 
             }

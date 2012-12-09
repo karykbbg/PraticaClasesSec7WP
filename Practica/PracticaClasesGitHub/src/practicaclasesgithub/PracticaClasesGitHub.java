@@ -141,6 +141,8 @@ public class PracticaClasesGitHub {
                                 System.out.println("HASTA: ");
                                 fechaFinal= operacion.leerFecha();
                                 operacion.getListOperacionesByDate(fechaInicio, fechaFinal);
+                                System.out.println("Presione Enter para continuar ");
+                                lector.readLine();
                                 break;
                             case 3:
                                 Cliente clienteReporte = new Cliente();

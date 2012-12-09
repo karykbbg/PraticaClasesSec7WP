@@ -125,11 +125,11 @@ public class TipoOperacion {
         String tip;
         do {
             if (tipOperacion.size() > 0) {
-                System.out.println("        \033[34m----------------------------------------------------------------    ");
+                System.out.println("        \033[34m-----------------------------------------------------------------------------------");
                 System.out.println("                            \033[34mTIPOS DE OPERACIONES CREADAS                    ");
-                System.out.println("        \033[34m----------------------------------------------------------------    ");
+                System.out.println("        \033[34m-----------------------------------------------------------------------------------");
                 System.out.println("         \033[34mIDENTIFICADOR     DESCRIPCION                                     TIPO        ");
-                System.out.println("        \033[34m----------------------------------------------------------------    ");
+                System.out.println("        \033[34m-----------------------------------------------------------------------------------");
                 for (int numOp = 0; numOp < tipOperacion.size(); numOp++) {
                     if (tipOperacion.elementAt(numOp).tipo == 1) {
                         tip = "Adicionar Saldo";

@@ -33,8 +33,13 @@ public class EntradaTeclado {
                 Errorlectura = false;
                 System.out.print("-> : ");
                 valorTeclado = Integer.parseInt(entrada.readLine());
+                if(valorTeclado<=0)
+                {
+                 System.out.print("        \033[31mNo se permiten valores menores o iguales a cero, Ingrese nuevamente el valor \n");
+                 Errorlectura = true;   
+                }
             } catch (NumberFormatException error) {
-                System.out.print("Número no válido\n" + error);
+                System.out.print("        \033[31mNúmero no válido " + error + " Ingrese el valor nuevamente");
                 Errorlectura = true;
             }
         } while (Errorlectura == true);
@@ -56,8 +61,13 @@ public class EntradaTeclado {
                 Errorlectura = false;
                 System.out.print("-> : ");
                 valorTeclado = Float.parseFloat(entrada.readLine());
+                if(valorTeclado<=0)
+                {
+                 System.out.print("        \033[31mNo se permiten valores menores o iguales a cero, Ingrese nuevamente el valor \n");
+                 Errorlectura = true;   
+                }
             } catch (NumberFormatException error) {
-                System.out.print("Número no válido\n" + error);
+                System.out.print("         \033[31mNúmero no válido " + error + " Ingrese el valor nuevamente");
                 Errorlectura = true;
             }
         } while (Errorlectura == true);
@@ -77,8 +87,13 @@ public class EntradaTeclado {
                 Errorlectura = false;
                 System.out.print("-> : ");
                 valorTeclado = Long.parseLong(entrada.readLine());
+                if(valorTeclado<=0)
+                {
+                 System.out.print("        \033[31mNo se permiten valores menores o iguales a cero, Ingrese nuevamente el valor \n");
+                 Errorlectura = true;   
+                }
             } catch (NumberFormatException error) {
-                System.out.print("Numero no válido" + error);
+                System.out.print("     \033[31mNumero no válido" + error + " Ingrese el valor nuevamente");
                 Errorlectura = true;
 
             }
@@ -102,12 +117,12 @@ public class EntradaTeclado {
                 System.out.print("-> : ");
                 valorTeclado = entrada.readLine();
                 if (valorTeclado.length() > longitudMax) {
-                     System.out.print("Tamaño no válido Máximo  " + longitudMax + " caracteres \n");
+                     System.out.print("  \033[31mTamaño no válido Máximo  " + longitudMax + " caracteres \n");
                      ErrorValidacion = true;
                 }
                 
             } catch (IOException error) {
-                System.out.println("Error de lectura " + error);
+                System.out.println("  \033[31mError de lectura " + error + " Ingrese el valor nuevamente");
                 ErrorValidacion = true;
             }
         } while (ErrorValidacion == true);

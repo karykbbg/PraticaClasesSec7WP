@@ -115,7 +115,7 @@ public class TipoCuenta {
 
             do {
 
-                System.out.println("Presione cualquier tecla para continuar.....");
+                System.out.println("Presione Enter para continuar.....");
                 entradaTecl = recibirDatosTeclado.leerCadenaCaracteres(1);
 
             } while (" ".equals(entradaTecl));
@@ -135,12 +135,12 @@ public class TipoCuenta {
                 System.out.println("           \033[34mIDENTIFICADOR                  DESCRIPCION                                 ");
                 System.out.println("        \033[34m----------------------------------------------------------------    ");
                 for (int numCta = 0; numCta < tipoCuenta.size(); numCta++) {
-                    System.out.println(String.format("%-20s", Long.toString(tipoCuenta.elementAt(numCta).idTipocuenta)) + "                   " + String.format("%-50s", tipoCuenta.elementAt(numCta).descripcion));
+                    System.out.println("        \033" + String.format("%-20s", Long.toString(tipoCuenta.elementAt(numCta).idTipocuenta)) + "                   " + String.format("%-50s", tipoCuenta.elementAt(numCta).descripcion));
                 }
             } else {
                 System.out.println("\n \033[31mDebe ingresar los tipos de cuenta que se pueden realizar. \n \033[31mDiríjase al menú de Maestros y registre los tipos de cuentas deseadas\n");
             }
-            System.out.println("Presione cualquier tecla para continuar.....");
+            System.out.println("Presione  Enter para continuar.....");
             entradaTecl = recibirDatosTeclado.leerCadenaCaracteres(1);
 
         } while (!"".equals(entradaTecl));

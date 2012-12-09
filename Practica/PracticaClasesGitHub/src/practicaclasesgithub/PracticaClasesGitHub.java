@@ -29,6 +29,9 @@ public class PracticaClasesGitHub {
         int opcionMenuCliente;
         int opcionMenuMaestros;
         int opcionMenuReportes;
+        String fechaInicio;
+        String fechaFinal;
+
         InputStreamReader entrada = new InputStreamReader(System.in);
         BufferedReader lector = new BufferedReader(entrada);
 
@@ -93,7 +96,6 @@ public class PracticaClasesGitHub {
                                 TipoOperacion listaTiposOperacion = new TipoOperacion();
                                 if(listaTiposOperacion.cantidadTipoOperaciones()>0){
                                 operacion.createOperacionBancaria();
-                                operacion.getListOperacionesByDate("05/12/2012", "05/12/2012");
                                 }else{
                                 System.out.println("  \033[31m No se puede procesar ninguna operación bancaria hasta no configurar los tipos de operaciones");
                                 
@@ -119,6 +121,12 @@ public class PracticaClasesGitHub {
                                 lector.readLine();
                                 break;
                             case 2:
+                                OperacionBancaria operacion = new OperacionBancaria();
+                                System.out.println("DESDE: ");
+                                fechaInicio= operacion.leerFecha();
+                                System.out.println("HASTA: ");
+                                fechaFinal= operacion.leerFecha();
+                                operacion.getListOperacionesByDate(fechaInicio, fechaFinal);
                                 break;
                             case 3:
                                 Cliente clienteReporte = new Cliente();

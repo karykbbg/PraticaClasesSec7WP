@@ -135,7 +135,7 @@ public class TipoOperacion {
                     else {
                         tip = "Restar Saldo";
                     }
-                    System.out.println(String.format("%10o",tipOperacion.elementAt(numOp).idTipoOperacion) + "    " + String.format("%-35s", tipOperacion.elementAt(numOp).descripcion) + "        " + String.format("%-20s",tip));
+                    System.out.println(String.format("%20s",Long.toString(tipOperacion.elementAt(numOp).idTipoOperacion)) + "    " + String.format("%-35s", tipOperacion.elementAt(numOp).descripcion) + "        " + String.format("%-20s",tip));
                 }
 
 

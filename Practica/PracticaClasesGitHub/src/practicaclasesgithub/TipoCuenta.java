@@ -128,8 +128,8 @@ public class TipoCuenta {
                 System.out.println("        \033[34m----------------------------------------------------------------    ");
                 System.out.println("           \033[34mID                  DESCRIPCION                                 ");
                 System.out.println("        \033[34m----------------------------------------------------------------    ");
-                for (int numCta = 0; numCta < tipoCuenta.size(); numCta++) {
-                    System.out.println(String.format("%12o", tipoCuenta.elementAt(numCta).idTipocuenta) + "                   " + String.format("%-50s", tipoCuenta.elementAt(numCta).descripcion));
+                for (int numCta = 0; numCta < tipoCuenta.size(); numCta++) {                    
+                    System.out.println(String.format("%-20s", Long.toString(tipoCuenta.elementAt(numCta).idTipocuenta)) + "                   " + String.format("%-50s", tipoCuenta.elementAt(numCta).descripcion));
                 }
             } else {
                 System.out.println("\n \033[31mERROR:____Debe ingresar los tipo de cuenta que se pueden realizar. \n \033[31mDiríjase al menú de Maestros y registre las cuentas deseadas\n");

@@ -105,10 +105,7 @@ public class EntradaTeclado {
                      System.out.print("Tamaño no válido Máximo  " + longitudMax + " caracteres \n");
                      ErrorValidacion = true;
                 }
-                if (valorTeclado.length() == 0 ) {
-                     System.out.print("Tamaño no válido Mínimo  1 caracter \n");
-                     ErrorValidacion = true;
-                }
+                
             } catch (IOException error) {
                 System.out.println("Error de lectura " + error);
                 ErrorValidacion = true;

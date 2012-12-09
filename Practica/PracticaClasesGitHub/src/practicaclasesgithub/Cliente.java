@@ -12,7 +12,7 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author unet
+ * @author joha
  */
 public class Cliente {
 
@@ -37,7 +37,7 @@ public class Cliente {
         }
         do {
 
-            System.out.print("Ingrese el identificador único del cliente (debe ser un valor numérico) :");
+            System.out.println("Ingrese el identificador único del cliente (debe ser un valor numérico) :");
             idCliente = recibirDatosTeclado.leerValorLong();
 
             consultaExistencia = this.buscarPosicionClientebyId(idCliente);
@@ -48,12 +48,16 @@ public class Cliente {
 
         System.out.print("Ingrese el nombre del cliente:\n");
         nombreCliente = recibirDatosTeclado.leerCadenaCaracteres(100);
+        
+        System.out.print("Ingresar clave especial de operaciones:\n");
+        ClaveOperaciones = recibirDatosTeclado.leerCadenaCaracteres(100);
+        
         String opcionCrearCuenta;
 
 
-
+        System.out.println("        \033[34m A continuación debe ingresar los datos de la cuenta bancaria asociada al nuevo cliente");
         do {
-            System.out.println("__________Ingrese los datos de la cuenta bancaria____________");
+            
             CuentaBancaria CuentaBancariaInicial = new CuentaBancaria();
             CuentaBancariaInicial.createCuentaBancaria(this);
 
@@ -98,9 +102,9 @@ public class Cliente {
             if (posicionLista >= 0) {
                 System.out.println("Cliente Encontrado Datos: Identificador.- " + clienteEncontrado.idCliente + " Nombre Cliente.- " + clienteEncontrado.nombreCliente);
             } else {
-                System.out.println("Cliente no encontrado");
+                System.out.println("        \033[34mCliente no encontrado");
                 validarIngreso = true;
-                System.out.println("Desea intentar nuevamente ? (S) ");
+                System.out.println("        \033 Desea intentar nuevamente ? (S) ");
 
                 try {
                     respuestaIntentos = recibirDatosTeclado.leerCadenaCaracteres(1);
@@ -118,15 +122,14 @@ public class Cliente {
     public void agregarCuentaBancaria(CuentaBancaria nuevaCuenta) {
         Cliente clienteEncontrado;
         int posicionLista;
-        posicionLista = this.buscarPosicionClientebyId(idCliente);
-        System.out.println("Ubicando posicion");
+        posicionLista = this.buscarPosicionClientebyId(idCliente);      
         if (posicionLista >= 0) {
             clienteEncontrado = listaClientes.get(posicionLista);
             clienteEncontrado.misCuentasBancarias.add(nuevaCuenta);
             listaClientes.set(posicionLista, clienteEncontrado);
             System.out.println("Cuenta Agregada");
         } else {
-            System.out.println("Error no se encontro el cliente");
+            System.out.println("        \033[34mError no se encontro el cliente");
         }
 
 
@@ -144,7 +147,7 @@ public class Cliente {
                 System.out.println("        \033[34m----------------------------------------------------------------    ");
                 System.out.println("         \033[34m ID                                NOMBRE        ");
                 System.out.println("        \033[34m----------------------------------------------------------------    ");
-                System.out.println(String.format("%10o", actualCliente.idCliente) + "                     " + String.format("%-55s", actualCliente.nombreCliente));
+                System.out.println(String.format("%20s", Long.toString(actualCliente.idCliente)) + "                 " + String.format("%-55s", actualCliente.nombreCliente));
 
 
             }
@@ -178,7 +181,7 @@ public class Cliente {
                 CuentaBancaria actualCuentaCliente = (CuentaBancaria) listaCuentas.next();
 
 
-                System.out.println("        \033" + String.format("%10s", actualCuentaCliente.fechaApertura) + "               " + String.format("%-20o", actualCuentaCliente.idCuentaBancaria) + "  " + String.format("%-50s", actualCuentaCliente.numeroCuenta) + "   " + String.format("%-30s", actualCuentaCliente.tiposCuenta.descripcion));
+                System.out.println("        \033" + String.format("%10s", actualCuentaCliente.fechaApertura) + "               " + String.format("%-20s",Long.toString(actualCuentaCliente.idCuentaBancaria)) + "  " + String.format("%-50s", actualCuentaCliente.numeroCuenta) + "   " + String.format("%-30s", actualCuentaCliente.tiposCuenta.descripcion));
 
             }
         }
@@ -203,7 +206,7 @@ public class Cliente {
 
             this.showCuentasBancarias(clienteEncontrado);
         } else {
-            System.out.println("Cliente no encontrado");
+            System.out.println("        \033[31mCliente no encontrado");
         }
 
 

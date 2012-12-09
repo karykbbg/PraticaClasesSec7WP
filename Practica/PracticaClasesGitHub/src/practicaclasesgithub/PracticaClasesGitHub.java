@@ -138,7 +138,7 @@ public class PracticaClasesGitHub {
                 }
                 case 4:
                     System.out.println("\033[31mFIN DEL PROGRAMA...");
-                    System.exit(0);
+                    System.exit(0);                    
                     break;
                 default: // El default es para cuando no se ejecuto ninguna de las otras opciones
                     System.out.println("Opcion invalida");

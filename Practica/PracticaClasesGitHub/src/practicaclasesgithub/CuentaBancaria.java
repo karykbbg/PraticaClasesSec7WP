@@ -242,19 +242,19 @@ public class CuentaBancaria {
 
 
         Iterator listaElementos = CuentaBancarias.iterator();
-
-        while (listaElementos.hasNext()) {
-
-            CuentaBancaria cuentaListado = (CuentaBancaria) listaElementos.next();
-
-            if (cuentaListado.tiposCuenta.idTipocuenta == idTipo) {
                 System.out.println("\033[34m-----------------------------------------------------------------------------------------------");
                 System.out.println("\033[34m                          CUENTAS BANCARIAS POR TIPO                         ");
                 System.out.println("\033[34m-----------------------------------------------------------------------------------------------");
                 System.out.println("\033[34m       TIPO CUENTA      IDENTIFICADOR         NRO CUENTA              FECHA                    ");
                 System.out.println("\033[34m-----------------------------------------------------------------------------------------------");
-                System.out.println(cuentaListado.tiposCuenta.descripcion + String.format("%20s", Long.toString(cuentaListado.idCuentaBancaria)) + "              " + cuentaListado.numeroCuenta + "               " + cuentaListado.fechaApertura);
-                System.out.println("\033[34m-----------------------------------------------------------------------------------------------\n");
+        while (listaElementos.hasNext()) {
+
+            CuentaBancaria cuentaListado = (CuentaBancaria) listaElementos.next();
+
+            if (cuentaListado.tiposCuenta.idTipocuenta == idTipo) {
+               
+                System.out.println("\033" + cuentaListado.tiposCuenta.descripcion + String.format("%20s", Long.toString(cuentaListado.idCuentaBancaria)) + "              " + cuentaListado.numeroCuenta + "               " + cuentaListado.fechaApertura);
+                System.out.println("\033[34m-----------------------------------------------------------------------------------------------");
             }
         }
         System.out.println(" Presione cualquier tecla para continuar.....");
